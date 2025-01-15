@@ -30,6 +30,6 @@ func CreateFiles(cfg config.Configuration, filenames ...string) error {
 }
 
 // SyncFiles synchronizes JSON files with the default file
-func SyncFiles(cfg config.Configuration) {
+func SyncFiles() {
 	// (Sync logic here)
 }

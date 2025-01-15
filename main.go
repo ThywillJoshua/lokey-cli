@@ -6,9 +6,12 @@ import (
 
 	"translate-cli/config"
 	"translate-cli/fileutils"
+	"translate-cli/globals"
 	"translate-cli/server"
 	"translate-cli/webview"
 )
+
+var ConfigData config.Configuration
 
 func main() {
 	if len(os.Args) < 2 {
@@ -24,11 +27,12 @@ func main() {
 	}
 
 	// Read the configuration file
-	cfg, err := config.LoadConfig("translate.config.json")
-	if err != nil {
-		fmt.Println("Error reading configuration file:", err)
-		return
-	}
+    var err error
+	globals.ConfigData, err = config.LoadConfig("translate.config.json")
+    if err != nil {
+        fmt.Println("Error reading configuration file:", err)
+        return
+    }
 
 	switch command {
 	case "init":
@@ -41,18 +45,18 @@ func main() {
 			return
 		}
 		args := os.Args[2:]
-		err = fileutils.CreateFiles(cfg, args...)
+		err = fileutils.CreateFiles(ConfigData, args...)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
 		}
 		return
 
 	case "sync":
-		fileutils.SyncFiles(cfg)
+		fileutils.SyncFiles()
 		return
     
 	case "ui":
-		go server.StartHTTPServer(cfg)
+		go server.StartHTTPServer()
 	    webview.CreateWebview()
 		return
 
