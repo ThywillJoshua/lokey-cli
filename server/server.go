@@ -2,8 +2,10 @@
 package server
 
 import (
+	"embed"
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"log"
 	"net/http"
 	"os"
@@ -11,16 +13,17 @@ import (
 	"translate-cli/globals"
 )
 
+// Embed static files
+//go:embed static/browser
+var static embed.FS
+
 func StartHTTPServer() {
-	execPath, err := os.Executable()
+	webapp, err := fs.Sub(static, "static/browser")
 	if err != nil {
-		log.Fatalf("Error getting executable path: %v", err)
+		fmt.Println(err)
 	}
-	execDir := filepath.Dir(execPath)
-	distPath := filepath.Join(execDir, "dist", "ui", "browser")
-	
-	fs := http.FileServer(http.Dir(distPath))
-	http.Handle("/", fs)
+
+	http.Handle("/", http.FileServer(http.FS(webapp)))
 
     http.HandleFunc("GET /i18n/", func (w http.ResponseWriter, r *http.Request) {
 		files, err := getAllFiles(globals.ConfigData.Config.FilesPath)
