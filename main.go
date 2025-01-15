@@ -6,6 +6,8 @@ import (
 
 	"translate-cli/config"
 	"translate-cli/fileutils"
+	"translate-cli/server"
+	"translate-cli/webview"
 )
 
 func main() {
@@ -50,7 +52,8 @@ func main() {
 		return
     
 	case "ui":
-		fileutils.SyncFiles(cfg)
+		go server.StartHTTPServer(cfg)
+	    webview.CreateWebview()
 		return
 
 	default:
