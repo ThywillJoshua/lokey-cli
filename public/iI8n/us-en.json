@@ -1,0 +1,11 @@
+{
+  "body": {
+    "names": {
+      "firstname": "John",
+      "middlename": "Alex"
+    },
+    "lastname": "Doe"
+  },
+  "header": "Use will translate today.",
+  "subheader": "Thanks for choosing us."
+}
