@@ -45,7 +45,7 @@ func main() {
 			return
 		}
 		args := os.Args[2:]
-		err = fileutils.CreateFiles(ConfigData, args...)
+		err = fileutils.CreateFiles(args...)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
 		}
