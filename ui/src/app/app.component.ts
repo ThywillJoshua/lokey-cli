@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { map, mergeMap, of, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,22 @@ export class AppComponent implements OnInit {
   http = inject(HttpClient);
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.http.get('/i18n/').subscribe(console.log);
-      this.http.get('/config/').subscribe(console.log);
-    }, 5000);
+    this.http
+      .get<string[]>('/file-names/')
+      .pipe(
+        switchMap((languages) =>
+          // Convert languages into individual requests
+          of(...languages).pipe(
+            mergeMap((language) =>
+              this.http.get(
+                `/file-data?language=${encodeURIComponent(language)}`
+              )
+            )
+          )
+        )
+      )
+      .subscribe(console.log);
+
+    this.http.get('/config/').subscribe(console.log);
   }
 }
