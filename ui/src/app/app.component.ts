@@ -14,21 +14,7 @@ export class AppComponent implements OnInit {
   http = inject(HttpClient);
 
   ngOnInit(): void {
-    this.http
-      .get<string[]>('/file-names/')
-      .pipe(
-        switchMap((languages) =>
-          // Convert languages into individual requests
-          of(...languages).pipe(
-            mergeMap((language) =>
-              this.http.get(
-                `/file-data?language=${encodeURIComponent(language)}`
-              )
-            )
-          )
-        )
-      )
-      .subscribe(console.log);
+    this.http.get<string[]>('/files/').subscribe(console.log);
 
     this.http.get('/config/').subscribe(console.log);
   }
