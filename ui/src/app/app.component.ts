@@ -24,8 +24,7 @@ export class AppComponent implements OnInit {
       .get<IFiles[]>('/files/')
       .pipe(map((files) => files.map((file) => this.addParsedContent(file))))
       .subscribe(console.log);
-
-    this.http.get('/config/').subscribe(console.log);
+    // this.http.get('/config/').subscribe(console.log);
   }
 
   addParsedContent(files: IFiles): IFiles {

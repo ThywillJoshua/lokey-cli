@@ -1,0 +1,66 @@
+<div class="toast-container">
+  <div class="toast__button__container">
+    @if(toastService.isOpen()){ @if(toasts().length > 0) {
+    <button
+      appButton
+      [variant]="'default'"
+      class="toast__button"
+      (click)="toastService.clear()"
+    >
+      Clear
+    </button>
+    }
+
+    <button
+      appButton
+      [variant]="'default'"
+      class="toast__button"
+      (click)="toastService.setIsOpen(false)"
+    >
+      Close
+    </button>
+
+    } @else {
+    <button
+      appButton
+      [variant]="'default'"
+      class="toast__button"
+      (click)="toastService.setIsOpen(true)"
+    >
+      Messages
+    </button>
+    }
+  </div>
+
+  @if(toastService.isOpen()) { @for (toast of toasts(); track $index; let idx =
+  $index) {
+  <div class="toast">
+    <span appText [variant]="'info-sm'" class="toast__dateTime"
+      >{{ toast.dateTime | date : "shortTime" }}
+    </span>
+
+    <div class="toast__info">
+      @if (toast.correlation_id) {
+      <small appText [variant]="'info-sm'" class="toast__info__message">
+        {{ toast.correlation_id }}
+      </small>
+      }
+
+      <h4
+        appText
+        [variant]="'title-sm'"
+        class="toast__info__header"
+        [class.toast__info__header--error]="toast.type === 'error'"
+        [class.toast__info__header--success]="toast.type === 'success'"
+        [class.toast__info__header--warning]="toast.type === 'warning'"
+      >
+        {{ toast.type | uppercase }}
+      </h4>
+
+      <p appText [variant]="'paragraph'" class="toast__info__message">
+        {{ toast.message }}
+      </p>
+    </div>
+  </div>
+  } }
+</div>

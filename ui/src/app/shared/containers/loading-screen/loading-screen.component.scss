@@ -1,0 +1,61 @@
+.loading-screen__background {
+  position: fixed;
+  top: 0;
+
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: rgba(255, 255, 255, 1);
+  cursor: progress;
+
+  & * {
+    cursor: progress;
+  }
+}
+
+.loading-screen {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.circle {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: #bbb;
+  border-radius: 50%;
+  opacity: 0;
+  animation: pulse 2.5s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+  background: #ccc;
+  animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+  background: #ddd;
+  animation-delay: 0.5s;
+}
+
+.circle:nth-child(3) {
+  background: #eee;
+  animation-delay: 1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}

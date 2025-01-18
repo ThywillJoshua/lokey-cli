@@ -1,0 +1,71 @@
+.button-directive {
+  &__default {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--echo-theme-colors-white);
+    border-radius: 5px;
+
+    border: solid var(--echo-theme-borderWidth-thin)
+      var(--echo-theme-colors-border);
+    box-shadow: var(--echo-theme-shadows-subtle);
+
+    color: var(--echo-theme-colors-secondary);
+    text-transform: uppercase;
+
+    height: 24px;
+    width: 100%;
+
+    text-align: center;
+    cursor: pointer;
+
+    padding: 0 24px;
+
+    &:focus {
+      outline: revert;
+    }
+
+    &:hover {
+      box-shadow: var(--echo-theme-shadows-shadowHover);
+    }
+
+    &:active {
+      box-shadow: var(--echo-theme-shadows-shadowActive);
+    }
+
+    transition: all 300ms ease-out;
+  }
+
+  &__cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--echo-theme-colors-secondary);
+    border-radius: 5px;
+
+    color: var(--echo-theme-colors-white);
+    text-transform: uppercase;
+
+    height: 44px;
+    width: 100%;
+
+    text-align: center;
+    cursor: pointer;
+
+    &:focus {
+      outline: revert;
+    }
+
+    &:hover {
+      box-shadow: var(--echo-theme-shadows-shadowHover);
+    }
+
+    &:active {
+      box-shadow: var(--echo-theme-shadows-shadowActive);
+    }
+
+    transition: all 300ms ease-out;
+  }
+}

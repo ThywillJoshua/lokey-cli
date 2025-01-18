@@ -1,0 +1,21 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+
+  padding: var(--echo-theme-spacing-paddingMd)
+    var(--echo-theme-spacing-paddingMd);
+
+  & .left {
+  }
+
+  & .right {
+    & ul {
+      all: unset;
+      list-style-type: none;
+      gap: var(--echo-theme-spacing-md);
+      display: flex;
+      flex-direction: row;
+    }
+  }
+}
