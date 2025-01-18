@@ -1,110 +1,118 @@
 {
+  "analytics": {
+    "session": {
+      "duration": "45 minutos",
+      "end_time": "2025-01-18T14:45:00Z",
+      "session_id": "SESSION123",
+      "start_time": "2025-01-18T14:00:00Z"
+    },
+    "user_engagement": {
+      "clicks": 12,
+      "interactions": {
+        "buttons": 4,
+        "forms": 2,
+        "links": 6
+      },
+      "page_views": 5
+    }
+  },
+  "app_config": {
+    "auto_updates": true,
+    "features": {
+      "dark_mode_available": true,
+      "multilingual_support": true,
+      "offline_mode": false
+    },
+    "update_frequency": "diária"
+  },
   "body": {
+    "address": {
+      "city": "Cidade Exemplo",
+      "country": "EUA",
+      "state": "CA",
+      "street": "Rua Principal, 123",
+      "zipcode": "12345"
+    },
+    "contact": {
+      "email": "joao.doe@exemplo.com",
+      "phone": {
+        "home": "123-456-7890",
+        "mobile": "555-123-4567",
+        "work": "987-654-3210"
+      }
+    },
     "lastname": "Doe",
     "names": {
       "firstname": "João",
       "middlename": "Alex",
       "nickname": "Joãozinho"
     },
-    "address": {
-      "street": "Rua Principal, 123",
-      "city": "Cidade Exemplo",
-      "state": "CA",
-      "zipcode": "12345",
-      "country": "EUA"
-    },
-    "contact": {
-      "email": "joao.doe@exemplo.com",
-      "phone": {
-        "home": "123-456-7890",
-        "work": "987-654-3210",
-        "mobile": "555-123-4567"
+    "orders": [
+      {
+        "items": [
+          {
+            "name": "Mouse Sem Fio",
+            "price": 25.99,
+            "product_id": "P1001",
+            "quantity": 2
+          },
+          {
+            "name": "Teclado Mecânico",
+            "price": 89.99,
+            "product_id": "P1002",
+            "quantity": 1
+          }
+        ],
+        "order_id": "A001",
+        "status": "enviado",
+        "total_price": 141.97
+      },
+      {
+        "items": [
+          {
+            "name": "Cabo USB-C",
+            "price": 9.99,
+            "product_id": "P2001",
+            "quantity": 3
+          },
+          {
+            "name": "Capa para Celular",
+            "price": 14.99,
+            "product_id": "P2002",
+            "quantity": 1
+          }
+        ],
+        "order_id": "A002",
+        "status": "em processamento",
+        "total_price": 44.96
       }
-    },
+    ],
     "preferences": {
       "language": "pt",
-      "theme": {
-        "dark_mode": true,
-        "color_scheme": {
-          "primary": "#0000FF",
-          "secondary": "#00FF00",
-          "accent": "#FF0000"
-        }
-      },
       "notifications": {
         "email": true,
-        "sms": false,
         "push": {
           "enabled": true,
           "sound": "padrão",
           "vibration": "curto"
-        }
-      }
-    },
-    "orders": [
-      {
-        "order_id": "A001",
-        "items": [
-          {
-            "product_id": "P1001",
-            "name": "Mouse Sem Fio",
-            "price": 25.99,
-            "quantity": 2
-          },
-          {
-            "product_id": "P1002",
-            "name": "Teclado Mecânico",
-            "price": 89.99,
-            "quantity": 1
-          }
-        ],
-        "total_price": 141.97,
-        "status": "enviado"
+        },
+        "sms": false
       },
-      {
-        "order_id": "A002",
-        "items": [
-          {
-            "product_id": "P2001",
-            "name": "Cabo USB-C",
-            "price": 9.99,
-            "quantity": 3
-          },
-          {
-            "product_id": "P2002",
-            "name": "Capa para Celular",
-            "price": 14.99,
-            "quantity": 1
-          }
-        ],
-        "total_price": 44.96,
-        "status": "em processamento"
-      }
-    ]
-  },
-  "header": "Use o Will Translate hoje.",
-  "subheader": "Obrigado por nos escolher.",
-  "metadata": {
-    "version": "1.0.0",
-    "timestamp": "2025-01-18T15:00:00Z",
-    "request_id": "REQ123456789"
-  },
-  "analytics": {
-    "session": {
-      "session_id": "SESSION123",
-      "start_time": "2025-01-18T14:00:00Z",
-      "end_time": "2025-01-18T14:45:00Z",
-      "duration": "45 minutos"
-    },
-    "user_engagement": {
-      "page_views": 5,
-      "clicks": 12,
-      "interactions": {
-        "forms": 2,
-        "buttons": 4,
-        "links": 6
+      "theme": {
+        "color_scheme": {
+          "accent": "#FF0000",
+          "primary": "#0000FF",
+          "secondary": "#00FF00"
+        },
+        "dark_mode": true
       }
     }
+  },
+  "header": "Use o Will Translate hoje.",
+  "metadata": {
+    "request_id": "REQ123456789",
+    "timestamp": "2025-01-18T15:00:00Z",
+    "version": "1.0.0"
   },
   "security": {
     "authentication": {
@@ -112,19 +120,11 @@
       "status": "bem-sucedida"
     },
     "encryption": {
-      "enabled": true,
-      "algorithm": "AES-256"
+      "algorithm": "AES-256",
+      "enabled": true
     }
   },
-  "app_config": {
-    "features": {
-      "multilingual_support": true,
-      "dark_mode_available": true,
-      "offline_mode": false
-    },
-    "update_frequency": "diária",
-    "auto_updates": true
-  },
+  "subheader": "Obrigado por nos escolher.",
   "support": {
     "contact": {
       "email": "suporte@exemplo.com",
@@ -133,12 +133,12 @@
     "faq": {
       "common_questions": [
         {
-          "question": "Como redefino minha senha?",
-          "answer": "Vá para a página de configurações e clique em 'Redefinir Senha'."
+          "answer": "Vá para a página de configurações e clique em 'Redefinir Senha'.",
+          "question": "Como redefino minha senha?"
         },
         {
-          "question": "Como entro em contato com o suporte?",
-          "answer": "Você pode nos alcançar por e-mail ou telefone."
+          "answer": "Você pode nos alcançar por e-mail ou telefone.",
+          "question": "Como entro em contato com o suporte?"
         }
       ]
     }

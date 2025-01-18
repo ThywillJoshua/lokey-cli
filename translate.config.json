@@ -1,6 +1,6 @@
 {
   "config": {
-    "default-file": "gb-en.json",
+    "default-file": "en.json",
     "files-path": "public/iI8n"
   },
   "project-name": "my-project"

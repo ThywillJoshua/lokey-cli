@@ -1,110 +1,118 @@
 {
+  "analytics": {
+    "session": {
+      "duration": "45 minutes",
+      "end_time": "2025-01-18T14:45:00Z",
+      "session_id": "SESSION123",
+      "start_time": "2025-01-18T14:00:00Z"
+    },
+    "user_engagement": {
+      "clicks": 12,
+      "interactions": {
+        "buttons": 4,
+        "forms": 2,
+        "links": 6
+      },
+      "page_views": 5
+    }
+  },
+  "app_config": {
+    "auto_updates": true,
+    "features": {
+      "dark_mode_available": true,
+      "multilingual_support": true,
+      "offline_mode": false
+    },
+    "update_frequency": "daily"
+  },
   "body": {
+    "address": {
+      "city": "Sample City",
+      "country": "USA",
+      "state": "CA",
+      "street": "123 Main Street",
+      "zipcode": "12345"
+    },
+    "contact": {
+      "email": "john.doe@example.com",
+      "phone": {
+        "home": "123-456-7890",
+        "mobile": "555-123-4567",
+        "work": "987-654-3210"
+      }
+    },
     "lastname": "Doe",
     "names": {
       "firstname": "John",
       "middlename": "Alex",
       "nickname": "Johnny"
     },
-    "address": {
-      "street": "123 Main Street",
-      "city": "Sample City",
-      "state": "CA",
-      "zipcode": "12345",
-      "country": "USA"
-    },
-    "contact": {
-      "email": "john.doe@example.com",
-      "phone": {
-        "home": "123-456-7890",
-        "work": "987-654-3210",
-        "mobile": "555-123-4567"
+    "orders": [
+      {
+        "items": [
+          {
+            "name": "Wireless Mouse",
+            "price": 25.99,
+            "product_id": "P1001",
+            "quantity": 2
+          },
+          {
+            "name": "Mechanical Keyboard",
+            "price": 89.99,
+            "product_id": "P1002",
+            "quantity": 1
+          }
+        ],
+        "order_id": "A001",
+        "status": "shipped",
+        "total_price": 141.97
+      },
+      {
+        "items": [
+          {
+            "name": "USB-C Cable",
+            "price": 9.99,
+            "product_id": "P2001",
+            "quantity": 3
+          },
+          {
+            "name": "Phone Case",
+            "price": 14.99,
+            "product_id": "P2002",
+            "quantity": 1
+          }
+        ],
+        "order_id": "A002",
+        "status": "processing",
+        "total_price": 44.96
       }
-    },
+    ],
     "preferences": {
       "language": "en",
-      "theme": {
-        "dark_mode": true,
-        "color_scheme": {
-          "primary": "#0000FF",
-          "secondary": "#00FF00",
-          "accent": "#FF0000"
-        }
-      },
       "notifications": {
         "email": true,
-        "sms": false,
         "push": {
           "enabled": true,
           "sound": "default",
           "vibration": "short"
-        }
-      }
-    },
-    "orders": [
-      {
-        "order_id": "A001",
-        "items": [
-          {
-            "product_id": "P1001",
-            "name": "Wireless Mouse",
-            "price": 25.99,
-            "quantity": 2
-          },
-          {
-            "product_id": "P1002",
-            "name": "Mechanical Keyboard",
-            "price": 89.99,
-            "quantity": 1
-          }
-        ],
-        "total_price": 141.97,
-        "status": "shipped"
+        },
+        "sms": false
       },
-      {
-        "order_id": "A002",
-        "items": [
-          {
-            "product_id": "P2001",
-            "name": "USB-C Cable",
-            "price": 9.99,
-            "quantity": 3
-          },
-          {
-            "product_id": "P2002",
-            "name": "Phone Case",
-            "price": 14.99,
-            "quantity": 1
-          }
-        ],
-        "total_price": 44.96,
-        "status": "processing"
-      }
-    ]
-  },
-  "header": "Use will translate today.",
-  "subheader": "Thanks for choosing us.",
-  "metadata": {
-    "version": "1.0.0",
-    "timestamp": "2025-01-18T15:00:00Z",
-    "request_id": "REQ123456789"
-  },
-  "analytics": {
-    "session": {
-      "session_id": "SESSION123",
-      "start_time": "2025-01-18T14:00:00Z",
-      "end_time": "2025-01-18T14:45:00Z",
-      "duration": "45 minutes"
-    },
-    "user_engagement": {
-      "page_views": 5,
-      "clicks": 12,
-      "interactions": {
-        "forms": 2,
-        "buttons": 4,
-        "links": 6
+      "theme": {
+        "color_scheme": {
+          "accent": "#FF0000",
+          "primary": "#0000FF",
+          "secondary": "#00FF00"
+        },
+        "dark_mode": true
       }
     }
+  },
+  "header": "Use will translate today.",
+  "metadata": {
+    "request_id": "REQ123456789",
+    "timestamp": "2025-01-18T15:00:00Z",
+    "version": "1.0.0"
   },
   "security": {
     "authentication": {
@@ -112,19 +120,11 @@
       "status": "successful"
     },
     "encryption": {
-      "enabled": true,
-      "algorithm": "AES-256"
+      "algorithm": "AES-256",
+      "enabled": true
     }
   },
-  "app_config": {
-    "features": {
-      "multilingual_support": true,
-      "dark_mode_available": true,
-      "offline_mode": false
-    },
-    "update_frequency": "daily",
-    "auto_updates": true
-  },
+  "subheader": "Thanks for choosing us.",
   "support": {
     "contact": {
       "email": "support@example.com",
@@ -133,12 +133,12 @@
     "faq": {
       "common_questions": [
         {
-          "question": "How do I reset my password?",
-          "answer": "Go to the settings page and click 'Reset Password'."
+          "answer": "Go to the settings page and click 'Reset Password'.",
+          "question": "How do I reset my password?"
         },
         {
-          "question": "How do I contact support?",
-          "answer": "You can reach us via email or phone."
+          "answer": "You can reach us via email or phone.",
+          "question": "How do I contact support?"
         }
       ]
     }
