@@ -24,7 +24,17 @@ export class AppComponent implements OnInit {
       .get<IFiles[]>('/files/')
       .pipe(map((files) => files.map((file) => this.addParsedContent(file))))
       .subscribe(console.log);
-    // this.http.get('/config/').subscribe(console.log);
+    this.http.get('/config/').subscribe(console.log);
+    this.http
+      .post('/translate/', {
+        from: 'English',
+        to: 'Portuguese',
+        keyValues: {
+          'analytics.session.duration': 'Can you call me?',
+          'analytics.session.text': 'I love you',
+        },
+      })
+      .subscribe(console.log);
   }
 
   addParsedContent(files: IFiles): IFiles {

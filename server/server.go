@@ -26,8 +26,9 @@ func StartHTTPServer() {
 
 	http.HandleFunc("GET /config/", handlers.GetConfig)
 
-	http.HandleFunc("/close", handlers.CloseApp)
+	http.HandleFunc("POST /translate/", handlers.Translate)
 
+	http.HandleFunc("GET /close/", handlers.CloseApp)
 	
 	fmt.Println("Starting server on http://localhost:8080/")
 	log.Fatal(http.ListenAndServe(":8080", nil))
