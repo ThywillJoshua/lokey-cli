@@ -1,7 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, model, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { map } from 'rxjs';
+import { NavComponent } from './shared/containers/nav/nav.component';
+import { DEFAULT_THEME } from './shared/services/theme/constants';
+import { ThemeService } from './shared/services/theme/theme.service';
 
 type IFiles = {
   file: string;
@@ -12,14 +15,18 @@ type IFiles = {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
   http = inject(HttpClient);
+  theme = model<typeof DEFAULT_THEME>(DEFAULT_THEME);
+  themeService = inject(ThemeService);
 
   ngOnInit(): void {
+    this.themeService.applyTheme(this.theme);
+
     this.http
       .get<IFiles[]>('/files/')
       .pipe(map((files) => files.map((file) => this.addParsedContent(file))))

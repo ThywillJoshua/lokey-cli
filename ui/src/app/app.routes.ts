@@ -13,7 +13,7 @@ export const PATHS = {
 export const routes: Routes = [
   {
     path: '',
-    component: HomepageComponent,
+    component: TranslationsComponent,
   },
   {
     path: PATHS.HOME,

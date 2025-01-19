@@ -196,294 +196,6 @@
     ],
     "interfaces": [
         {
-            "name": "IAuthConfig",
-            "id": "interface-IAuthConfig-da6a4de63247fd8aa311d3395a84251d6621b1496a4a91c674e7bd3cd48d18947a885fdc20ac6d0bd0576ef2ce2a51a836424e617e9cf74e60c06ff3e113591f",
-            "file": "src/app/shared/services/auth/model.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface IAuthConfig {\n  authToken: string;\n  tenantId: string;\n}\n\nexport interface ITokens {\n  access_token: string;\n  refresh_token: string;\n}\n",
-            "properties": [
-                {
-                    "name": "authToken",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
-                },
-                {
-                    "name": "tenantId",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 3
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "ICreateOrganizationForm",
-            "id": "interface-ICreateOrganizationForm-f0f32c6d289adb3553066e91c0a0e2c49275cbf43d4ccff194239c952d7a7221326e94610e6910c9067a9858a4fd8ee5f81f2417db8389d542bf25b6b4f92fa1",
-            "file": "src/app/containers/organizations/create-organization/create-organization.models.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface ICreateOrganizationForm {\n  organizationName: string;\n  manualUserImport: boolean;\n  useIDP: boolean;\n  identityProvider: string;\n  domainName: string;\n  authenticationMethod: string;\n  clientID: string;\n  clientSecret: string;\n  tokenEndpoint: string;\n  userInfoEndpoint: string;\n  members: IMember[];\n}\n\nexport interface IMember {\n  email: string;\n  name: string;\n  isAdmin: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "authenticationMethod",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 7
-                },
-                {
-                    "name": "clientID",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 8
-                },
-                {
-                    "name": "clientSecret",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "domainName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 6
-                },
-                {
-                    "name": "identityProvider",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 5
-                },
-                {
-                    "name": "manualUserImport",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 3
-                },
-                {
-                    "name": "members",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "IMember[]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12
-                },
-                {
-                    "name": "organizationName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
-                },
-                {
-                    "name": "tokenEndpoint",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 10
-                },
-                {
-                    "name": "useIDP",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 4
-                },
-                {
-                    "name": "userInfoEndpoint",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 11
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "ICreateOrganizationForm",
-            "id": "interface-ICreateOrganizationForm-f0f32c6d289adb3553066e91c0a0e2c49275cbf43d4ccff194239c952d7a7221326e94610e6910c9067a9858a4fd8ee5f81f2417db8389d542bf25b6b4f92fa1-1",
-            "file": "src/app/containers/organizations/organization/add-members/add-members.models.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface ICreateOrganizationForm {\n  organizationName: string;\n  manualUserImport: boolean;\n  useIDP: boolean;\n  identityProvider: string;\n  domainName: string;\n  authenticationMethod: string;\n  clientID: string;\n  clientSecret: string;\n  tokenEndpoint: string;\n  userInfoEndpoint: string;\n  members: IMember[];\n}\n\nexport interface IMember {\n  email: string;\n  name: string;\n  isAdmin: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "authenticationMethod",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 7
-                },
-                {
-                    "name": "clientID",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 8
-                },
-                {
-                    "name": "clientSecret",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 9
-                },
-                {
-                    "name": "domainName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 6
-                },
-                {
-                    "name": "identityProvider",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 5
-                },
-                {
-                    "name": "manualUserImport",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 3
-                },
-                {
-                    "name": "members",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "IMember[]",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 12
-                },
-                {
-                    "name": "organizationName",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 2
-                },
-                {
-                    "name": "tokenEndpoint",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 10
-                },
-                {
-                    "name": "useIDP",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 4
-                },
-                {
-                    "name": "userInfoEndpoint",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 11
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": [],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "ICreateOrganizationForm-1"
-        },
-        {
             "name": "IGetTranslation",
             "id": "interface-IGetTranslation-e88c5e574ef497cac7c60a4c78952a450c9721972a3884ff315ccf68a9a262b3884f98cd1f0b30fadc419da6903f9eee242554ad0dff1334814e208620458897",
             "file": "src/app/shared/services/translate/models/translate.models.ts",
@@ -517,99 +229,6 @@
             "kind": 171,
             "methods": [],
             "extends": []
-        },
-        {
-            "name": "IMember",
-            "id": "interface-IMember-f0f32c6d289adb3553066e91c0a0e2c49275cbf43d4ccff194239c952d7a7221326e94610e6910c9067a9858a4fd8ee5f81f2417db8389d542bf25b6b4f92fa1",
-            "file": "src/app/containers/organizations/create-organization/create-organization.models.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface ICreateOrganizationForm {\n  organizationName: string;\n  manualUserImport: boolean;\n  useIDP: boolean;\n  identityProvider: string;\n  domainName: string;\n  authenticationMethod: string;\n  clientID: string;\n  clientSecret: string;\n  tokenEndpoint: string;\n  userInfoEndpoint: string;\n  members: IMember[];\n}\n\nexport interface IMember {\n  email: string;\n  name: string;\n  isAdmin: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "email",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "isAdmin",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
-                },
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
-            "name": "IMember",
-            "id": "interface-IMember-f0f32c6d289adb3553066e91c0a0e2c49275cbf43d4ccff194239c952d7a7221326e94610e6910c9067a9858a4fd8ee5f81f2417db8389d542bf25b6b4f92fa1-1",
-            "file": "src/app/containers/organizations/organization/add-members/add-members.models.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface ICreateOrganizationForm {\n  organizationName: string;\n  manualUserImport: boolean;\n  useIDP: boolean;\n  identityProvider: string;\n  domainName: string;\n  authenticationMethod: string;\n  clientID: string;\n  clientSecret: string;\n  tokenEndpoint: string;\n  userInfoEndpoint: string;\n  members: IMember[];\n}\n\nexport interface IMember {\n  email: string;\n  name: string;\n  isAdmin: boolean;\n}\n",
-            "properties": [
-                {
-                    "name": "email",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "isAdmin",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "boolean",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
-                },
-                {
-                    "name": "name",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": [],
-            "isDuplicate": true,
-            "duplicateId": 1,
-            "duplicateName": "IMember-1"
         },
         {
             "name": "IStorage",
@@ -722,41 +341,6 @@
             "extends": []
         },
         {
-            "name": "ITokens",
-            "id": "interface-ITokens-da6a4de63247fd8aa311d3395a84251d6621b1496a4a91c674e7bd3cd48d18947a885fdc20ac6d0bd0576ef2ce2a51a836424e617e9cf74e60c06ff3e113591f",
-            "file": "src/app/shared/services/auth/model.ts",
-            "deprecated": false,
-            "deprecationMessage": "",
-            "type": "interface",
-            "sourceCode": "export interface IAuthConfig {\n  authToken: string;\n  tenantId: string;\n}\n\nexport interface ITokens {\n  access_token: string;\n  refresh_token: string;\n}\n",
-            "properties": [
-                {
-                    "name": "access_token",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 7
-                },
-                {
-                    "name": "refresh_token",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "string",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 8
-                }
-            ],
-            "indexSignatures": [],
-            "kind": 171,
-            "methods": [],
-            "extends": []
-        },
-        {
             "name": "ITranslateConfig",
             "id": "interface-ITranslateConfig-e88c5e574ef497cac7c60a4c78952a450c9721972a3884ff315ccf68a9a262b3884f98cd1f0b30fadc419da6903f9eee242554ad0dff1334814e208620458897",
             "file": "src/app/shared/services/translate/models/translate.models.ts",
@@ -818,310 +402,6 @@
         }
     ],
     "injectables": [
-        {
-            "name": "AuthService",
-            "id": "injectable-AuthService-3fe8279af2631b9f5a9511207ee34c43496e7d8e63078cc95a2748d44751876e2737f49c448e42e049bab2255f9e24809ae79fd5537360377c53723f201ac8bc",
-            "file": "src/app/shared/services/auth/auth.service.ts",
-            "properties": [
-                {
-                    "name": "http",
-                    "defaultValue": "inject(HttpClient)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "isAuthed",
-                    "defaultValue": "signal(false)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 20
-                },
-                {
-                    "name": "localStorageService",
-                    "defaultValue": "inject(LocalStorageService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
-                },
-                {
-                    "name": "router",
-                    "defaultValue": "inject(Router)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                },
-                {
-                    "name": "userProfile",
-                    "defaultValue": "this.localStorageService.watch<IUserProfile>('echo.user')",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 22
-                }
-            ],
-            "methods": [
-                {
-                    "name": "completeLogin",
-                    "args": [
-                        {
-                            "name": "user_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "otp",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 43,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "user_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "otp",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "isAccessTokenExpired",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "boolean",
-                    "typeParameters": [],
-                    "line": 70,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "logout",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 84,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "refreshAccessToken",
-                    "args": [
-                        {
-                            "name": "email",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 55,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "email",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "register",
-                    "args": [
-                        {
-                            "name": "_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 31,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "name",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "startLogin",
-                    "args": [
-                        {
-                            "name": "_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 39,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "validateToken",
-                    "args": [
-                        {
-                            "name": "authConfig",
-                            "type": "IAuthConfig | undefined",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 24,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "authConfig",
-                            "type": "IAuthConfig | undefined",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "verifyEmail",
-                    "args": [
-                        {
-                            "name": "user_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        },
-                        {
-                            "name": "otp",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "any",
-                    "typeParameters": [],
-                    "line": 35,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "user_id",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        },
-                        {
-                            "name": "otp",
-                            "type": "string",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "description": "",
-            "rawdescription": "\n",
-            "sourceCode": "import { HttpClient } from '@angular/common/http';\nimport { inject, Injectable, signal } from '@angular/core';\nimport { IAuthConfig, ITokens } from './model';\nimport { Router } from '@angular/router';\nimport { env } from '../../../../environments/environment';\nimport { tap } from 'rxjs';\nimport { LocalStorageService } from '../storage/local-storage.service';\nimport { IStorage, IUserProfile } from '../storage/storage.model';\nimport { getRouterLink } from '../custom-routing/constants';\nimport { PATHS } from '../../../app.routes';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class AuthService {\n  http = inject(HttpClient);\n  router = inject(Router);\n  localStorageService = inject(LocalStorageService);\n\n  isAuthed = signal(false);\n\n  userProfile = this.localStorageService.watch<IUserProfile>('echo.user');\n\n  validateToken(authConfig: IAuthConfig | undefined): void {\n    if (!authConfig?.authToken) {\n      console.error('Echo: No auth token provided');\n      return;\n    }\n  }\n\n  register(_id: string, name: string) {\n    return this.http.post(env.backendApi + '/register', { _id, name });\n  }\n\n  verifyEmail(user_id: string, otp: string) {\n    return this.http.post(env.backendApi + '/verify-email', { user_id, otp });\n  }\n\n  startLogin(_id: string) {\n    return this.http.post(env.backendApi + '/start-login', { _id });\n  }\n\n  completeLogin(user_id: string, otp: string) {\n    return this.http\n      .post<ITokens>(env.backendApi + '/complete-login', { user_id, otp })\n      .pipe(\n        tap((response: any) => {\n          this.localStorageService.set('echo.user', response.user_profile);\n          this.localStorageService.set('echo.tokens', response.tokens);\n          this.isAuthed.set(true);\n        })\n      );\n  }\n\n  refreshAccessToken(email: string) {\n    const refresh_token =\n      this.localStorageService.get<IStorage['echo.tokens']>(\n        'echo.tokens'\n      )?.refresh_token;\n    return this.http\n      .post<ITokens>(env.backendApi + '/refreshToken', { email, refresh_token })\n      .pipe(\n        tap((tokens: any) => {\n          this.localStorageService.set('echo.tokens', tokens);\n          this.isAuthed.set(true);\n        })\n      );\n  }\n\n  isAccessTokenExpired() {\n    const accessToken =\n      this.localStorageService.get<IStorage['echo.tokens']>(\n        'echo.tokens'\n      )?.access_token;\n\n    if (!accessToken) {\n      return true;\n    }\n\n    const payload = JSON.parse(atob(accessToken.split('.')[1]));\n    return payload.exp * 1000 < Date.now();\n  }\n\n  logout() {\n    this.localStorageService.clear();\n    this.router.navigate(getRouterLink(PATHS.LOGIN));\n  }\n}\n",
-            "extends": [],
-            "type": "injectable"
-        },
         {
             "name": "BreadcrumbService",
             "id": "injectable-BreadcrumbService-c441b71662e4ef1169ddac9b542cba73ea179606d57d9b01b8b3b0700a51f2c6f7a54f15161a49d9403efedb3433778bc714aeb1b9696a2b6bdf7f22fe52ba47",
@@ -3813,281 +3093,15 @@
     ],
     "components": [
         {
-            "name": "AddMembersComponent",
-            "id": "component-AddMembersComponent-2e6288e316d23da22b30b1494df55ec94dc60a67e08543194144635bf85d933e2a765cb8d51a3f423bd591a1a220c95820977016804429e7af31bd0666b5c207",
-            "file": "src/app/containers/organizations/organization/add-members/add-members.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-add-members",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./add-members.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "auth",
-                    "defaultValue": "inject(AuthService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 42
-                },
-                {
-                    "name": "fb",
-                    "defaultValue": "inject(FormBuilder)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 40
-                },
-                {
-                    "name": "form",
-                    "defaultValue": "this.fb.group({\n    manualUserImport: [false, [Validators.required]],\n    useIDP: [false, [Validators.required]],\n    identityProvider: ['', [Validators.required]],\n    authenticationMethod: ['', [Validators.required]],\n    clientID: ['', [Validators.required]],\n    clientSecret: ['', [Validators.required]],\n    members: this.fb.array([], [Validators.required]),\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 44
-                },
-                {
-                    "name": "formSignal",
-                    "defaultValue": "toSignal(this.form.valueChanges)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 54
-                },
-                {
-                    "name": "isLoading",
-                    "defaultValue": "signal(false)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 38
-                },
-                {
-                    "name": "localStorageService",
-                    "defaultValue": "inject(LocalStorageService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 41
-                },
-                {
-                    "name": "manualUserImportSignal",
-                    "defaultValue": "toSignal(\n    this.form.get('manualUserImport')?.valueChanges || of(null)\n  )",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 56
-                },
-                {
-                    "name": "useIDPSignal",
-                    "defaultValue": "toSignal(this.form.get('useIDP')?.valueChanges || of(null))",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 55
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "addMember",
-                    "args": [
-                        {
-                            "name": "member",
-                            "type": "IMember",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 122,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "member",
-                            "type": "IMember",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "initializeWithFormDataFromLocalStorage",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 84,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "newMember",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 132,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "removeMember",
-                    "args": [
-                        {
-                            "name": "memberIndex",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": ""
-                        }
-                    ],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 142,
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "jsdoctags": [
-                        {
-                            "name": "memberIndex",
-                            "type": "number",
-                            "deprecated": false,
-                            "deprecationMessage": "",
-                            "tagName": {
-                                "text": "param"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "name": "submit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 146,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "TextInputDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "ButtonDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "CheckboxDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "TextDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "TranslatePipe",
-                    "type": "pipe"
-                },
-                {
-                    "name": "FormErrorMessagePipe",
-                    "type": "pipe"
-                },
-                {
-                    "name": "ReactiveFormsModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, effect, inject, OnInit, signal } from '@angular/core';\nimport { TextInputDirective } from '../../../../shared/directives/text-input/text-input.directive';\nimport { ButtonDirective } from '../../../../shared/directives/button/button.directive';\nimport { CheckboxDirective } from '../../../../shared/directives/checkbox/checkbox.directive';\nimport { TextDirective } from '../../../../shared/directives/text/text.directive';\nimport { TranslatePipe } from '../../../../shared/services/translate/pipes/translate.pipe';\nimport {\n  FormArray,\n  FormBuilder,\n  FormGroup,\n  ReactiveFormsModule,\n  Validators,\n} from '@angular/forms';\nimport { toSignal } from '@angular/core/rxjs-interop';\nimport { of } from 'rxjs';\nimport { LocalStorageService } from '../../../../shared/services/storage/local-storage.service';\nimport { ICreateOrganizationForm, IMember } from './add-members.models';\nimport { IUserProfile } from '../../../../shared/services/storage/storage.model';\nimport { AuthService } from '../../../../shared/services/auth/auth.service';\nimport { FormErrorMessagePipe } from '../../../../shared/pipes/form-error-message.pipe';\n\n@Component({\n  standalone: true,\n  selector: 'app-add-members',\n  imports: [\n    TextInputDirective,\n    ButtonDirective,\n    CheckboxDirective,\n    TextDirective,\n    TranslatePipe,\n    FormErrorMessagePipe,\n    ReactiveFormsModule,\n  ],\n  templateUrl: './add-members.component.html',\n  styleUrl: './add-members.component.scss',\n})\nexport class AddMembersComponent {\n  isLoading = signal(false);\n\n  fb = inject(FormBuilder);\n  localStorageService = inject(LocalStorageService);\n  auth = inject(AuthService);\n\n  form = this.fb.group({\n    manualUserImport: [false, [Validators.required]],\n    useIDP: [false, [Validators.required]],\n    identityProvider: ['', [Validators.required]],\n    authenticationMethod: ['', [Validators.required]],\n    clientID: ['', [Validators.required]],\n    clientSecret: ['', [Validators.required]],\n    members: this.fb.array([], [Validators.required]),\n  });\n\n  formSignal = toSignal(this.form.valueChanges);\n  useIDPSignal = toSignal(this.form.get('useIDP')?.valueChanges || of(null));\n  manualUserImportSignal = toSignal(\n    this.form.get('manualUserImport')?.valueChanges || of(null)\n  );\n\n  constructor() {\n    this.initializeWithFormDataFromLocalStorage();\n\n    effect(() => {\n      if (this.formSignal()) {\n        const { clientSecret, ...form } =\n          this.formSignal() as ICreateOrganizationForm;\n        this.localStorageService.set('echo.create-organization-form', form);\n      }\n    });\n\n    effect(() => {\n      if (this.useIDPSignal()) {\n        this.form.get('manualUserImport')?.patchValue(false);\n      }\n    });\n\n    effect(() => {\n      if (this.manualUserImportSignal()) {\n        this.form.get('useIDP')?.patchValue(false);\n      }\n    });\n  }\n\n  initializeWithFormDataFromLocalStorage() {\n    const storedData = this.localStorageService.get<ICreateOrganizationForm>(\n      'echo.create-organization-form'\n    );\n\n    const creator = this.localStorageService.get<IUserProfile>('echo.user');\n\n    if (storedData) {\n      this.form.patchValue(storedData);\n      if (storedData.members.length > 0) {\n        //Remove current user from array\n        const updateMembers = storedData.members.filter(\n          (m) => m.email !== creator?.email\n        );\n\n        //add current user to form array as creator\n        this.addMember({\n          email: this.auth.userProfile?.()?.email || '',\n          name: this.auth.userProfile?.()?.name || '',\n          isAdmin: true,\n        });\n\n        //add other members\n        updateMembers.forEach((member) => this.addMember(member));\n      }\n    } else {\n      this.addMember({\n        email: this.auth.userProfile?.()?.email || '',\n        name: this.auth.userProfile?.()?.name || '',\n        isAdmin: true,\n      });\n    }\n  }\n\n  get members() {\n    return this.form.controls['members'] as unknown as FormArray<FormGroup>;\n  }\n\n  addMember(member: IMember) {\n    const memberForm = this.fb.group({\n      email: [member.email, [Validators.required, Validators.email]],\n      name: [member.name, [Validators.required]],\n      isAdmin: [member.isAdmin],\n    });\n\n    this.members.push(memberForm);\n  }\n\n  newMember() {\n    const memberForm = this.fb.group({\n      email: ['', [Validators.required, Validators.email]],\n      name: ['', [Validators.required]],\n      isAdmin: [false, [Validators.required]],\n    });\n\n    this.members.push(memberForm);\n  }\n\n  removeMember(memberIndex: number) {\n    this.members.removeAt(memberIndex);\n  }\n\n  submit() {\n    console.log(this.form.value);\n  }\n}\n",
-            "styleUrl": "./add-members.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "constructorObj": {
-                "name": "constructor",
-                "description": "",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "args": [],
-                "line": 58
-            },
-            "extends": [],
-            "accessors": {
-                "members": {
-                    "name": "members",
-                    "getSignature": {
-                        "name": "members",
-                        "type": "",
-                        "returnType": "",
-                        "line": 118
-                    }
-                }
-            },
-            "templateData": "<div class=\"add-members-container\" [formGroup]=\"form\">\n  <div class=\"title-container\">\n    <h4 appText variant=\"title\" class=\"title-container__title\">ADD MEMBERS</h4>\n  </div>\n\n  <div class=\"inputs-container\">\n    <input\n      appTextInput\n      type=\"text\"\n      [placeholder]=\"'Organization Name'\"\n      formControlName=\"organizationName\"\n      [errorMessage]=\"form.get('organizationName') | formErrorMessage\"\n    />\n\n    <div class=\"inputs-container__users-onboarding-options\">\n      <label appCheckbox>\n        <input type=\"checkbox\" formControlName=\"useIDP\" />\n        Users from Company IdP\n      </label>\n      <label appCheckbox>\n        <input type=\"checkbox\" formControlName=\"manualUserImport\" />\n        Manually Add Users\n      </label>\n    </div>\n\n    @if(form.get('useIDP')?.value){\n    <div class=\"inputs-container__idp\">\n      <h5 appText variant=\"paragraph-bold\" class=\"title-container__title\">\n        IDP INFO\n      </h5>\n      <select\n        [placeholder]=\"'Identity Provider'\"\n        appTextInput\n        formControlName=\"identityProvider\"\n      >\n        <option value=\"\">--Please choose an Identity Provider--</option>\n        <option value=\"microsoft\">Microsoft</option>\n        <option value=\"okta\">Okta</option>\n      </select>\n\n      <select\n        [placeholder]=\"'Authentication Method'\"\n        appTextInput\n        formControlName=\"authenticationMethod\"\n      >\n        <option value=\"\">--Please choose an Authentication Method--</option>\n        <option value=\"oauth2\">OAuth2</option>\n        <option value=\"saml\">SAML</option>\n      </select>\n      <input\n        appTextInput\n        type=\"text\"\n        [placeholder]=\"'Client ID'\"\n        formControlName=\"clientID\"\n        [errorMessage]=\"form.get('clientID') | formErrorMessage\"\n      />\n      <input\n        appTextInput\n        type=\"text\"\n        [placeholder]=\"'Client Secret'\"\n        formControlName=\"clientSecret\"\n        [errorMessage]=\"form.get('clientSecret') | formErrorMessage\"\n      />\n    </div>\n    } @if(form.get('manualUserImport')?.value){\n    <div class=\"inputs-container__manual-member-import\" formArrayName=\"members\">\n      <h5 appText variant=\"paragraph-bold\" class=\"title-container__title\">\n        MEMBERS\n      </h5>\n      @for (memberForm of members.controls; track memberForm; let idx = $index)\n      {\n      <div\n        class=\"inputs-container__manual-member-import__member\"\n        [formGroup]=\"memberForm\"\n      >\n        <input\n          appTextInput\n          type=\"text\"\n          formControlName=\"email\"\n          [placeholder]=\"'Email'\"\n          [errorMessage]=\"memberForm.get('email') | formErrorMessage\"\n        />\n        <input\n          appTextInput\n          type=\"text\"\n          formControlName=\"name\"\n          [placeholder]=\"'Name'\"\n          [errorMessage]=\"memberForm.get('name') | formErrorMessage\"\n        />\n        <label appCheckbox>\n          <input type=\"checkbox\" formControlName=\"isAdmin\" />\n          Admin member?\n        </label>\n        <button appButton (click)=\"removeMember(idx)\">Remove member</button>\n      </div>\n      }\n\n      <button appButton (click)=\"newMember()\">Add new member</button>\n    </div>\n    }\n  </div>\n\n  <div class=\"buttons-container\">\n    <button\n      appButton\n      variant=\"cta\"\n      [isLoading]=\"isLoading()\"\n      (click)=\"submit()\"\n      [disabled]=\"isLoading()\"\n    >\n      {{ \"BUTTONS.CONTINUE\" | translate }}\n    </button>\n  </div>\n</div>\n"
-        },
-        {
             "name": "AppComponent",
-            "id": "component-AppComponent-b00a549604f216f1a0ed5a8448cf634c28016d3051024eb33780600b20a7f4a0900f6b47d9d59685782ee9081ed3d2687ec8ff973f8a87ed32d186cb59d484d4",
+            "id": "component-AppComponent-e99cb8bd3c68a85f51dc77c13f1bee2902190ff872f49a93d520652bce0e7278ee60abb5c67d4c8fb4c75016dd10a7d55a573d551ea413b77bc4d57cd3a16e28",
             "file": "src/app/app.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
-            "providers": [
-                {
-                    "name": "provideTranslate({\n    initialUrl: ,\n})"
-                }
-            ],
-            "selector": "echo-app",
+            "providers": [],
+            "selector": "app-root",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
@@ -4095,54 +3109,9 @@
             ],
             "viewProviders": [],
             "hostDirectives": [],
-            "inputsClass": [
-                {
-                    "name": "authConfig",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 58,
-                    "required": false
-                }
-            ],
+            "inputsClass": [],
             "outputsClass": [],
             "propertiesClass": [
-                {
-                    "name": "authConfig",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 58,
-                    "required": false
-                },
-                {
-                    "name": "authService",
-                    "defaultValue": "inject(AuthService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 48
-                },
-                {
-                    "name": "getRouterLink",
-                    "defaultValue": "getRouterLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 55
-                },
                 {
                     "name": "http",
                     "defaultValue": "inject(HttpClient)",
@@ -4152,118 +3121,37 @@
                     "indexKey": "",
                     "optional": false,
                     "description": "",
-                    "line": 44
-                },
-                {
-                    "name": "IS_EMBEDDED",
-                    "defaultValue": "env.isEmbedded",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 54
-                },
-                {
-                    "name": "loadingScreen",
-                    "defaultValue": "inject(LoadingScreenService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 49
-                },
-                {
-                    "name": "PATHS",
-                    "defaultValue": "PATHS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 52
-                },
-                {
-                    "name": "router",
-                    "defaultValue": "inject(Router)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 45
-                },
-                {
-                    "name": "ROUTER_NAME",
-                    "defaultValue": "ROUTER_NAME",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 53
-                },
-                {
-                    "name": "theme",
-                    "defaultValue": "model<typeof DEFAULT_THEME>(DEFAULT_THEME)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 59
-                },
-                {
-                    "name": "themeService",
-                    "defaultValue": "inject(ThemeService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 47
-                },
-                {
-                    "name": "title",
-                    "defaultValue": "input('local')",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 57
-                },
-                {
-                    "name": "toastService",
-                    "defaultValue": "inject(ToastService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 50
+                    "line": 21
                 }
             ],
             "methodsClass": [
                 {
-                    "name": "getUsers",
-                    "args": [],
+                    "name": "addParsedContent",
+                    "args": [
+                        {
+                            "name": "files",
+                            "type": "IFiles",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
                     "optional": false,
-                    "returnType": "void",
+                    "returnType": "IFiles",
                     "typeParameters": [],
-                    "line": 70,
+                    "line": 41,
                     "deprecated": false,
-                    "deprecationMessage": ""
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "files",
+                            "type": "IFiles",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
                 },
                 {
                     "name": "ngOnInit",
@@ -4271,17 +3159,7 @@
                     "optional": false,
                     "returnType": "void",
                     "typeParameters": [],
-                    "line": 61,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "routeOnPageLoad",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 74,
+                    "line": 23,
                     "deprecated": false,
                     "deprecationMessage": ""
                 }
@@ -4296,30 +3174,14 @@
                     "name": "RouterOutlet"
                 },
                 {
-                    "name": "BreadcrumbComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "LoadingScreenComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "ToastComponent",
-                    "type": "component"
-                },
-                {
                     "name": "NavComponent",
-                    "type": "component"
-                },
-                {
-                    "name": "LanguagePickerComponent",
                     "type": "component"
                 }
             ],
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { HttpClient } from '@angular/common/http';\nimport { Component, inject, input, model, OnInit } from '@angular/core';\nimport { Router, RouterOutlet } from '@angular/router';\nimport { take } from 'rxjs';\nimport { PATHS } from './app.routes';\nimport { DEFAULT_THEME } from './shared/services/theme/constants';\nimport { ThemeService } from './shared/services/theme/theme.service';\nimport { AuthService } from './shared/services/auth/auth.service';\nimport { IAuthConfig } from './shared/services/auth/model';\nimport { BreadcrumbComponent } from './shared/services/custom-routing/breadcrumb/breadcrumb.component';\nimport { env } from '../environments/environment';\nimport {\n  getRouterLink,\n  ROUTER_NAME,\n} from './shared/services/custom-routing/constants';\nimport { LoadingScreenComponent } from './shared/containers/loading-screen/loading-screen.component';\nimport { LoadingScreenService } from './shared/containers/loading-screen/loading-screen.service';\nimport { ToastService } from './shared/containers/toast/toast.service';\nimport { ToastComponent } from './shared/containers/toast/toast.component';\nimport { NavComponent } from './shared/containers/nav/nav.component';\nimport { LanguagePickerComponent } from './shared/containers/language-picker/language-picker.component';\nimport { provideTranslate } from './shared/services/translate/services/translate.service';\n\n@Component({\n  standalone: true,\n  selector: 'echo-app',\n  imports: [\n    RouterOutlet,\n    BreadcrumbComponent,\n    LoadingScreenComponent,\n    ToastComponent,\n    NavComponent,\n    LanguagePickerComponent,\n  ],\n  providers: [\n    provideTranslate({\n      initialUrl: `assets/i18n/en.json`,\n    }),\n  ],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss',\n})\nexport class AppComponent implements OnInit {\n  http = inject(HttpClient);\n  router = inject(Router);\n\n  themeService = inject(ThemeService);\n  authService = inject(AuthService);\n  loadingScreen = inject(LoadingScreenService);\n  toastService = inject(ToastService);\n\n  PATHS = PATHS;\n  ROUTER_NAME = ROUTER_NAME;\n  IS_EMBEDDED = env.isEmbedded;\n  getRouterLink = getRouterLink;\n\n  title = input('local');\n  authConfig = input<IAuthConfig>();\n  theme = model<typeof DEFAULT_THEME>(DEFAULT_THEME);\n\n  ngOnInit(): void {\n    this.themeService.applyTheme(this.theme);\n    this.routeOnPageLoad();\n\n    if (this.IS_EMBEDDED) {\n      this.authService.validateToken(this.authConfig());\n    }\n  }\n\n  getUsers() {\n    this.http.get('/prod/users').pipe(take(1)).subscribe(console.log);\n  }\n\n  routeOnPageLoad() {\n    this.router.initialNavigation();\n  }\n}\n",
+            "sourceCode": "import { HttpClient } from '@angular/common/http';\nimport { Component, inject, OnInit } from '@angular/core';\nimport { RouterOutlet } from '@angular/router';\nimport { map } from 'rxjs';\nimport { NavComponent } from './shared/containers/nav/nav.component';\n\ntype IFiles = {\n  file: string;\n  content: Record<string, any>;\n  parsedContent?: Record<string, any>;\n};\n\n@Component({\n  selector: 'app-root',\n  standalone: true,\n  imports: [RouterOutlet, NavComponent],\n  templateUrl: './app.component.html',\n  styleUrl: './app.component.scss',\n})\nexport class AppComponent implements OnInit {\n  http = inject(HttpClient);\n\n  ngOnInit(): void {\n    this.http\n      .get<IFiles[]>('/files/')\n      .pipe(map((files) => files.map((file) => this.addParsedContent(file))))\n      .subscribe(console.log);\n    this.http.get('/config/').subscribe(console.log);\n    this.http\n      .post('/translate/', {\n        from: 'English',\n        to: 'Portuguese',\n        keyValues: {\n          'analytics.session.duration': 'Can you call me?',\n          'analytics.session.text': 'I love you',\n        },\n      })\n      .subscribe(console.log);\n  }\n\n  addParsedContent(files: IFiles): IFiles {\n    const flattenObject = (\n      obj: Record<string, any>,\n      parentKey = ''\n    ): Record<string, string> => {\n      const result: Record<string, string> = {};\n\n      for (const [key, value] of Object.entries(obj)) {\n        const newKey = parentKey ? `${parentKey}.${key}` : key;\n\n        if (typeof value === 'object' && value !== null) {\n          Object.assign(result, flattenObject(value, newKey));\n        } else {\n          result[newKey] = value as string;\n        }\n      }\n\n      return result;\n    };\n\n    files.parsedContent = flattenObject(files.content);\n    return files;\n  }\n}\n",
             "styleUrl": "./app.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
@@ -4328,278 +3190,7 @@
             "implements": [
                 "OnInit"
             ],
-            "templateData": "<app-nav></app-nav> @if (IS_EMBEDDED) {<app-breadcrumb></app-breadcrumb>}\n<app-language-picker></app-language-picker>\n<main class=\"main__container\">\n  @if (IS_EMBEDDED) {<router-outlet [name]=\"ROUTER_NAME\"></router-outlet> }@else\n  {<router-outlet></router-outlet>} @if(toastService.toasts().length > 0) {\n  <app-toast></app-toast>}\n</main>\n\n@if (loadingScreen.isLoading()) {\n<app-loading-screen></app-loading-screen>\n}\n"
-        },
-        {
-            "name": "AuthPageComponent",
-            "id": "component-AuthPageComponent-c99fecd979eadb0770fb77f40aaef9cb43e85e567630bb40dfc45fe549255739a523e6cba17d8ad5bb29a9a7f5ce5d0e540b0dbfd10b4367da527803e2fb6ddb",
-            "file": "src/app/containers/auth-page/auth-page.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-auth-page",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./auth-page.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "authService",
-                    "defaultValue": "inject(AuthService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 48
-                },
-                {
-                    "name": "fb",
-                    "defaultValue": "inject(FormBuilder)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 46
-                },
-                {
-                    "name": "form",
-                    "defaultValue": "this.fb.group({\n    email: ['', [Validators.required, Validators.email]], // Required and must be a valid email\n    name: ['', [Validators.required, Validators.minLength(2)]], // Required and at least 3 characters long\n    otp: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]], // Required and must be exactly 6 digits\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 56
-                },
-                {
-                    "name": "getRouterLink",
-                    "defaultValue": "getRouterLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 54
-                },
-                {
-                    "name": "isCompleteLogin",
-                    "defaultValue": "signal<boolean>(\n    !!this.route.snapshot.data[PATHS.COMPLETE_LOGIN]\n  )",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 68
-                },
-                {
-                    "name": "isLoading",
-                    "defaultValue": "signal(false)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 76
-                },
-                {
-                    "name": "isLogin",
-                    "defaultValue": "signal<boolean>(!!this.route.snapshot.data[PATHS.LOGIN])",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 62
-                },
-                {
-                    "name": "isRegister",
-                    "defaultValue": "signal<boolean>(!!this.route.snapshot.data[PATHS.REGISTER])",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 63
-                },
-                {
-                    "name": "isVerifyEmail",
-                    "defaultValue": "signal<boolean>(\n    !!this.route.snapshot.data[PATHS.VERIFY_EMAIL]\n  )",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 65
-                },
-                {
-                    "name": "isVerifyOTP",
-                    "defaultValue": "computed(() => this.isVerifyEmail() || this.isCompleteLogin())",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 74
-                },
-                {
-                    "name": "localStorageService",
-                    "defaultValue": "inject(LocalStorageService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 51
-                },
-                {
-                    "name": "PATHS",
-                    "defaultValue": "PATHS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 53
-                },
-                {
-                    "name": "returnUrl",
-                    "defaultValue": "signal(history?.state?.returnUrl)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 72
-                },
-                {
-                    "name": "route",
-                    "defaultValue": "inject(ActivatedRoute)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 44
-                },
-                {
-                    "name": "router",
-                    "defaultValue": "inject(Router)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 45
-                },
-                {
-                    "name": "toastService",
-                    "defaultValue": "inject(ToastService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 49
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "submit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 90,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "NgIf"
-                },
-                {
-                    "name": "ButtonDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "TextDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "TextInputDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "ReactiveFormsModule",
-                    "type": "module"
-                },
-                {
-                    "name": "RouterLink"
-                },
-                {
-                    "name": "RouterLinkActive"
-                },
-                {
-                    "name": "TranslatePipe",
-                    "type": "pipe"
-                },
-                {
-                    "name": "FormErrorMessagePipe",
-                    "type": "pipe"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, computed, inject, OnInit, signal } from '@angular/core';\nimport {\n  ActivatedRoute,\n  Router,\n  RouterLink,\n  RouterLinkActive,\n} from '@angular/router';\nimport { PATHS } from '../../app.routes';\nimport { NgIf } from '@angular/common';\nimport { ButtonDirective } from '../../shared/directives/button/button.directive';\nimport { TextDirective } from '../../shared/directives/text/text.directive';\nimport { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';\nimport { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { AuthService } from '../../shared/services/auth/auth.service';\nimport { catchError, finalize, of, tap } from 'rxjs';\nimport { ToastService } from '../../shared/containers/toast/toast.service';\nimport {\n  getRouterLink,\n  ROUTER_NAME,\n} from '../../shared/services/custom-routing/constants';\nimport { TranslatePipe } from '../../shared/services/translate/pipes/translate.pipe';\nimport { LocalStorageService } from '../../shared/services/storage/local-storage.service';\nimport { FormErrorMessagePipe } from '../../shared/pipes/form-error-message.pipe';\nimport { IUserProfile } from '../../shared/services/storage/storage.model';\n\n@Component({\n  standalone: true,\n  selector: 'app-auth-page',\n  imports: [\n    NgIf,\n    ButtonDirective,\n    TextDirective,\n    TextInputDirective,\n    ReactiveFormsModule,\n    RouterLink,\n    RouterLinkActive,\n    TranslatePipe,\n    FormErrorMessagePipe,\n  ],\n  templateUrl: './auth-page.component.html',\n  styleUrl: './auth-page.component.scss',\n})\nexport class AuthPageComponent {\n  route = inject(ActivatedRoute);\n  router = inject(Router);\n  fb = inject(FormBuilder);\n\n  authService = inject(AuthService);\n  toastService = inject(ToastService);\n\n  localStorageService = inject(LocalStorageService);\n\n  PATHS = PATHS;\n  getRouterLink = getRouterLink;\n\n  form = this.fb.group({\n    email: ['', [Validators.required, Validators.email]], // Required and must be a valid email\n    name: ['', [Validators.required, Validators.minLength(2)]], // Required and at least 3 characters long\n    otp: ['', [Validators.required, Validators.pattern('^[0-9]{6}$')]], // Required and must be exactly 6 digits\n  });\n\n  isLogin = signal<boolean>(!!this.route.snapshot.data[PATHS.LOGIN]);\n  isRegister = signal<boolean>(!!this.route.snapshot.data[PATHS.REGISTER]);\n\n  isVerifyEmail = signal<boolean>(\n    !!this.route.snapshot.data[PATHS.VERIFY_EMAIL]\n  );\n  isCompleteLogin = signal<boolean>(\n    !!this.route.snapshot.data[PATHS.COMPLETE_LOGIN]\n  );\n\n  returnUrl = signal(history?.state?.returnUrl);\n\n  isVerifyOTP = computed(() => this.isVerifyEmail() || this.isCompleteLogin());\n\n  isLoading = signal(false);\n\n  get isValid() {\n    if (this.isLogin()) {\n      return this.form.get('email')?.valid;\n    } else if (this.isRegister()) {\n      return this.form.get('email')?.valid && this.form.get('name')?.valid;\n    } else if (this.isVerifyOTP()) {\n      return this.form.get('otp')?.valid;\n    } else {\n      return true;\n    }\n  }\n\n  submit() {\n    let email = this.form.get('email')?.value;\n    const name = this.form.get('name')?.value;\n    const otp = this.form.get('otp')?.value;\n\n    console.log('Submit');\n\n    if (this.isLogin() && email) {\n      if (this.form.get('email')?.valid) {\n        console.log('Login', email);\n        this.isLoading.set(true);\n        this.localStorageService.set('echo.user', { email });\n        this.authService\n          .startLogin(email)\n          .pipe(\n            tap(() => {\n              this.router.navigate(getRouterLink(PATHS.COMPLETE_LOGIN), {\n                state: { returnUrl: this.returnUrl() },\n              });\n            }),\n            catchError((err) => {\n              this.localStorageService.remove('echo.user');\n              this.toastService.add(err.error.result.error_message, 'error');\n              return of(null);\n            }),\n            finalize(() => this.isLoading.set(false))\n          )\n          .subscribe();\n      }\n    }\n\n    if (this.isRegister() && email && name) {\n      if (this.form.get('email')?.valid && this.form.get('name')?.valid) {\n        console.log('Register', email);\n        this.isLoading.set(true);\n        this.localStorageService.set('echo.user', { email });\n        this.authService\n          .register(email, name)\n          .pipe(\n            tap(() => {\n              console.log({ email, name });\n              this.router.navigate(getRouterLink(PATHS.VERIFY_EMAIL));\n            }),\n            catchError((err) => {\n              this.localStorageService.remove('echo.user');\n              this.toastService.add(\n                err.error.result.error_message,\n                err.error.result.correlation_id,\n                'error'\n              );\n              return of(null);\n            }),\n            finalize(() => this.isLoading.set(false))\n          )\n          .subscribe();\n      }\n    }\n\n    email = this.authService.userProfile?.()?.email;\n\n    if (this.isVerifyOTP() && email && otp) {\n      if (this.form.get('otp')?.valid) {\n        console.log('Verify');\n        this.isLoading.set(true);\n        if (this.isVerifyEmail()) {\n          this.authService\n            .verifyEmail(email, String(otp))\n            .pipe(\n              tap(() => {\n                this.router.navigate(getRouterLink(PATHS.LOGIN));\n              }),\n              catchError((err) => {\n                this.toastService.add(\n                  err.error.result.error_message,\n                  err.error.result.correlation_id,\n                  'error'\n                );\n                return of(null);\n              }),\n              finalize(() => this.isLoading.set(false))\n            )\n            .subscribe();\n        }\n\n        if (this.isCompleteLogin()) {\n          this.isLoading.set(true);\n          this.authService\n            .completeLogin(email, String(otp))\n            .pipe(\n              tap(() => {\n                this.router.navigate(\n                  getRouterLink(this.returnUrl() || PATHS.HOME)\n                );\n              }),\n              catchError((err) => {\n                this.toastService.add(\n                  err.error.result.error_message,\n                  err.error.result.correlation_id,\n                  'error'\n                );\n                return of(null);\n              }),\n              finalize(() => this.isLoading.set(false))\n            )\n            .subscribe();\n        }\n      }\n    }\n  }\n}\n",
-            "styleUrl": "./auth-page.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "accessors": {
-                "isValid": {
-                    "name": "isValid",
-                    "getSignature": {
-                        "name": "isValid",
-                        "type": "",
-                        "returnType": "",
-                        "line": 78
-                    }
-                }
-            },
-            "templateData": "<div class=\"auth-page-container\" [formGroup]=\"form\">\n  <div class=\"title-container\">\n    <h4\n      *ngIf=\"isRegister()\"\n      appText\n      variant=\"title\"\n      class=\"title-container__title\"\n    >\n      {{ \"REGISTER_PAGE.TITLE\" | translate }}\n    </h4>\n    <h4\n      *ngIf=\"isLogin()\"\n      appText\n      variant=\"title\"\n      class=\"title-container__title\"\n    >\n      {{ \"LOGIN_PAGE.TITLE\" | translate }}\n    </h4>\n    <h4\n      *ngIf=\"isVerifyOTP()\"\n      appText\n      variant=\"title\"\n      class=\"title-container__title\"\n    >\n      {{ \"VERIFY_OTP_PAGE.TITLE\" | translate }}\n    </h4>\n  </div>\n\n  <div class=\"body\">\n    <div class=\"link-container\">\n      <a\n        appText\n        variant=\"info\"\n        [routerLink]=\"getRouterLink(PATHS.REGISTER)\"\n        routerLinkActive=\"active\"\n        ariaCurrentWhenActive=\"page\"\n        *ngIf=\"isLogin()\"\n      >\n        {{ \"LOGIN_PAGE.GO_TO_REGISTER\" | translate }}</a\n      >\n      <a\n        appText\n        variant=\"info\"\n        [routerLink]=\"getRouterLink(PATHS.LOGIN)\"\n        routerLinkActive=\"active\"\n        ariaCurrentWhenActive=\"page\"\n        *ngIf=\"isRegister()\"\n      >\n        {{ \"REGISTER_PAGE.GO_TO_LOGIN\" | translate }}</a\n      >\n    </div>\n\n    <p appText variant=\"paragraph\" class=\"subtitle\" *ngIf=\"isVerifyOTP()\">\n      {{ \"VERIFY_OTP_PAGE.SUBTITLE\" | translate }}\n    </p>\n\n    <div class=\"input__container\">\n      <input\n        *ngIf=\"isRegister() || isLogin()\"\n        formControlName=\"email\"\n        appTextInput\n        type=\"email\"\n        autocomplete=\"username\"\n        [placeholder]=\"'INPUTS.EMAIL_PLACEHOLDER' | translate\"\n        [errorMessage]=\"form.get('email') | formErrorMessage\"\n      />\n      <input\n        formControlName=\"name\"\n        appTextInput\n        *ngIf=\"isRegister()\"\n        type=\"text\"\n        [placeholder]=\"'INPUTS.NAME_PLACEHOLDER' | translate\"\n        [errorMessage]=\"form.get('name') | formErrorMessage\"\n      />\n      <input\n        formControlName=\"otp\"\n        appTextInput\n        *ngIf=\"isVerifyOTP()\"\n        type=\"text\"\n        [placeholder]=\"'INPUTS.OTP_PLACEHOLDER' | translate\"\n        [errorMessage]=\"form.get('otp') | formErrorMessage\"\n      />\n    </div>\n\n    <div class=\"info_container\">\n      <small appText variant=\"info\" *ngIf=\"isVerifyOTP()\">\n        {{ \"VERIFY_OTP_PAGE.REQUEST_NEW_OTP\" | translate }}\n      </small>\n    </div>\n  </div>\n\n  <div class=\"buttons-container\">\n    <button\n      appButton\n      variant=\"cta\"\n      [isLoading]=\"isLoading()\"\n      (click)=\"submit()\"\n      [disabled]=\"isLoading() || !isValid\"\n    >\n      {{ \"BUTTONS.CONTINUE\" | translate }}\n    </button>\n  </div>\n</div>\n"
+            "templateData": "<app-nav></app-nav>\n<div class=\"main\">\n  <div class=\"main__container\">\n    <router-outlet></router-outlet>\n  </div>\n</div>\n"
         },
         {
             "name": "BreadcrumbComponent",
@@ -4715,140 +3306,8 @@
             "extends": []
         },
         {
-            "name": "CreateOrganizationComponent",
-            "id": "component-CreateOrganizationComponent-33f0dc050e825feea39d868d7b4045e1d11a70d5c98a64d1dfdcf1e978bb4508be8518039b6085130d8edb17a04c8b29b865a936f37d9c2e2684bfdffd2ba345",
-            "file": "src/app/containers/organizations/create-organization/create-organization.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-create-organization",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./create-organization.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "auth",
-                    "defaultValue": "inject(AuthService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 29
-                },
-                {
-                    "name": "fb",
-                    "defaultValue": "inject(FormBuilder)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 28
-                },
-                {
-                    "name": "form",
-                    "defaultValue": "this.fb.group({\n    name: ['', [Validators.required, Validators.minLength(3)]],\n  })",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 31
-                },
-                {
-                    "name": "isLoading",
-                    "defaultValue": "signal(false)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 26
-                }
-            ],
-            "methodsClass": [
-                {
-                    "name": "ngOnInit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 35,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                },
-                {
-                    "name": "submit",
-                    "args": [],
-                    "optional": false,
-                    "returnType": "void",
-                    "typeParameters": [],
-                    "line": 39,
-                    "deprecated": false,
-                    "deprecationMessage": ""
-                }
-            ],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "TextInputDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "ButtonDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "TextDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "TranslatePipe",
-                    "type": "pipe"
-                },
-                {
-                    "name": "FormErrorMessagePipe",
-                    "type": "pipe"
-                },
-                {
-                    "name": "ReactiveFormsModule",
-                    "type": "module"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component, inject, OnInit, signal } from '@angular/core';\nimport { TextInputDirective } from '../../../shared/directives/text-input/text-input.directive';\nimport { ButtonDirective } from '../../../shared/directives/button/button.directive';\nimport { TextDirective } from '../../../shared/directives/text/text.directive';\nimport { TranslatePipe } from '../../../shared/services/translate/pipes/translate.pipe';\nimport { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';\nimport { AuthService } from '../../../shared/services/auth/auth.service';\nimport { FormErrorMessagePipe } from '../../../shared/pipes/form-error-message.pipe';\nimport { switchMap } from 'rxjs';\n\n@Component({\n  standalone: true,\n  selector: 'app-create-organization',\n  imports: [\n    TextInputDirective,\n    ButtonDirective,\n    TextDirective,\n    TranslatePipe,\n    FormErrorMessagePipe,\n    ReactiveFormsModule,\n  ],\n  templateUrl: './create-organization.component.html',\n  styleUrl: './create-organization.component.scss',\n})\nexport class CreateOrganizationComponent implements OnInit {\n  isLoading = signal(false);\n\n  fb = inject(FormBuilder);\n  auth = inject(AuthService);\n\n  form = this.fb.group({\n    name: ['', [Validators.required, Validators.minLength(3)]],\n  });\n\n  ngOnInit(): void {\n    // this.form.get('name')?.valueChanges.pipe(switchMap((v)=> this.organizationService.checkOrganisationExists(name))).subscribe()\n  }\n\n  submit() {\n    console.log(this.form.value);\n  }\n}\n",
-            "styleUrl": "./create-organization.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "implements": [
-                "OnInit"
-            ],
-            "templateData": "<div class=\"create-organizations-container\" [formGroup]=\"form\">\n  <div class=\"title-container\">\n    <h4 appText variant=\"title\" class=\"title-container__title\">\n      CREATE ORGANIZATION\n    </h4>\n  </div>\n\n  <div class=\"inputs-container\">\n    <input\n      appTextInput\n      type=\"text\"\n      [placeholder]=\"'Organization Name'\"\n      formControlName=\"organizationName\"\n      [errorMessage]=\"form.get('organizationName') | formErrorMessage\"\n    />\n  </div>\n\n  <div class=\"buttons-container\">\n    <button\n      appButton\n      variant=\"cta\"\n      [isLoading]=\"isLoading()\"\n      (click)=\"submit()\"\n      [disabled]=\"isLoading()\"\n    >\n      {{ \"BUTTONS.CONTINUE\" | translate }}\n    </button>\n  </div>\n</div>\n"
-        },
-        {
             "name": "HomepageComponent",
-            "id": "component-HomepageComponent-f42593a71e2196fb67753982dad48ba0f19fb6ced530860c0c127b148ffaa9796806fbac4d3e83e035758cc3b0010d3e2754a52319148e0c4335427c8bdef368",
+            "id": "component-HomepageComponent-6c362f7d9f638f6aa8552a813c73d12089b1e8eb57d168edb415b1b7015bd2bcc657e62791b3f0064fb04b7547da4360ebb8f12d5f1d6e60f29e70223c138ced",
             "file": "src/app/containers/homepage/homepage.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -4865,30 +3324,7 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "getRouterLink",
-                    "defaultValue": "getRouterLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "PATHS",
-                    "defaultValue": "PATHS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -4910,13 +3346,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { getRouterLink } from '../../shared/services/custom-routing/constants';\nimport { PATHS } from '../../app.routes';\nimport { TextDirective } from '../../shared/directives/text/text.directive';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\n\n@Component({\n  standalone: true,\n  selector: 'app-homepage',\n  imports: [TextDirective, RouterLink, RouterLinkActive],\n  templateUrl: './homepage.component.html',\n  styleUrl: './homepage.component.scss',\n})\nexport class HomepageComponent {\n  PATHS = PATHS;\n  getRouterLink = getRouterLink;\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { getRouterLink } from '../../shared/services/custom-routing/constants';\nimport { PATHS } from '../../app.routes';\nimport { TextDirective } from '../../shared/directives/text/text.directive';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\n\n@Component({\n  standalone: true,\n  selector: 'app-homepage',\n  imports: [TextDirective, RouterLink, RouterLinkActive],\n  templateUrl: './homepage.component.html',\n  styleUrl: './homepage.component.scss',\n})\nexport class HomepageComponent {}\n",
             "styleUrl": "./homepage.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<a\n  appText\n  variant=\"paragraph\"\n  [routerLink]=\"getRouterLink(PATHS.ORGANIZATIONS)\"\n  routerLinkActive=\"active\"\n  ariaCurrentWhenActive=\"page\"\n>\n  Organizations</a\n>\n"
+            "templateData": "<a\n  appText\n  variant=\"paragraph\"\n  [routerLink]=\"'translations'\"\n  routerLinkActive=\"active\"\n  ariaCurrentWhenActive=\"page\"\n>\n  Keys and Values</a\n>\n"
         },
         {
             "name": "LanguagePickerComponent",
@@ -5091,7 +3527,7 @@
         },
         {
             "name": "NavComponent",
-            "id": "component-NavComponent-7b84ad9c868665a95028be48661ea8d8861db8ea3f49b0352137a9d505008fa6d96673a7fd8e25cdc38690c3c60a42d49732e27a6d25975f529375aef509dce5",
+            "id": "component-NavComponent-8f384f156c91b59d62d84dfb2bc486d0de245cbb3ceac9138150ddab2889e93ea82339245fdfed8d2cc14ffe1200e364b8dfeca4458bfab5818ad0a03122717d",
             "file": "src/app/shared/containers/nav/nav.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -5108,52 +3544,7 @@
             "hostDirectives": [],
             "inputsClass": [],
             "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "authService",
-                    "defaultValue": "inject(AuthService)",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 20
-                },
-                {
-                    "name": "getRouterLink",
-                    "defaultValue": "getRouterLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 17
-                },
-                {
-                    "name": "IS_EMBEDDED",
-                    "defaultValue": "env.isEmbedded",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 18
-                },
-                {
-                    "name": "PATHS",
-                    "defaultValue": "PATHS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                }
-            ],
+            "propertiesClass": [],
             "methodsClass": [],
             "deprecated": false,
             "deprecationMessage": "",
@@ -5171,233 +3562,13 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, inject } from '@angular/core';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\nimport { PATHS } from '../../../app.routes';\nimport { getRouterLink } from '../../services/custom-routing/constants';\nimport { env } from '../../../../environments/environment';\nimport { AuthService } from '../../services/auth/auth.service';\n\n@Component({\n  standalone: true,\n  selector: 'app-nav',\n  imports: [RouterLink, RouterLinkActive],\n  templateUrl: './nav.component.html',\n  styleUrl: './nav.component.scss',\n})\nexport class NavComponent {\n  PATHS = PATHS;\n  getRouterLink = getRouterLink;\n  IS_EMBEDDED = env.isEmbedded;\n\n  authService = inject(AuthService);\n}\n",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\n\n@Component({\n  standalone: true,\n  selector: 'app-nav',\n  imports: [RouterLink, RouterLinkActive],\n  templateUrl: './nav.component.html',\n  styleUrl: './nav.component.scss',\n})\nexport class NavComponent {}\n",
             "styleUrl": "./nav.component.scss",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<nav>\n  <div class=\"left\">\n    <h3>ECHO</h3>\n  </div>\n\n  <div class=\"right\">\n    <ul>\n      @if (authService.isAuthed()) {\n      <li (click)=\"authService.logout()\">\n        <a\n          [routerLink]=\"getRouterLink(PATHS.REGISTER)\"\n          routerLinkActive=\"active\"\n          ariaCurrentWhenActive=\"page\"\n        >\n          Logout\n        </a>\n      </li>\n      } @else {\n      <li>\n        <a\n          [routerLink]=\"getRouterLink(PATHS.LOGIN)\"\n          routerLinkActive=\"active\"\n          ariaCurrentWhenActive=\"page\"\n        >\n          Login\n        </a>\n      </li>\n\n      <li>\n        <a\n          [routerLink]=\"getRouterLink(PATHS.REGISTER)\"\n          routerLinkActive=\"active\"\n          ariaCurrentWhenActive=\"page\"\n        >\n          Register\n        </a>\n      </li>\n      }\n    </ul>\n  </div>\n</nav>\n"
-        },
-        {
-            "name": "OrganizationComponent",
-            "id": "component-OrganizationComponent-9ef2905623a19926f90f84c6a9389fb469aa8449280725ffede97b38243f93cfd24332732bb58b82a77947625731a9db07ea283f976a0eda2f8f5e1e0a9bd6ae",
-            "file": "src/app/containers/organizations/organization/organization.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-organization",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./organization.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "getRouterLink",
-                    "defaultValue": "getRouterLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "PATHS",
-                    "defaultValue": "PATHS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "TextDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "RouterLink"
-                },
-                {
-                    "name": "RouterLinkActive"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { PATHS } from '../../../app.routes';\nimport { getRouterLink } from '../../../shared/services/custom-routing/constants';\nimport { TextDirective } from '../../../shared/directives/text/text.directive';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\n\n@Component({\n  standalone: true,\n  selector: 'app-organization',\n  imports: [TextDirective, RouterLink, RouterLinkActive],\n  templateUrl: './organization.component.html',\n  styleUrl: './organization.component.scss',\n})\nexport class OrganizationComponent {\n  PATHS = PATHS;\n  getRouterLink = getRouterLink;\n}\n",
-            "styleUrl": "./organization.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<a\n  appText\n  variant=\"paragraph\"\n  [routerLink]=\"getRouterLink(PATHS.ADD_MEMBERS)\"\n  routerLinkActive=\"active\"\n  ariaCurrentWhenActive=\"page\"\n>\n  Add Members</a\n>\n"
-        },
-        {
-            "name": "OrganizationsComponent",
-            "id": "component-OrganizationsComponent-0df12874c8035a6e20651f0e16205d0fe6345a7f7061bccd7db14dda112dbe3426691c00e789a2fd45b5490f9467b64393d28d5a3730e2d0aed31b332587a5ba",
-            "file": "src/app/containers/organizations/organizations.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-organizations",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./organizations.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [
-                {
-                    "name": "getRouterLink",
-                    "defaultValue": "getRouterLink",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 16
-                },
-                {
-                    "name": "PATHS",
-                    "defaultValue": "PATHS",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "indexKey": "",
-                    "optional": false,
-                    "description": "",
-                    "line": 15
-                }
-            ],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [
-                {
-                    "name": "TextDirective",
-                    "type": "directive"
-                },
-                {
-                    "name": "RouterLink"
-                },
-                {
-                    "name": "RouterLinkActive"
-                }
-            ],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\nimport { TextDirective } from '../../shared/directives/text/text.directive';\nimport { RouterLink, RouterLinkActive } from '@angular/router';\nimport { PATHS } from '../../app.routes';\nimport { getRouterLink } from '../../shared/services/custom-routing/constants';\n\n@Component({\n  standalone: true,\n  selector: 'app-organizations',\n  imports: [TextDirective, RouterLink, RouterLinkActive],\n  templateUrl: './organizations.component.html',\n  styleUrl: './organizations.component.scss',\n})\nexport class OrganizationsComponent {\n  PATHS = PATHS;\n  getRouterLink = getRouterLink;\n}\n",
-            "styleUrl": "./organizations.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<a\n  appText\n  variant=\"paragraph\"\n  [routerLink]=\"getRouterLink(PATHS.CREATE_ORGANIZATION)\"\n  routerLinkActive=\"active\"\n  ariaCurrentWhenActive=\"page\"\n>\n  Create Organization</a\n>\n"
-        },
-        {
-            "name": "SurveyComponent",
-            "id": "component-SurveyComponent-a3592ffecf9a472028657f1a4f60e3f7942756e19d066937271c1aa134c0c3080fea22871933db8fe9823dc1ecd9dee6b1996f416a79d5c39ba8d640df3a67e1",
-            "file": "src/app/containers/survey/survey.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-survey",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./survey.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": false,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-survey',\n  imports: [],\n  templateUrl: './survey.component.html',\n  styleUrl: './survey.component.scss'\n})\nexport class SurveyComponent {\n\n}\n",
-            "styleUrl": "./survey.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<p>survey works!</p>\n"
-        },
-        {
-            "name": "SurveysComponent",
-            "id": "component-SurveysComponent-de92f1f8bac00ae59c797be1670bee4e9054aef27311ad639a6efdf25fb91806793f1edf9504396ad944cd374cb91430420c7b2f589af02e412131195ca14f19",
-            "file": "src/app/containers/surveys/surveys.component.ts",
-            "encapsulation": [],
-            "entryComponents": [],
-            "inputs": [],
-            "outputs": [],
-            "providers": [],
-            "selector": "app-surveys",
-            "styleUrls": [],
-            "styles": [],
-            "templateUrl": [
-                "./surveys.component.html"
-            ],
-            "viewProviders": [],
-            "hostDirectives": [],
-            "inputsClass": [],
-            "outputsClass": [],
-            "propertiesClass": [],
-            "methodsClass": [],
-            "deprecated": false,
-            "deprecationMessage": "",
-            "hostBindings": [],
-            "hostListeners": [],
-            "standalone": true,
-            "imports": [],
-            "description": "",
-            "rawdescription": "\n",
-            "type": "component",
-            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  standalone: true,\n  selector: 'app-surveys',\n  imports: [],\n  templateUrl: './surveys.component.html',\n  styleUrl: './surveys.component.scss',\n})\nexport class SurveysComponent {}\n",
-            "styleUrl": "./surveys.component.scss",
-            "assetsDirs": [],
-            "styleUrlsData": "",
-            "stylesData": "",
-            "extends": [],
-            "templateData": "<h4>ECHO SURVEYS</h4>\n"
+            "templateData": "<nav>\n  <div class=\"left\">\n    <h3>ECHO</h3>\n  </div>\n\n  <div class=\"right\">\n    <ul></ul>\n  </div>\n</nav>\n"
         },
         {
             "name": "ToastComponent",
@@ -5476,6 +3647,44 @@
             "stylesData": "",
             "extends": [],
             "templateData": "<div class=\"toast-container\">\n  <div class=\"toast__button__container\">\n    @if(toastService.isOpen()){ @if(toasts().length > 0) {\n    <button\n      appButton\n      [variant]=\"'default'\"\n      class=\"toast__button\"\n      (click)=\"toastService.clear()\"\n    >\n      Clear\n    </button>\n    }\n\n    <button\n      appButton\n      [variant]=\"'default'\"\n      class=\"toast__button\"\n      (click)=\"toastService.setIsOpen(false)\"\n    >\n      Close\n    </button>\n\n    } @else {\n    <button\n      appButton\n      [variant]=\"'default'\"\n      class=\"toast__button\"\n      (click)=\"toastService.setIsOpen(true)\"\n    >\n      Messages\n    </button>\n    }\n  </div>\n\n  @if(toastService.isOpen()) { @for (toast of toasts(); track $index; let idx =\n  $index) {\n  <div class=\"toast\">\n    <span appText [variant]=\"'info-sm'\" class=\"toast__dateTime\"\n      >{{ toast.dateTime | date : \"shortTime\" }}\n    </span>\n\n    <div class=\"toast__info\">\n      @if (toast.correlation_id) {\n      <small appText [variant]=\"'info-sm'\" class=\"toast__info__message\">\n        {{ toast.correlation_id }}\n      </small>\n      }\n\n      <h4\n        appText\n        [variant]=\"'title-sm'\"\n        class=\"toast__info__header\"\n        [class.toast__info__header--error]=\"toast.type === 'error'\"\n        [class.toast__info__header--success]=\"toast.type === 'success'\"\n        [class.toast__info__header--warning]=\"toast.type === 'warning'\"\n      >\n        {{ toast.type | uppercase }}\n      </h4>\n\n      <p appText [variant]=\"'paragraph'\" class=\"toast__info__message\">\n        {{ toast.message }}\n      </p>\n    </div>\n  </div>\n  } }\n</div>\n"
+        },
+        {
+            "name": "TranslationsComponent",
+            "id": "component-TranslationsComponent-f4e39a919bda4d227b0cc872a4d06c855b83a2eaf36812ed845c75ef3af097e81b23587af0795ac29387af1a31085049454c62026ddff5add5b551777c9dfef3",
+            "file": "src/app/containers/translations/translations.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-translations",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./translations.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-translations',\n  standalone: true,\n  imports: [],\n  templateUrl: './translations.component.html',\n  styleUrl: './translations.component.scss',\n})\nexport class TranslationsComponent {}\n",
+            "styleUrl": "./translations.component.scss",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "templateData": "<p>translations works!</p>\n"
         }
     ],
     "modules": [],
@@ -5490,16 +3699,6 @@
                 "deprecationMessage": "",
                 "type": "ApplicationConfig",
                 "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideHttpClient(\n      withFetch(),\n      withInterceptors([activeHttpCountInterceptor])\n    ),\n    provideRouter(routes),\n    {\n      provide: LocationStrategy,\n      useClass: env.isEmbedded ? CustomLocationStrategy : PathLocationStrategy,\n    },\n    provideClientHydration(),\n    provideServiceWorker('ngsw-worker.js', {\n      enabled: !isDevMode(),\n      registrationStrategy: 'registerWhenStable:30000',\n    }),\n  ],\n}"
-            },
-            {
-                "name": "authGuard",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/shared/guards/auth.guard.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "(isAuthPage = false): CanActivateFn => {\n  return function (\n    activatedRouteSnapshot: ActivatedRouteSnapshot\n  ): UrlTree | boolean | Observable<UrlTree | boolean> {\n    const authService = inject(AuthService);\n    const localStorageService = inject(LocalStorageService);\n    const platformId = inject(PLATFORM_ID);\n    const router = inject(Router);\n\n    const currentPath = activatedRouteSnapshot.url[0]?.path;\n\n    if (isPlatformServer(platformId)) {\n      return false;\n    }\n\n    if (authService.isAccessTokenExpired()) {\n      console.log('Access Token Expired');\n      authService.isAuthed.set(false);\n\n      const refresh_token =\n        localStorageService.get<IStorage['echo.tokens']>(\n          'echo.tokens'\n        )?.refresh_token;\n      const email =\n        localStorageService.get<IStorage['echo.user']>('echo.user')?.email;\n\n      if (isAuthPage && (!email || !refresh_token)) {\n        return true;\n      }\n\n      if (!email || !refresh_token) {\n        router.navigate(getRouterLink(PATHS.LOGIN), {\n          state: { returnUrl: currentPath },\n        });\n        return false;\n      }\n\n      return authService.refreshAccessToken(email).pipe(\n        map(() => {\n          if (\n            currentPath === PATHS.LOGIN ||\n            currentPath === PATHS.COMPLETE_LOGIN ||\n            currentPath === PATHS.REGISTER ||\n            currentPath === PATHS.VERIFY_EMAIL\n          ) {\n            router.navigate(getRouterLink(PATHS.HOME));\n          }\n          return true;\n        }),\n        catchError(() => {\n          authService.isAuthed.set(false);\n          if (isAuthPage) {\n            return of(true);\n          } else {\n            router.navigate(getRouterLink(PATHS.LOGIN));\n          }\n          return of(false);\n        })\n      );\n    }\n\n    if (isAuthPage) {\n      router.navigate(getRouterLink(PATHS.HOME));\n    }\n\n    authService.isAuthed.set(true);\n    return true;\n  };\n}"
             },
             {
                 "name": "bootstrap",
@@ -5562,26 +3761,6 @@
                 "defaultValue": "false"
             },
             {
-                "name": "jwtInterceptor",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/shared/interceptors/jwt.interceptor.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "HttpInterceptorFn",
-                "defaultValue": "(req, next) => {\n  const localStorageServive = inject(LocalStorageService);\n\n  const tokens: ITokens = localStorageServive.get('echo.tokens');\n\n  const with_auth_request = req.clone({\n    setHeaders: {\n      Authorization: `${tokens.access_token}`,\n    },\n  });\n\n  return next(with_auth_request);\n}"
-            },
-            {
-                "name": "ORGANIZATION_PATHS",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/containers/organizations/organization.routes.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "object",
-                "defaultValue": "{\n  ORGANIZATIONS: 'organizations',\n  CREATE_ORGANIZATION: 'organizations/create',\n  ORGANIZATION: 'organizations/organization',\n  ADD_MEMBERS: 'organizations/add-members',\n}"
-            },
-            {
                 "name": "PATHS",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -5589,7 +3768,7 @@
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "object",
-                "defaultValue": "{\n  HOME: 'home',\n  LOGIN: 'login',\n  COMPLETE_LOGIN: 'complete-login',\n  REGISTER: 'register',\n  VERIFY_EMAIL: 'verify-email',\n  SURVEYS: 'surveys',\n  SURVEY: 'surveys/survey',\n  ...ORGANIZATION_PATHS,\n}"
+                "defaultValue": "{\n  HOME: 'home',\n  LOGIN: 'login',\n  TRANSLATIONS: 'translations',\n}"
             },
             {
                 "name": "prefix",
@@ -5610,16 +3789,6 @@
                 "deprecationMessage": "",
                 "type": "string",
                 "defaultValue": "'echo'"
-            },
-            {
-                "name": "routes",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "src/app/app.routes.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "",
-                "defaultValue": "[...organizationRoutes, ...baseRoutes].map((r) => {\n  if (r.redirectTo) {\n    return r;\n  } else {\n    return { ...r, ...(isEmbedded ? { outlet: ROUTER_NAME } : null) };\n  }\n})"
             },
             {
                 "name": "serverConfig",
@@ -5902,6 +4071,17 @@
         ],
         "typealiases": [
             {
+                "name": "IFiles",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/app.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 187
+            },
+            {
                 "name": "IVariant",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
@@ -5947,18 +4127,6 @@
                     "deprecationMessage": "",
                     "type": "ApplicationConfig",
                     "defaultValue": "{\n  providers: [\n    provideZoneChangeDetection({ eventCoalescing: true }),\n    provideHttpClient(\n      withFetch(),\n      withInterceptors([activeHttpCountInterceptor])\n    ),\n    provideRouter(routes),\n    {\n      provide: LocationStrategy,\n      useClass: env.isEmbedded ? CustomLocationStrategy : PathLocationStrategy,\n    },\n    provideClientHydration(),\n    provideServiceWorker('ngsw-worker.js', {\n      enabled: !isDevMode(),\n      registrationStrategy: 'registerWhenStable:30000',\n    }),\n  ],\n}"
-                }
-            ],
-            "src/app/shared/guards/auth.guard.ts": [
-                {
-                    "name": "authGuard",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/guards/auth.guard.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "(isAuthPage = false): CanActivateFn => {\n  return function (\n    activatedRouteSnapshot: ActivatedRouteSnapshot\n  ): UrlTree | boolean | Observable<UrlTree | boolean> {\n    const authService = inject(AuthService);\n    const localStorageService = inject(LocalStorageService);\n    const platformId = inject(PLATFORM_ID);\n    const router = inject(Router);\n\n    const currentPath = activatedRouteSnapshot.url[0]?.path;\n\n    if (isPlatformServer(platformId)) {\n      return false;\n    }\n\n    if (authService.isAccessTokenExpired()) {\n      console.log('Access Token Expired');\n      authService.isAuthed.set(false);\n\n      const refresh_token =\n        localStorageService.get<IStorage['echo.tokens']>(\n          'echo.tokens'\n        )?.refresh_token;\n      const email =\n        localStorageService.get<IStorage['echo.user']>('echo.user')?.email;\n\n      if (isAuthPage && (!email || !refresh_token)) {\n        return true;\n      }\n\n      if (!email || !refresh_token) {\n        router.navigate(getRouterLink(PATHS.LOGIN), {\n          state: { returnUrl: currentPath },\n        });\n        return false;\n      }\n\n      return authService.refreshAccessToken(email).pipe(\n        map(() => {\n          if (\n            currentPath === PATHS.LOGIN ||\n            currentPath === PATHS.COMPLETE_LOGIN ||\n            currentPath === PATHS.REGISTER ||\n            currentPath === PATHS.VERIFY_EMAIL\n          ) {\n            router.navigate(getRouterLink(PATHS.HOME));\n          }\n          return true;\n        }),\n        catchError(() => {\n          authService.isAuthed.set(false);\n          if (isAuthPage) {\n            return of(true);\n          } else {\n            router.navigate(getRouterLink(PATHS.LOGIN));\n          }\n          return of(false);\n        })\n      );\n    }\n\n    if (isAuthPage) {\n      router.navigate(getRouterLink(PATHS.HOME));\n    }\n\n    authService.isAuthed.set(true);\n    return true;\n  };\n}"
                 }
             ],
             "src/main.server.ts": [
@@ -6051,30 +4219,6 @@
                     "defaultValue": "{\n  backendApi: (prefix as string).includes('ui')\n    ? `https://d1qq4jkpje1gtx.cloudfront.net${prefix.replace('ui', '/server')}`\n    : `https://d1qq4jkpje1gtx.cloudfront.net/prod`,\n  isEmbedded,\n}"
                 }
             ],
-            "src/app/shared/interceptors/jwt.interceptor.ts": [
-                {
-                    "name": "jwtInterceptor",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/shared/interceptors/jwt.interceptor.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "HttpInterceptorFn",
-                    "defaultValue": "(req, next) => {\n  const localStorageServive = inject(LocalStorageService);\n\n  const tokens: ITokens = localStorageServive.get('echo.tokens');\n\n  const with_auth_request = req.clone({\n    setHeaders: {\n      Authorization: `${tokens.access_token}`,\n    },\n  });\n\n  return next(with_auth_request);\n}"
-                }
-            ],
-            "src/app/containers/organizations/organization.routes.ts": [
-                {
-                    "name": "ORGANIZATION_PATHS",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/containers/organizations/organization.routes.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "object",
-                    "defaultValue": "{\n  ORGANIZATIONS: 'organizations',\n  CREATE_ORGANIZATION: 'organizations/create',\n  ORGANIZATION: 'organizations/organization',\n  ADD_MEMBERS: 'organizations/add-members',\n}"
-                }
-            ],
             "src/app/app.routes.ts": [
                 {
                     "name": "PATHS",
@@ -6084,17 +4228,7 @@
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "object",
-                    "defaultValue": "{\n  HOME: 'home',\n  LOGIN: 'login',\n  COMPLETE_LOGIN: 'complete-login',\n  REGISTER: 'register',\n  VERIFY_EMAIL: 'verify-email',\n  SURVEYS: 'surveys',\n  SURVEY: 'surveys/survey',\n  ...ORGANIZATION_PATHS,\n}"
-                },
-                {
-                    "name": "routes",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/app/app.routes.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "",
-                    "defaultValue": "[...organizationRoutes, ...baseRoutes].map((r) => {\n  if (r.redirectTo) {\n    return r;\n  } else {\n    return { ...r, ...(isEmbedded ? { outlet: ROUTER_NAME } : null) };\n  }\n})"
+                    "defaultValue": "{\n  HOME: 'home',\n  LOGIN: 'login',\n  TRANSLATIONS: 'translations',\n}"
                 }
             ],
             "src/app/shared/services/custom-routing/constants.ts": [
@@ -6390,6 +4524,19 @@
         },
         "groupedEnumerations": {},
         "groupedTypeAliases": {
+            "src/app/app.component.ts": [
+                {
+                    "name": "IFiles",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/app.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 187
+                }
+            ],
             "src/app/shared/directives/button/button.directive.ts": [
                 {
                     "name": "IVariant",
@@ -6442,7 +4589,17 @@
                 "linktype": "component",
                 "name": "AppComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/18",
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "IFiles",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -6486,129 +4643,19 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/app.routes.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "routes",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/auth-page/auth-page.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "AuthPageComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/18",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/containers/homepage/homepage.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "HomepageComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/create-organization/create-organization.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "CreateOrganizationComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/7",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/create-organization/create-organization.models.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "ICreateOrganizationForm",
-                "coveragePercent": 0,
-                "coverageCount": "0/12",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/create-organization/create-organization.models.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "IMember",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/organization.routes.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "ORGANIZATION_PATHS",
-                "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "src/app/containers/organizations/organization/add-members/add-members.component.ts",
+                "filePath": "src/app/containers/translations/translations.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "AddMembersComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/15",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/organization/add-members/add-members.models.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "ICreateOrganizationForm",
-                "coveragePercent": 0,
-                "coverageCount": "0/12",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/organization/add-members/add-members.models.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "IMember",
-                "coveragePercent": 0,
-                "coverageCount": "0/4",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/organization/organization.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "OrganizationComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/organizations/organizations.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "OrganizationsComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/survey/survey.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "SurveyComponent",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/containers/surveys/surveys.component.ts",
-                "type": "component",
-                "linktype": "component",
-                "name": "SurveysComponent",
+                "name": "TranslationsComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -6655,7 +4702,7 @@
                 "linktype": "component",
                 "name": "NavComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/1",
                 "status": "low"
             },
             {
@@ -6752,31 +4799,11 @@
                 "status": "low"
             },
             {
-                "filePath": "src/app/shared/guards/auth.guard.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "authGuard",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
                 "filePath": "src/app/shared/interceptors/active-http-count.interceptor.ts",
                 "type": "function",
                 "linktype": "miscellaneous",
                 "linksubtype": "function",
                 "name": "activeHttpCountInterceptor",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/interceptors/jwt.interceptor.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "jwtInterceptor",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
@@ -6797,33 +4824,6 @@
                 "name": "LocalizePipe",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/services/auth/auth.service.ts",
-                "type": "injectable",
-                "linktype": "injectable",
-                "name": "AuthService",
-                "coveragePercent": 0,
-                "coverageCount": "0/14",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/services/auth/model.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "IAuthConfig",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
-                "status": "low"
-            },
-            {
-                "filePath": "src/app/shared/services/auth/model.ts",
-                "type": "interface",
-                "linktype": "interface",
-                "name": "ITokens",
-                "coveragePercent": 0,
-                "coverageCount": "0/3",
                 "status": "low"
             },
             {

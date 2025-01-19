@@ -1,7 +1,10 @@
 nav {
   display: flex;
   justify-content: space-between;
+  height: 50px;
   width: 100vw;
+  border-bottom: var(--echo-theme-colors-textSecondary) solid 1px;
+  align-items: center;
 
   padding: var(--echo-theme-spacing-paddingMd)
     var(--echo-theme-spacing-paddingMd);

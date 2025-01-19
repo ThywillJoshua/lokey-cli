@@ -1,8 +1,14 @@
-.main {
-  &__container {
-    max-width: 1250px;
-    margin: 0 auto;
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--echo-theme-spacing-lg);
 
-    padding: var(--echo-theme-spacing-paddingMd);
+  .main {
+    &__container {
+      max-width: 1250px;
+      margin: 0 auto;
+
+      padding: var(--echo-theme-spacing-paddingMd);
+    }
   }
 }
