@@ -1,0 +1,42 @@
+:host {
+  .translations-page-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--echo-theme-spacing-lg);
+
+    & .translations {
+      display: flex;
+      flex-direction: column;
+      gap: var(--echo-theme-spacing-md);
+
+      &__nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &__left {
+          display: flex;
+          align-items: center;
+          gap: var(--echo-theme-spacing-xl);
+
+          &__search-input {
+            position: relative;
+            width: 350px;
+          }
+
+          &__by {
+            display: flex;
+            align-items: center;
+            gap: var(--echo-theme-spacing-md);
+          }
+        }
+
+        &__right {
+          &__sort-icon {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

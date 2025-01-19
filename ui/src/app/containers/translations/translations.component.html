@@ -1,1 +1,72 @@
-<h1 appText [variant]="'title'">Keys & Values</h1>
+<div class="translations-page-container">
+  <h1 appText [variant]="'title'">Keys & Values</h1>
+
+  <div class="translations">
+    <div class="translations__nav">
+      <div class="translations__nav__left" [formGroup]="form">
+        <input
+          appTextInput
+          [variant]="'sm'"
+          [errorMessage]="keyOrValueNotFoundMessage()"
+          type="text"
+          [placeholder]="'Search by: '"
+          formControlName="searchInput"
+        />
+
+        <div class="translations__nav__left__by">
+          <label appCheckbox>
+            <input type="checkbox" formControlName="searchByKey" />
+            Key
+          </label>
+          <label appCheckbox>
+            <input type="checkbox" formControlName="searchByValue" />
+            Value
+          </label>
+        </div>
+      </div>
+
+      <div class="translations__nav__right">
+        <div class="translations__nav__right__sort-icon">
+          @if (sort() === 'ASC') {
+          <svg
+            (click)="sort.set('DESC')"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect width="24" height="24" rx="5" fill="white" />
+            <path
+              d="M16 8H20L16 16H20M4 16V10C4 9.46957 4.21071 8.96086 4.58579 8.58579C4.96086 8.21071 5.46957 8 6 8C6.53043 8 7.03914 8.21071 7.41421 8.58579C7.78929 8.96086 8 9.46957 8 10V16M4 13H8M11 12H13"
+              stroke="#8E8E99"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          } @else if (sort() === 'DESC') {
+          <svg
+            (click)="sort.set('ASC')"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M4 8H8L4 16H8M16 16V10C16 9.46957 16.2107 8.96086 16.5858 8.58579C16.9609 8.21071 17.4696 8 18 8C18.5304 8 19.0391 8.21071 19.4142 8.58579C19.7893 8.96086 20 9.46957 20 10V16M16 13H20M11 12H13"
+              stroke="#8E8E99"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="translations__body"></div>
+  </div>
+</div>
