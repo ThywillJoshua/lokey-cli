@@ -38,8 +38,7 @@ export class FilesService {
                 [d.fileName]: d.parsedContent,
               });
           })
-        ),
-        tap(console.log)
+        )
       )
       .subscribe();
   }
@@ -52,5 +51,27 @@ export class FilesService {
         tap((d) => this.config.set(d))
       )
       .subscribe();
+  }
+
+  static sortObjectKeys(
+    obj: Record<string, any>,
+    order: 'ASC' | 'DESC' = 'ASC'
+  ): Record<string, any> {
+    // Sort the keys based on the provided order
+    const sortedKeys = Object.keys(obj).sort((a, b) => {
+      if (order === 'ASC') {
+        return a.localeCompare(b); // Ascending order
+      } else {
+        return b.localeCompare(a); // Descending order
+      }
+    });
+
+    // Create a new object with sorted keys
+    const sortedObject: Record<string, any> = {};
+    for (const key of sortedKeys) {
+      sortedObject[key] = obj[key];
+    }
+
+    return sortedObject;
   }
 }

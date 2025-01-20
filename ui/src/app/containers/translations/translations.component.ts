@@ -1,10 +1,19 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { TextDirective } from '../../shared/directives/text/text.directive';
 import { CheckboxDirective } from '../../shared/directives/checkbox/checkbox.directive';
 import { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { map } from 'rxjs';
 import { JsonPipe } from '@angular/common';
+import { FilesService } from '../../shared/services/files/files.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-translations',
@@ -23,12 +32,40 @@ export class TranslationsComponent implements OnInit {
   fb = inject(FormBuilder);
   sort = signal<'ASC' | 'DESC'>('ASC');
   keyOrValueNotFoundMessage = signal('');
+  filesService = inject(FilesService);
 
   form = this.fb.group({
     searchInput: '',
     searchByKey: true,
     searchByValue: false,
   });
+
+  searchInput = toSignal(this.form.get('searchInput')!.valueChanges);
+  searchKey = toSignal(this.form.get('searchByKey')!.valueChanges);
+  searchValue = toSignal(this.form.get('searchByValue')!.valueChanges);
+  filteredData = signal({});
+
+  constructor() {
+    effect(() => {
+      const filteredObject = Object.fromEntries(
+        Object.entries(
+          this.filesService.translations()?.[
+            this.filesService.config()?.['default-file'] || ''
+          ] ?? {}
+        ).filter(([key, value]) =>
+          this.searchKey()
+            ? key.toLowerCase().includes(this.searchInput() || '')
+            : String(value)
+                .toLowerCase()
+                .includes(this.searchInput() || '')
+        )
+      );
+
+      this.filteredData.set(
+        FilesService.sortObjectKeys(filteredObject, this.sort())
+      );
+    });
+  }
 
   ngOnInit(): void {
     this.handleSearchByKeyOrValueFormChanges();
