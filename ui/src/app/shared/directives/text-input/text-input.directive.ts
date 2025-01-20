@@ -71,6 +71,8 @@ export class TextInputDirective implements AfterViewInit {
 
       effect(() => {
         const placeholder = this.placeholder();
+        console.log(placeholder);
+
         if (this.placeholderElement) {
           this.renderer.setProperty(
             this.placeholderElement,

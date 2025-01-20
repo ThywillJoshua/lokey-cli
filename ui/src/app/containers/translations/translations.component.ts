@@ -4,6 +4,7 @@ import { CheckboxDirective } from '../../shared/directives/checkbox/checkbox.dir
 import { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { map } from 'rxjs';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-translations',
@@ -13,6 +14,7 @@ import { map } from 'rxjs';
     CheckboxDirective,
     TextInputDirective,
     ReactiveFormsModule,
+    JsonPipe,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -20,7 +22,6 @@ import { map } from 'rxjs';
 export class TranslationsComponent implements OnInit {
   fb = inject(FormBuilder);
   sort = signal<'ASC' | 'DESC'>('ASC');
-  searchBy = signal<'KEY' | 'VALUE'>('KEY');
   keyOrValueNotFoundMessage = signal('');
 
   form = this.fb.group({

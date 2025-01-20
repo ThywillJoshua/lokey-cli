@@ -9,7 +9,11 @@
           [variant]="'sm'"
           [errorMessage]="keyOrValueNotFoundMessage()"
           type="text"
-          [placeholder]="'Search by: '"
+          [placeholder]="
+            this.form.get('searchByKey')?.getRawValue()
+              ? 'Search by: Key'
+              : 'Search by: Value'
+          "
           formControlName="searchInput"
         />
 
