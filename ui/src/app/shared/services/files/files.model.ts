@@ -1,0 +1,20 @@
+export type IFiles = {
+  fileName: string;
+  content: Record<string, any>;
+  parsedContent?: Record<string, string>;
+};
+
+const dt = {
+  from: 'English',
+  to: 'Portuguese',
+  keyValues: {
+    'analytics.session.duration': 'Can you call me?',
+    'analytics.session.text': 'I love you',
+  },
+};
+
+export interface IGetTranslation {
+  from: string;
+  to: string;
+  keyValues: Record<string, string>;
+}
