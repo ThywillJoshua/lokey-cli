@@ -11,7 +11,7 @@ import { CheckboxDirective } from '../../shared/directives/checkbox/checkbox.dir
 import { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { map } from 'rxjs';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, KeyValuePipe } from '@angular/common';
 import { FilesService } from '../../shared/services/files/files.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -23,7 +23,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     CheckboxDirective,
     TextInputDirective,
     ReactiveFormsModule,
-    JsonPipe,
+    KeyValuePipe,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -41,29 +41,27 @@ export class TranslationsComponent implements OnInit {
   });
 
   searchInput = toSignal(this.form.get('searchInput')!.valueChanges);
-  searchKey = toSignal(this.form.get('searchByKey')!.valueChanges);
-  searchValue = toSignal(this.form.get('searchByValue')!.valueChanges);
+  searchByKey = toSignal(this.form.get('searchByKey')!.valueChanges);
+  searchByValue = toSignal(this.form.get('searchByValue')!.valueChanges);
   filteredData = signal({});
 
   constructor() {
     effect(() => {
-      const filteredObject = Object.fromEntries(
-        Object.entries(
-          this.filesService.translations()?.[
-            this.filesService.config()?.['default-file'] || ''
-          ] ?? {}
-        ).filter(([key, value]) =>
-          this.searchKey()
-            ? key.toLowerCase().includes(this.searchInput() || '')
-            : String(value)
-                .toLowerCase()
-                .includes(this.searchInput() || '')
-        )
-      );
+      const translations = this.filesService.translations() || {};
+      const defaultFile = this.filesService.config()?.['default-file'] || '';
+      const data = Object.entries(translations[defaultFile] || {});
+      const searchInput = this.searchInput()?.toLowerCase() || '';
+      const searchByKey =
+        this.searchByKey() || this.form.get('searchByKey')?.getRawValue();
+      const sort = this.sort();
 
-      this.filteredData.set(
-        FilesService.sortObjectKeys(filteredObject, this.sort())
-      );
+      const filterFn = ([key, value]: [string, any]) =>
+        searchByKey
+          ? key.toLowerCase().includes(searchInput)
+          : String(value).toLowerCase().includes(searchInput);
+
+      const filteredObject = Object.fromEntries(data.filter(filterFn));
+      this.filteredData.set(FilesService.sortObjectKeys(filteredObject, sort));
     });
   }
 

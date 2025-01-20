@@ -72,7 +72,25 @@
     </div>
 
     <div class="translations__body">
-      <pre>{{ filteredData() | json }}</pre>
+      <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        @for (item of filteredData() | keyvalue; track item.key; let idx =
+        $index) {
+
+        <tbody>
+          <tr>
+            <td>{{ item.key }}</td>
+            <td>{{ item.value }}</td>
+          </tr>
+        </tbody>
+
+        }
+      </table>
     </div>
   </div>
 </div>
