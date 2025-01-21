@@ -79,16 +79,14 @@
             <th>Value</th>
           </tr>
         </thead>
-        @for (item of filteredData() | keyvalue; track item.key; let idx =
-        $index) {
-
+        @for (item of ( (filteredData() | sortKeyValueIntoArray: sort())); track
+        item.key; let idx = $index) {
         <tbody>
           <tr>
             <td>{{ item.key }}</td>
             <td>{{ item.value }}</td>
           </tr>
         </tbody>
-
         }
       </table>
     </div>

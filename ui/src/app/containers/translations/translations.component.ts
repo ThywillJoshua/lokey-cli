@@ -11,9 +11,9 @@ import { CheckboxDirective } from '../../shared/directives/checkbox/checkbox.dir
 import { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { map } from 'rxjs';
-import { JsonPipe, KeyValuePipe } from '@angular/common';
 import { FilesService } from '../../shared/services/files/files.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { SortKeyValueIntoArrayPipe } from '../../shared/pipes/sortKeyValueIntoArray.pipe';
 
 @Component({
   selector: 'app-translations',
@@ -23,7 +23,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     CheckboxDirective,
     TextInputDirective,
     ReactiveFormsModule,
-    KeyValuePipe,
+    SortKeyValueIntoArrayPipe,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -43,7 +43,7 @@ export class TranslationsComponent implements OnInit {
   searchInput = toSignal(this.form.get('searchInput')!.valueChanges);
   searchByKey = toSignal(this.form.get('searchByKey')!.valueChanges);
   searchByValue = toSignal(this.form.get('searchByValue')!.valueChanges);
-  filteredData = signal({});
+  filteredData = signal<Record<string, any>>({});
 
   constructor() {
     effect(() => {
@@ -53,7 +53,6 @@ export class TranslationsComponent implements OnInit {
       const searchInput = this.searchInput()?.toLowerCase() || '';
       const searchByKey =
         this.searchByKey() || this.form.get('searchByKey')?.getRawValue();
-      const sort = this.sort();
 
       const filterFn = ([key, value]: [string, any]) =>
         searchByKey
@@ -61,7 +60,7 @@ export class TranslationsComponent implements OnInit {
           : String(value).toLowerCase().includes(searchInput);
 
       const filteredObject = Object.fromEntries(data.filter(filterFn));
-      this.filteredData.set(FilesService.sortObjectKeys(filteredObject, sort));
+      this.filteredData.set(filteredObject);
     });
   }
 
