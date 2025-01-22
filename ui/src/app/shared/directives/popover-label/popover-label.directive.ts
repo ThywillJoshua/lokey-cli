@@ -5,6 +5,7 @@ import {
   HostListener,
   Input,
   input,
+  inject,
 } from '@angular/core';
 
 @Directive({
@@ -12,6 +13,9 @@ import {
   standalone: true,
 })
 export class PopoverLabelDirective {
+  el = inject(ElementRef);
+  renderer = inject(Renderer2);
+
   popoverLabelText = input('Popover text here');
   popoverLabelPosition = input<
     | 'centeredTopLeft'
@@ -20,12 +24,21 @@ export class PopoverLabelDirective {
     | 'centeredBottomRight'
   >('centeredTopLeft');
 
+  popoverLabelTextEl = input<HTMLElement>(this.el.nativeElement);
   private popoverElement: HTMLElement | null = null;
 
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
-
   @HostListener('mouseenter') onMouseEnter() {
-    this.createPopover();
+    console.log(
+      this.popoverLabelTextEl().scrollWidth >
+        this.popoverLabelTextEl().clientWidth
+    );
+
+    if (
+      this.popoverLabelTextEl().scrollWidth >
+      this.popoverLabelTextEl().clientWidth
+    ) {
+      this.createPopover();
+    }
   }
 
   @HostListener('mouseleave') onMouseLeave() {

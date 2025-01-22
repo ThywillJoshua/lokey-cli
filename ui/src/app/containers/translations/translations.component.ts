@@ -13,12 +13,14 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { map } from 'rxjs';
 import { FilesService } from '../../shared/services/files/files.service';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { SortKeyValueIntoArrayPipe } from '../../shared/pipes/sortKeyValueIntoArray.pipe';
 import { LabelComponent } from '../../shared/components/label/label.component';
 import { NotificationLabelDirective } from '../../shared/directives/notification-label/notification-label.directive';
 import { PopoverLabelDirective } from '../../shared/directives/popover-label/popover-label.directive';
 import { RouterLink } from '@angular/router';
 import { PATHS } from '../../app.routes';
+import { SvgIconComponent } from '../../shared/components/svg-icon/svg-icon.component';
+import { SortObjectPipe } from '../../shared/pipes/sortObject.pipe';
+import { ConvertObjectIntoArrayPipe } from '../../shared/pipes/convertObjectIntoArray.pipe';
 
 @Component({
   selector: 'app-translations',
@@ -28,11 +30,12 @@ import { PATHS } from '../../app.routes';
     CheckboxDirective,
     TextInputDirective,
     ReactiveFormsModule,
-    SortKeyValueIntoArrayPipe,
+    ConvertObjectIntoArrayPipe,
     LabelComponent,
     NotificationLabelDirective,
     PopoverLabelDirective,
     RouterLink,
+    SvgIconComponent,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -41,9 +44,11 @@ export class TranslationsComponent implements OnInit {
   PATHS = PATHS;
 
   fb = inject(FormBuilder);
+  sortObjectPipe = inject(SortObjectPipe);
+  filesService = inject(FilesService);
+
   sort = signal<'ASC' | 'DESC'>('ASC');
   keyOrValueNotFoundMessage = signal('');
-  filesService = inject(FilesService);
 
   form = this.fb.group({
     searchInput: '',
@@ -55,6 +60,20 @@ export class TranslationsComponent implements OnInit {
   searchByKey = toSignal(this.form.get('searchByKey')!.valueChanges);
   searchByValue = toSignal(this.form.get('searchByValue')!.valueChanges);
   filteredData = signal<Record<string, any>>({});
+
+  numberOfRowsPerPage = signal(20);
+  pageNumber = signal(1);
+
+  paginatedData = computed(() => {
+    const data = Object.entries(this.filteredData());
+    const page = this.pageNumber();
+    const rowsPerPage = this.numberOfRowsPerPage();
+
+    const startIndex = (page - 1) * rowsPerPage;
+    const endIndex = startIndex + rowsPerPage;
+
+    return Object.fromEntries(data.slice(startIndex, endIndex));
+  });
 
   selectedRowKeys = signal<string[]>([]);
   allRowsSelected = computed(
@@ -79,7 +98,9 @@ export class TranslationsComponent implements OnInit {
           : String(value).toLowerCase().includes(searchInput);
 
       const filteredObject = Object.fromEntries(data.filter(filterFn));
-      this.filteredData.set(filteredObject);
+      this.filteredData.set(
+        new SortObjectPipe().transform(filteredObject, this.sort())
+      );
     });
   }
 
@@ -148,5 +169,36 @@ export class TranslationsComponent implements OnInit {
 
   isSelected(key: string) {
     return this.selectedRowKeys().find((k) => k === key);
+  }
+
+  goToPreviousPage() {
+    if (this.pageNumber() > 1) {
+      this.pageNumber.update((page) => page - 1);
+    }
+  }
+
+  goToNextPage() {
+    const totalRows = Object.keys(this.filteredData()).length;
+    const totalPages = Math.ceil(totalRows / this.numberOfRowsPerPage());
+
+    if (this.pageNumber() < totalPages) {
+      this.pageNumber.update((page) => page + 1);
+    }
+  }
+
+  hasMorePages(): boolean {
+    const totalRows = Object.keys(this.filteredData()).length;
+    const totalPages = Math.ceil(totalRows / this.numberOfRowsPerPage());
+
+    return this.pageNumber() < totalPages;
+  }
+
+  updateRowsPerPage(event: Event) {
+    const newRowsPerPage = parseInt(
+      (event.target as HTMLSelectElement).value,
+      10
+    );
+    this.numberOfRowsPerPage.set(newRowsPerPage);
+    this.pageNumber.set(1);
   }
 }

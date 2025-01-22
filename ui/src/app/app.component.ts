@@ -6,11 +6,13 @@ import { NavComponent } from './shared/containers/nav/nav.component';
 import { DEFAULT_THEME } from './shared/services/theme/constants';
 import { ThemeService } from './shared/services/theme/theme.service';
 import { FilesService } from './shared/services/files/files.service';
+import { SortObjectPipe } from './shared/pipes/sortObject.pipe';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, NavComponent],
+  providers: [SortObjectPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

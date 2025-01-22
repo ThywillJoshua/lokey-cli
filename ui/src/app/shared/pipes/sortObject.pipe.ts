@@ -2,16 +2,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   standalone: true,
-  name: 'sortKeyValueIntoArray',
+  name: 'sortObject',
+  pure: true,
 })
-export class SortKeyValueIntoArrayPipe implements PipeTransform {
+export class SortObjectPipe implements PipeTransform {
   transform(
     obj: Record<string, any>,
     order: 'ASC' | 'DESC' = 'ASC'
-  ): {
-    key: string;
-    value: any;
-  }[] {
+  ): Record<string, any> {
     if (!obj) return obj;
 
     // Sort the keys based on the provided order
@@ -28,6 +26,6 @@ export class SortKeyValueIntoArrayPipe implements PipeTransform {
     for (const key of sortedKeys) {
       sortedObject[key] = obj[key];
     }
-    return Object.entries(sortedObject).map(([key, value]) => ({ key, value }));
+    return sortedObject;
   }
 }

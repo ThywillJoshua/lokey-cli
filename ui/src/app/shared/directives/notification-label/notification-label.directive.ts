@@ -5,6 +5,7 @@ import {
   HostListener,
   Input,
   input,
+  inject,
 } from '@angular/core';
 
 @Directive({
@@ -12,6 +13,9 @@ import {
   standalone: true,
 })
 export class NotificationLabelDirective {
+  el = inject(ElementRef);
+  renderer = inject(Renderer2);
+
   notifyLabelText = input('Copied!');
   notificationLabelPosition = input<
     | 'centeredTopLeft'
@@ -21,8 +25,6 @@ export class NotificationLabelDirective {
   >('centeredTopLeft');
 
   private labelElement: HTMLElement | null = null;
-
-  constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('click') onClick() {
     // Set the relative position of the host element

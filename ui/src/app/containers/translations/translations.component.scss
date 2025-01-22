@@ -9,12 +9,13 @@
       flex-direction: column;
       gap: var(--echo-theme-spacing-md);
 
-      &__checkbox {
-        color: var(--echo-theme-colors-textSecondary);
+      & .hide {
+        visibility: hidden;
+        pointer-events: none;
       }
 
-      & svg {
-        cursor: pointer;
+      &__checkbox {
+        color: var(--echo-theme-colors-textSecondary);
       }
 
       &__nav {
@@ -79,11 +80,6 @@
           }
         }
 
-        & .hide {
-          visibility: hidden;
-          pointer-events: none;
-        }
-
         & .tbody {
           display: grid;
           grid-template-columns: max-content 1fr max-content max-content max-content max-content;
@@ -121,6 +117,22 @@
                 }
               }
             }
+          }
+        }
+      }
+
+      &__footer {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        &__paginator {
+          display: flex;
+          align-items: center;
+          gap: var(--echo-theme-spacing-md);
+
+          button {
+            all: unset;
           }
         }
       }
