@@ -51,6 +51,12 @@ export class TranslationsComponent implements OnInit {
   searchByValue = toSignal(this.form.get('searchByValue')!.valueChanges);
   filteredData = signal<Record<string, any>>({});
 
+  selectedRowKeys = signal<string[]>([]);
+  allRowsSelected = computed(
+    () =>
+      this.selectedRowKeys().length === Object.keys(this.filteredData()).length
+  );
+
   constructor() {
     effect(() => {
       const translations = this.filesService.translations() || {};
@@ -106,10 +112,34 @@ export class TranslationsComponent implements OnInit {
       .subscribe();
   }
 
-  copy(value: string) {
-    navigator.clipboard.writeText(value).then(
+  copy(value: string | object) {
+    navigator.clipboard.writeText(JSON.stringify(value, null, 2)).then(
       () => console.log('Value copied:', value),
       (err) => console.error('Failed to copy value:', err)
     );
+  }
+
+  handleRowCheckboxChange(event: Event, key: string): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.selectedRowKeys.update((keys) => [...keys, key]);
+    } else {
+      this.selectedRowKeys.update((keys) => keys.filter((k) => k !== key));
+    }
+  }
+
+  handleAllRowsCheckboxChange(event: Event): void {
+    const isChecked = (event.target as HTMLInputElement).checked;
+
+    if (isChecked) {
+      this.selectedRowKeys.set(Object.keys(this.filteredData()));
+    } else {
+      this.selectedRowKeys.set([]);
+    }
+  }
+
+  isSelected(key: string) {
+    return this.selectedRowKeys().find((k) => k === key);
   }
 }

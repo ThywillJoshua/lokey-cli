@@ -3,6 +3,7 @@ import {
   ElementRef,
   Renderer2,
   HostListener,
+  Input,
   input,
 } from '@angular/core';
 
@@ -14,23 +15,43 @@ export class PopoverLabelDirective {
   popoverLabelText = input('Popover text here');
 
   private popoverElement: HTMLElement | null = null;
+  private hoverTimeout: any = null; // Timeout reference for hover delay
+  private hoverDelay = 1000; // Delay in milliseconds (1 second)
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.renderer.setStyle(this.el.nativeElement, 'position', 'relative');
+    // Start the timer for hover delay
+    this.hoverTimeout = setTimeout(() => {
+      this.createPopover();
+    }, this.hoverDelay);
+  }
 
+  @HostListener('mouseleave') onMouseLeave() {
+    // Clear the timer if mouse leaves before delay
+    if (this.hoverTimeout) {
+      clearTimeout(this.hoverTimeout);
+      this.hoverTimeout = null;
+    }
+    this.removePopover();
+  }
+
+  private createPopover() {
+    // Ensure the popover is not already created
     if (!this.popoverElement) {
+      this.renderer.setStyle(this.el.nativeElement, 'position', 'relative');
+
       this.popoverElement = this.renderer.createElement('div');
+      this.popoverElement?.classList.add('popover-directive');
 
       // Apply styles for the popover container
       this.renderer.setStyle(this.popoverElement, 'position', 'absolute');
       this.renderer.setStyle(this.popoverElement, 'top', '-130%');
-      this.renderer.setStyle(
-        this.popoverElement,
-        'left',
-        'var(--echo-theme-spacing-xl)'
-      );
+      //   this.renderer.setStyle(
+      //     this.popoverElement,
+      //     'left',
+      //     'var(--echo-theme-spacing-xxl)'
+      //   );
       this.renderer.setStyle(
         this.popoverElement,
         'background',
@@ -98,7 +119,7 @@ export class PopoverLabelDirective {
     }
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
+  private removePopover() {
     if (this.popoverElement) {
       // Trigger fade-out
       this.renderer.setStyle(this.popoverElement, 'opacity', '0');

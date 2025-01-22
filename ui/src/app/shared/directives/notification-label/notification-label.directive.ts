@@ -21,6 +21,9 @@ export class NotificationLabelDirective {
     // Set the relative position of the host element
     this.renderer.setStyle(this.el.nativeElement, 'position', 'relative');
 
+    const allPopoverElements = document.querySelectorAll('.popover-directive');
+    allPopoverElements.forEach((el) => el.remove());
+
     if (!this.labelElement) {
       this.labelElement = this.renderer.createElement('span');
 

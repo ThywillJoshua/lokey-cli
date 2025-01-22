@@ -66,9 +66,10 @@
         & .thead {
           & .tr {
             display: grid;
+            grid-template-columns: max-content 1fr 1fr max-content max-content max-content;
             align-items: center;
-            grid-template-columns: max-content 240px 1fr;
-            gap: var(--echo-theme-spacing-lg);
+            column-gap: var(--echo-theme-spacing-xl);
+            padding-right: var(--echo-theme-spacing-xl);
 
             &__title {
               span {
@@ -76,6 +77,11 @@
               }
             }
           }
+        }
+
+        & .hide {
+          visibility: hidden;
+          pointer-events: none;
         }
 
         & .tbody {
