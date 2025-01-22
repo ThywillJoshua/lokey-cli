@@ -113,7 +113,12 @@
               max-width: 100%;
               white-space: nowrap;
 
-              & span {
+              & a {
+                text-decoration: none;
+
+                &:hover {
+                  text-decoration: underline;
+                }
               }
             }
           }

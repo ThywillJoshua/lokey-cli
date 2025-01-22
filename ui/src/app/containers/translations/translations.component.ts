@@ -17,6 +17,8 @@ import { SortKeyValueIntoArrayPipe } from '../../shared/pipes/sortKeyValueIntoAr
 import { LabelComponent } from '../../shared/components/label/label.component';
 import { NotificationLabelDirective } from '../../shared/directives/notification-label/notification-label.directive';
 import { PopoverLabelDirective } from '../../shared/directives/popover-label/popover-label.directive';
+import { RouterLink } from '@angular/router';
+import { PATHS } from '../../app.routes';
 
 @Component({
   selector: 'app-translations',
@@ -30,11 +32,14 @@ import { PopoverLabelDirective } from '../../shared/directives/popover-label/pop
     LabelComponent,
     NotificationLabelDirective,
     PopoverLabelDirective,
+    RouterLink,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
 })
 export class TranslationsComponent implements OnInit {
+  PATHS = PATHS;
+
   fb = inject(FormBuilder);
   sort = signal<'ASC' | 'DESC'>('ASC');
   keyOrValueNotFoundMessage = signal('');
@@ -56,6 +61,8 @@ export class TranslationsComponent implements OnInit {
     () =>
       this.selectedRowKeys().length === Object.keys(this.filteredData()).length
   );
+
+  ENCODE_URI_COMPONENT = encodeURIComponent;
 
   constructor() {
     effect(() => {

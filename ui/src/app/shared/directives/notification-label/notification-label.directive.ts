@@ -24,7 +24,9 @@ export class NotificationLabelDirective {
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
-  @HostListener('click') onClick() {
+  @HostListener('click') onClick(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
     // Set the relative position of the host element
     this.renderer.setStyle(this.el.nativeElement, 'position', 'relative');
 

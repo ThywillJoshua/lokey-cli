@@ -10,6 +10,9 @@ nav {
     var(--echo-theme-spacing-paddingMd);
 
   & .left {
+    & a {
+      text-decoration: none;
+    }
   }
 
   & .right {

@@ -182,7 +182,14 @@
                   </svg>
                 </div>
                 <div class="td__content__text">
-                  <span appText>{{ item.key }}</span>
+                  <a
+                    [routerLink]="[
+                      PATHS.TRANSLATIONS,
+                      ENCODE_URI_COMPONENT(item.key)
+                    ]"
+                  >
+                    <span appText>{{ item.key }}</span>
+                  </a>
                 </div>
               </div>
             </td>
@@ -213,7 +220,19 @@
                     />
                   </svg>
                 </div>
-                <span class="td__content__text" appText> {{ item.value }}</span>
+
+                <div class="td__content__text">
+                  <a
+                    [routerLink]="[
+                      PATHS.TRANSLATIONS,
+                      ENCODE_URI_COMPONENT(item.key)
+                    ]"
+                  >
+                    <span class="td__content__text" appText>
+                      {{ item.value }}</span
+                    >
+                  </a>
+                </div>
               </div>
             </td>
           </tr>
