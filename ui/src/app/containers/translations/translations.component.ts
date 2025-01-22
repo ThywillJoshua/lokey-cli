@@ -14,6 +14,7 @@ import { map } from 'rxjs';
 import { FilesService } from '../../shared/services/files/files.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SortKeyValueIntoArrayPipe } from '../../shared/pipes/sortKeyValueIntoArray.pipe';
+import { LabelComponent } from '../../shared/components/label/label.component';
 
 @Component({
   selector: 'app-translations',
@@ -24,6 +25,7 @@ import { SortKeyValueIntoArrayPipe } from '../../shared/pipes/sortKeyValueIntoAr
     TextInputDirective,
     ReactiveFormsModule,
     SortKeyValueIntoArrayPipe,
+    LabelComponent,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -98,5 +100,12 @@ export class TranslationsComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+  copy(value: string) {
+    navigator.clipboard.writeText(value).then(
+      () => console.log('Value copied:', value),
+      (err) => console.error('Failed to copy value:', err)
+    );
   }
 }

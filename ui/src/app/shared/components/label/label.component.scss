@@ -1,0 +1,17 @@
+.label {
+  border: var(--echo-theme-spacing-micro) solid
+    var(--echo-theme-colors-textSecondary);
+  padding-top: var(--echo-theme-spacing-micro);
+  padding-bottom: var(--echo-theme-spacing-micro);
+  padding-left: var(--echo-theme-spacing-sm);
+  padding-right: var(--echo-theme-spacing-sm);
+  border-radius: var(--echo-theme-borderRadius-small);
+
+  &--changed {
+    border-color: var(--echo-theme-colors-success);
+  }
+
+  &--error {
+    border-color: var(--echo-theme-colors-error);
+  }
+}
