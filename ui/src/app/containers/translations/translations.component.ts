@@ -22,6 +22,8 @@ import { PATHS } from '../../app.routes';
 import { SvgIconComponent } from '../../shared/components/svg-icon/svg-icon.component';
 import { SortObjectPipe } from '../../shared/pipes/sortObject.pipe';
 import { ConvertObjectIntoArrayPipe } from '../../shared/pipes/convertObjectIntoArray.pipe';
+import { ModalComponent } from '../../shared/containers/modal/modal.component';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-translations',
@@ -37,6 +39,8 @@ import { ConvertObjectIntoArrayPipe } from '../../shared/pipes/convertObjectInto
     PopoverLabelDirective,
     RouterLink,
     SvgIconComponent,
+    ModalComponent,
+    JsonPipe,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -90,9 +94,15 @@ export class TranslationsComponent implements OnInit {
       this.selectedRowKeys().length === Object.keys(this.filteredData()).length
   );
 
+  showDeleteModal = signal(false);
+  selectedForDeletion = signal<string[]>([]);
+
   ENCODE_URI_COMPONENT = encodeURIComponent;
 
   constructor() {
+    effect(() => {
+      console.log(this.showDeleteModal());
+    });
     effect(() => {
       const translations = this.filesService.translations() || {};
       const defaultFile = this.filesService.config()?.['default-file'] || '';
@@ -154,6 +164,18 @@ export class TranslationsComponent implements OnInit {
       () => console.log('Value copied:', value),
       (err) => console.error('Failed to copy value:', err)
     );
+  }
+
+  updateSelectedForDeletion(key: string) {
+    this.showDeleteModal.set(true);
+
+    if (!this.selectedRowKeys().find((k) => k === key)) {
+      this.selectedRowKeys.set([]);
+    }
+    const updatedSelection = new Set(this.selectedRowKeys());
+    updatedSelection.add(key);
+
+    this.selectedForDeletion.set(Array.from(updatedSelection));
   }
 
   handleRowCheckboxChange(event: Event, key: string): void {
