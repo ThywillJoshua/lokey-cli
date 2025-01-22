@@ -11,6 +11,6 @@ export default `<!DOCTYPE html>
   <style>*,*:before,*:after{padding:0;margin:0;box-sizing:border-box;scrollbar-gutter:stable;font-family:var(--echo-theme-typography-fontFamily)}html{overflow-y:scroll;overflow-x:hidden;scroll-behavior:smooth}body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;line-height:1;font-weight:400;font-size:var(--echo-theme-typography-bodySize);color:var(--echo-theme-colors-textPrimary);background-color:var(--echo-theme-colors-background);min-height:100vh}</style><link rel="stylesheet" href="styles-22CYXLPO.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles-22CYXLPO.css"></noscript></head>
   <body ngcm="">
     <app-root></app-root>
-  <script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-F4XRJKJX.js" type="module"></script></body>
+  <script src="polyfills-FFHMD2TL.js" type="module"></script><script src="main-MS7EO7GD.js" type="module"></script></body>
 </html>
 `;

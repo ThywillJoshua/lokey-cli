@@ -15,6 +15,7 @@ import { FilesService } from '../../shared/services/files/files.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { SortKeyValueIntoArrayPipe } from '../../shared/pipes/sortKeyValueIntoArray.pipe';
 import { LabelComponent } from '../../shared/components/label/label.component';
+import { NotificationLabelDirective } from '../../shared/directives/notificationLabel/notification-label.directive';
 
 @Component({
   selector: 'app-translations',
@@ -26,6 +27,7 @@ import { LabelComponent } from '../../shared/components/label/label.component';
     ReactiveFormsModule,
     SortKeyValueIntoArrayPipe,
     LabelComponent,
+    NotificationLabelDirective,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',

@@ -97,9 +97,12 @@
           <tr class="tr">
             <td class="td">
               <div class="td__content">
-                <div class="copy-icon">
+                <div
+                  class="copy-icon"
+                  appNotificationLabel
+                  (click)="copy(item.key)"
+                >
                   <svg
-                    (click)="copy(item.key)"
                     width="25"
                     height="24"
                     viewBox="0 0 25 24"
@@ -120,9 +123,12 @@
             </td>
             <td class="td">
               <div class="td__content">
-                <div class="copy-icon">
+                <div
+                  class="copy-icon"
+                  appNotificationLabel
+                  (click)="copy(item.value)"
+                >
                   <svg
-                    (click)="copy(item.value)"
                     width="25"
                     height="24"
                     viewBox="0 0 25 24"
@@ -145,9 +151,12 @@
           <div class="status">
             <app-label></app-label>
           </div>
-          <div class="copy-icon">
+          <div
+            class="copy-icon"
+            appNotificationLabel
+            (click)="copy(item.key + ': ' + item.value)"
+          >
             <svg
-              (click)="copy(item.key + ': ' + item.value)"
               width="25"
               height="24"
               viewBox="0 0 25 24"
