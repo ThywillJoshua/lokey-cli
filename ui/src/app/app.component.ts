@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, inject, model, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { map } from 'rxjs';
-import { NavComponent } from './shared/containers/nav/nav.component';
+import { NavComponent } from './shared/components/nav/nav.component';
 import { DEFAULT_THEME } from './shared/services/theme/constants';
 import { ThemeService } from './shared/services/theme/theme.service';
 import { FilesService } from './shared/services/files/files.service';

@@ -10,7 +10,7 @@ import {
   input,
   signal,
 } from '@angular/core';
-import { LoadingCircleComponent } from '../../containers/loading-circle/loading-circle.component';
+import { LoadingCircleComponent } from '../../components/loading-circle/loading-circle.component';
 
 export type IVariant = 'default' | 'cta';
 
