@@ -1,7 +1,9 @@
 <div class="translations-page-container">
-  <h1 appText [variant]="'title'">Keys & Values</h1>
-
   <div class="translations">
+    <div class="translations__page-title">
+      <h1 appText [variant]="'title-sm'">KEYS & VALUES</h1>
+    </div>
+
     <div class="translations__nav">
       <div class="translations__nav__left" [formGroup]="form">
         <input
@@ -30,6 +32,21 @@
       </div>
 
       <div class="translations__nav__right">
+        <div class="translations__nav__right__paginator">
+          <label class="translations__nav__right__paginator__label">
+            <span appText [variant]="'info'">Rows per page:</span>
+            <input
+              appTextInput
+              [variant]="'xs'"
+              type="number"
+              [min]="minRowsPerPage()"
+              [max]="maxRowsPerPage()"
+              (change)="updateRowsPerPage($event)"
+              [value]="numberOfRowsPerPage()"
+            />
+          </label>
+        </div>
+
         <div class="translations__nav__right__sort-icon">
           @if (sort() === 'ASC') {
           <app-svg-icon
@@ -104,7 +121,7 @@
         </thead>
         @for (item of ( (paginatedData() | convertObjectIntoArray)); track
         item.key; let idx = $index) {
-        <tbody class="tbody">
+        <tbody class="tbody" [class.tbody--selected]="isSelected(item.key)">
           <tr>
             <label appCheckbox class="translations__checkbox">
               <input
@@ -206,7 +223,18 @@
           <app-svg-icon [iconName]="'arrow-solid-left'"></app-svg-icon>
         </button>
 
-        <div></div>
+        <div class="translations__footer__paginator__page-info">
+          <input
+            appTextInput
+            [variant]="'xs'"
+            type="number"
+            [min]="1"
+            [max]="totalPages()"
+            (change)="updatePageNumber($event)"
+            [value]="pageNumber()"
+          />
+          <span appText variant="info"> of {{ totalPages() }}</span>
+        </div>
 
         <button (click)="goToNextPage()" [class.hide]="!hasMorePages()">
           <app-svg-icon [iconName]="'arrow-solid-right'"></app-svg-icon>

@@ -18,10 +18,15 @@
         color: var(--echo-theme-colors-textSecondary);
       }
 
+      &__page-title {
+        padding: 0 var(--echo-theme-borderRadius-medium);
+      }
+
       &__nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding: 0 var(--echo-theme-borderRadius-medium);
 
         &__left {
           display: flex;
@@ -41,6 +46,17 @@
         }
 
         &__right {
+          display: flex;
+          align-items: center;
+          gap: var(--echo-theme-spacing-md);
+
+          &__paginator {
+            &__label {
+              display: flex;
+              align-items: center;
+              gap: var(--echo-theme-spacing-sm);
+            }
+          }
           &__sort-icon {
             cursor: pointer;
           }
@@ -57,7 +73,7 @@
         & table {
           display: flex;
           flex-direction: column;
-          gap: 16px;
+          gap: var(--echo-theme-spacing-sm);
         }
 
         & th {
@@ -70,7 +86,7 @@
             grid-template-columns: max-content 1fr 1fr max-content max-content max-content;
             align-items: center;
             column-gap: var(--echo-theme-spacing-xl);
-            padding-right: var(--echo-theme-spacing-xl);
+            padding: 0 var(--echo-theme-borderRadius-medium);
 
             &__title {
               span {
@@ -82,9 +98,15 @@
 
         & .tbody {
           display: grid;
-          grid-template-columns: max-content 1fr max-content max-content max-content max-content;
+          grid-template-columns: max-content 1fr max-content max-content max-content;
           align-items: center;
           column-gap: var(--echo-theme-spacing-xl);
+          padding: var(--echo-theme-borderRadius-medium);
+
+          &--selected {
+            background-color: #f5f5f5;
+            border-radius: var(--echo-theme-borderRadius-small);
+          }
 
           & .tr {
             display: grid;
@@ -126,10 +148,18 @@
         justify-content: flex-end;
         width: 100%;
 
+        margin-top: var(--echo-theme-spacing-md);
+
         &__paginator {
           display: flex;
           align-items: center;
           gap: var(--echo-theme-spacing-md);
+
+          &__page-info {
+            display: flex;
+            align-items: center;
+            gap: var(--echo-theme-spacing-sm);
+          }
 
           button {
             all: unset;

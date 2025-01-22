@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: var(--echo-theme-spacing-lg);
+  gap: var(--echo-theme-spacing-md);
 
   .main {
     &__container {

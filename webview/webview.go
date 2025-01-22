@@ -8,7 +8,7 @@ func CreateWebview() {
 	w := webview.New(debug)
 	defer w.Destroy()
 	w.SetTitle("Will Translate")
-	w.SetSize(1200, 800, webview.HintNone)
+	w.SetSize(1366, 1024, webview.HintNone)
 	w.Navigate("http://localhost:8080")
 	w.Run()
 }

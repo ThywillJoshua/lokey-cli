@@ -13,7 +13,7 @@ import {
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 
-export type IVariant = 'default' | 'sm';
+export type IVariant = 'default' | 'sm' | 'xs';
 
 @Directive({
   standalone: true,
@@ -44,6 +44,12 @@ export class TextInputDirective implements AfterViewInit {
     return this.variant() === 'sm';
   }
 
+  @HostBinding('class.text-input-directive__xs')
+  @HostBinding('class.text-directive__paragraph')
+  get isExtraSmall() {
+    return this.variant() === 'xs';
+  }
+
   @HostListener('focus') onfocus() {}
 
   @HostListener('input', ['$event.target.value'])
@@ -70,8 +76,10 @@ export class TextInputDirective implements AfterViewInit {
       });
 
       effect(() => {
+        if (this.variant() === 'xs') {
+          return;
+        }
         const placeholder = this.placeholder();
-        console.log(placeholder);
 
         if (this.placeholderElement) {
           this.renderer.setProperty(
@@ -127,6 +135,11 @@ export class TextInputDirective implements AfterViewInit {
 
       this.renderer.insertBefore(parent, this.wrapperElement, nativeElement);
       this.renderer.appendChild(this.wrapperElement, nativeElement);
+
+      if (this.variant() === 'xs') {
+        return;
+      }
+
       this.renderer.appendChild(this.wrapperElement, this.placeholderElement);
       this.renderer.appendChild(this.wrapperElement, this.errorMessageElement);
     }

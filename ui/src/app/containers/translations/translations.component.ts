@@ -2,6 +2,7 @@ import {
   Component,
   computed,
   effect,
+  HostListener,
   inject,
   OnInit,
   signal,
@@ -61,8 +62,10 @@ export class TranslationsComponent implements OnInit {
   searchByValue = toSignal(this.form.get('searchByValue')!.valueChanges);
   filteredData = signal<Record<string, any>>({});
 
-  numberOfRowsPerPage = signal(20);
+  numberOfRowsPerPage = signal(10);
   pageNumber = signal(1);
+  minRowsPerPage = signal(1);
+  maxRowsPerPage = signal(100);
 
   paginatedData = computed(() => {
     const data = Object.entries(this.filteredData());
@@ -73,6 +76,12 @@ export class TranslationsComponent implements OnInit {
     const endIndex = startIndex + rowsPerPage;
 
     return Object.fromEntries(data.slice(startIndex, endIndex));
+  });
+
+  totalPages = computed(() => {
+    const totalRows = Object.keys(this.filteredData()).length;
+    const rowsPerPage = this.numberOfRowsPerPage();
+    return Math.ceil(totalRows / rowsPerPage);
   });
 
   selectedRowKeys = signal<string[]>([]);
@@ -175,6 +184,11 @@ export class TranslationsComponent implements OnInit {
     if (this.pageNumber() > 1) {
       this.pageNumber.update((page) => page - 1);
     }
+
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
   }
 
   goToNextPage() {
@@ -184,6 +198,11 @@ export class TranslationsComponent implements OnInit {
     if (this.pageNumber() < totalPages) {
       this.pageNumber.update((page) => page + 1);
     }
+
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: 'smooth',
+    });
   }
 
   hasMorePages(): boolean {
@@ -200,5 +219,34 @@ export class TranslationsComponent implements OnInit {
     );
     this.numberOfRowsPerPage.set(newRowsPerPage);
     this.pageNumber.set(1);
+  }
+
+  updatePageNumber(event: Event) {
+    const newPageNumber = parseInt(
+      (event.target as HTMLSelectElement).value,
+      10
+    );
+
+    if (newPageNumber < 1) {
+      (event.target as HTMLSelectElement).value = '1';
+      this.pageNumber.set(1);
+      return;
+    } else if (newPageNumber > this.totalPages()) {
+      (event.target as HTMLSelectElement).value = String(this.totalPages());
+      this.pageNumber.set(this.totalPages());
+      return;
+    } else {
+      this.pageNumber.set(newPageNumber);
+    }
+  }
+
+  @HostListener('window:keydown', ['$event'])
+  handleKeyDown(event: KeyboardEvent) {
+    if (event.key === 'ArrowLeft') {
+      this.goToPreviousPage();
+    }
+    if (event.key === 'ArrowRight') {
+      this.goToNextPage();
+    }
   }
 }
