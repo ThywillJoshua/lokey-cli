@@ -13,26 +13,22 @@ import {
 })
 export class PopoverLabelDirective {
   popoverLabelText = input('Popover text here');
+  popoverLabelPosition = input<
+    | 'centeredTopLeft'
+    | 'centeredTopRight'
+    | 'centeredBottomLeft'
+    | 'centeredBottomRight'
+  >('centeredTopLeft');
 
   private popoverElement: HTMLElement | null = null;
-  private hoverTimeout: any = null; // Timeout reference for hover delay
-  private hoverDelay = 1000; // Delay in milliseconds (1 second)
 
   constructor(private el: ElementRef, private renderer: Renderer2) {}
 
   @HostListener('mouseenter') onMouseEnter() {
-    // Start the timer for hover delay
-    this.hoverTimeout = setTimeout(() => {
-      this.createPopover();
-    }, this.hoverDelay);
+    this.createPopover();
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    // Clear the timer if mouse leaves before delay
-    if (this.hoverTimeout) {
-      clearTimeout(this.hoverTimeout);
-      this.hoverTimeout = null;
-    }
     this.removePopover();
   }
 
@@ -41,17 +37,36 @@ export class PopoverLabelDirective {
     if (!this.popoverElement) {
       this.renderer.setStyle(this.el.nativeElement, 'position', 'relative');
 
+      const allPopoverElements =
+        document.querySelectorAll('.popover-directive');
+      allPopoverElements.forEach((el) => el.remove());
+
       this.popoverElement = this.renderer.createElement('div');
       this.popoverElement?.classList.add('popover-directive');
 
       // Apply styles for the popover container
       this.renderer.setStyle(this.popoverElement, 'position', 'absolute');
-      this.renderer.setStyle(this.popoverElement, 'top', '-130%');
-      //   this.renderer.setStyle(
-      //     this.popoverElement,
-      //     'left',
-      //     'var(--echo-theme-spacing-xxl)'
-      //   );
+
+      if (this.popoverLabelPosition() === 'centeredTopLeft') {
+        this.renderer.setStyle(this.popoverElement, 'top', '-130%');
+        this.renderer.setStyle(this.popoverElement, 'left', '0px');
+      }
+
+      if (this.popoverLabelPosition() === 'centeredTopRight') {
+        this.renderer.setStyle(this.popoverElement, 'top', '-130%');
+        this.renderer.setStyle(this.popoverElement, 'right', '0px');
+      }
+
+      if (this.popoverLabelPosition() === 'centeredBottomRight') {
+        this.renderer.setStyle(this.popoverElement, 'bottom', '-130%');
+        this.renderer.setStyle(this.popoverElement, 'right', '0px');
+      }
+
+      if (this.popoverLabelPosition() === 'centeredBottomLeft') {
+        this.renderer.setStyle(this.popoverElement, 'top', '-130%');
+        this.renderer.setStyle(this.popoverElement, 'left', '0px');
+      }
+
       this.renderer.setStyle(
         this.popoverElement,
         'background',

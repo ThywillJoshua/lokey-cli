@@ -99,8 +99,10 @@
               <div
                 class="copy-icon"
                 appNotificationLabel
+                [notificationLabelPosition]="'centeredTopRight'"
                 appPopoverLabel
                 [popoverLabelText]="'Copy all as JSON'"
+                [popoverLabelPosition]="'centeredTopRight'"
                 (click)="copy(filteredData())"
               >
                 <svg
@@ -224,8 +226,10 @@
             <div
               class="copy-icon"
               appNotificationLabel
+              [notificationLabelPosition]="'centeredTopRight'"
               (click)="copy(item.key + ': ' + item.value)"
               appPopoverLabel
+              [popoverLabelPosition]="'centeredTopRight'"
               [popoverLabelText]="item.key + ': ' + item.value"
             >
               <svg

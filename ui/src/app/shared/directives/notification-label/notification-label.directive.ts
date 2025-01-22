@@ -4,6 +4,7 @@ import {
   Renderer2,
   HostListener,
   Input,
+  input,
 } from '@angular/core';
 
 @Directive({
@@ -11,7 +12,13 @@ import {
   standalone: true,
 })
 export class NotificationLabelDirective {
-  @Input() notifyLabelText: string = 'Copied!';
+  notifyLabelText = input('Copied!');
+  notificationLabelPosition = input<
+    | 'centeredTopLeft'
+    | 'centeredTopRight'
+    | 'centeredBottomLeft'
+    | 'centeredBottomRight'
+  >('centeredTopLeft');
 
   private labelElement: HTMLElement | null = null;
 
@@ -29,8 +36,25 @@ export class NotificationLabelDirective {
 
       // Apply styles using the provided theme variables
       this.renderer.setStyle(this.labelElement, 'position', 'absolute');
-      this.renderer.setStyle(this.labelElement, 'top', '-100%');
-      this.renderer.setStyle(this.labelElement, 'left', '0');
+      if (this.notificationLabelPosition() === 'centeredTopLeft') {
+        this.renderer.setStyle(this.labelElement, 'top', '-100%');
+        this.renderer.setStyle(this.labelElement, 'left', '0px');
+      }
+
+      if (this.notificationLabelPosition() === 'centeredTopRight') {
+        this.renderer.setStyle(this.labelElement, 'top', '-100%');
+        this.renderer.setStyle(this.labelElement, 'right', '0px');
+      }
+
+      if (this.notificationLabelPosition() === 'centeredBottomRight') {
+        this.renderer.setStyle(this.labelElement, 'bottom', '-100%');
+        this.renderer.setStyle(this.labelElement, 'right', '0px');
+      }
+
+      if (this.notificationLabelPosition() === 'centeredBottomLeft') {
+        this.renderer.setStyle(this.labelElement, 'top', '-100%');
+        this.renderer.setStyle(this.labelElement, 'left', '0px');
+      }
       this.renderer.setStyle(
         this.labelElement,
         'background',
@@ -79,7 +103,7 @@ export class NotificationLabelDirective {
       this.renderer.setStyle(this.labelElement, 'opacity', '1');
 
       // Add the notification text
-      const text = this.renderer.createText(this.notifyLabelText);
+      const text = this.renderer.createText(this.notifyLabelText());
       this.renderer.appendChild(this.labelElement, text);
       this.renderer.appendChild(this.el.nativeElement, this.labelElement);
 
