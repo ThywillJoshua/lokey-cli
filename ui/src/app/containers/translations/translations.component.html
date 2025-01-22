@@ -96,7 +96,11 @@
           </label>
           <tr class="tr">
             <td class="td">
-              <div class="td__content">
+              <div
+                class="td__content"
+                appPopoverLabel
+                [popoverLabelText]="item.key"
+              >
                 <div
                   class="copy-icon"
                   appNotificationLabel
@@ -118,11 +122,17 @@
                     />
                   </svg>
                 </div>
-                <p class="td__content__text">{{ item.key }}</p>
+                <div class="td__content__text">
+                  <span appText>{{ item.key }}</span>
+                </div>
               </div>
             </td>
             <td class="td">
-              <div class="td__content">
+              <div
+                class="td__content"
+                appPopoverLabel
+                [popoverLabelText]="item.value"
+              >
                 <div
                   class="copy-icon"
                   appNotificationLabel
@@ -144,7 +154,7 @@
                     />
                   </svg>
                 </div>
-                <span class="td__content__text">{{ item.value }}</span>
+                <span class="td__content__text" appText> {{ item.value }}</span>
               </div>
             </td>
           </tr>
@@ -155,6 +165,8 @@
             class="copy-icon"
             appNotificationLabel
             (click)="copy(item.key + ': ' + item.value)"
+            appPopoverLabel
+            [popoverLabelText]="item.key + ': ' + item.value"
           >
             <svg
               width="25"

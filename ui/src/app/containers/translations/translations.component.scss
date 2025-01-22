@@ -100,9 +100,15 @@
             column-gap: var(--echo-theme-spacing-md);
 
             &__text {
+              overflow: hidden;
+              display: block;
               text-overflow: ellipsis;
               overflow: hidden;
+              max-width: 100%;
               white-space: nowrap;
+
+              & span {
+              }
             }
           }
         }
