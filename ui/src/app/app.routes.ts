@@ -21,7 +21,7 @@ export const routes: Routes = [
   {
     path: PATHS.TRANSLATIONS_TRANSLATE_ID,
     component: TranslateComponent,
-    pathMatch: 'full',
+    // pathMatch: 'full',
   },
   {
     path: PATHS.TRANSLATIONS,
@@ -33,9 +33,9 @@ export const routes: Routes = [
     component: TranslationsComponent,
     pathMatch: 'full',
   },
-  // {
-  //   path: '**',
-  //   redirectTo: PATHS.HOME,
-  //   pathMatch: 'full',
-  // },
+  {
+    path: '**',
+    redirectTo: PATHS.TRANSLATIONS,
+    pathMatch: 'full',
+  },
 ];
