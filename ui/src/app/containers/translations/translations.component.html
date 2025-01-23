@@ -1,258 +1,256 @@
-<div class="translations-page-container">
-  <div class="translations">
-    <div class="translations__page-title">
-      <h1 appText [variant]="'title-sm'">KEYS & VALUES</h1>
-    </div>
+<div class="translations">
+  <div class="translations__page-title">
+    <h1 appText [variant]="'title-sm'">KEYS & VALUES</h1>
+  </div>
 
-    <div class="translations__nav">
-      <div class="translations__nav__left" [formGroup]="form">
-        <input
-          appTextInput
-          [variant]="'sm'"
-          [errorMessage]="keyOrValueNotFoundMessage()"
-          type="text"
-          [placeholder]="
-            this.form.get('searchByKey')?.getRawValue()
-              ? 'Search by: Key'
-              : 'Search by: Value'
-          "
-          formControlName="searchInput"
-        />
+  <div class="translations__nav">
+    <div class="translations__nav__left" [formGroup]="form">
+      <input
+        appTextInput
+        [variant]="'sm'"
+        [errorMessage]="keyOrValueNotFoundMessage()"
+        type="text"
+        [placeholder]="
+          this.form.get('searchByKey')?.getRawValue()
+            ? 'Search by: Key'
+            : 'Search by: Value'
+        "
+        formControlName="searchInput"
+      />
 
-        <div class="translations__nav__left__by">
-          <label appCheckbox class="translations__checkbox">
-            <input type="checkbox" formControlName="searchByKey" />
-            Key
-          </label>
-          <label appCheckbox class="translations__checkbox">
-            <input type="checkbox" formControlName="searchByValue" />
-            Value
-          </label>
-        </div>
-      </div>
-
-      <div class="translations__nav__right">
-        <div class="translations__nav__right__select-file">
-          <label class="translations__nav__right__select-file__label">
-            <span appText [variant]="'info'">File: </span>
-
-            <select
-              appTextInput
-              [variant]="'xs'"
-              (change)="updateSelectedFile($event)"
-            >
-              @for (file of files(); track $index) {
-              <option [value]="file" [selected]="selectedFile() === file">
-                {{ file }}
-              </option>
-              }
-            </select>
-          </label>
-        </div>
-        <div class="translations__nav__right__paginator">
-          <label class="translations__nav__right__paginator__label">
-            <span appText [variant]="'info'">Rows per page:</span>
-            <input
-              class="translations__nav__right__paginator__label__input"
-              appTextInput
-              [variant]="'xs'"
-              type="number"
-              [min]="minRowsPerPage()"
-              [max]="maxRowsPerPage()"
-              (change)="updateRowsPerPage($event)"
-              [value]="numberOfRowsPerPage()"
-            />
-          </label>
-        </div>
-
-        <div class="translations__nav__right__sort-icon">
-          @if (sort() === 'ASC') {
-          <app-svg-icon
-            (click)="sort.set('DESC')"
-            [iconName]="'sort_a-z'"
-          ></app-svg-icon>
-          } @else if (sort() === 'DESC') {
-          <app-svg-icon
-            (click)="sort.set('ASC')"
-            [iconName]="'sort_z-a'"
-          ></app-svg-icon>
-
-          }
-        </div>
+      <div class="translations__nav__left__by">
+        <label appCheckbox class="translations__checkbox">
+          <input type="checkbox" formControlName="searchByKey" />
+          Key
+        </label>
+        <label appCheckbox class="translations__checkbox">
+          <input type="checkbox" formControlName="searchByValue" />
+          Value
+        </label>
       </div>
     </div>
 
-    <div class="translations__body">
-      <table border="1" cellpadding="8" cellspacing="0">
-        <thead class="thead">
-          <tr class="tr">
-            <th>
-              <label appCheckbox class="translations__checkbox">
-                <input
-                  type="checkbox"
-                  (change)="handleAllRowsCheckboxChange($event)"
-                  [checked]="allRowsSelected()"
-                />
-              </label>
-            </th>
-            <th class="tr__title">
-              <span appText [variant]="'title-sm'">KEY</span>
-            </th>
-            <th class="tr__title">
-              <span appText [variant]="'title-sm'">VALUE</span>
-            </th>
-            <th class="hide">
-              <div class="status">
-                <app-label></app-label>
-              </div>
-            </th>
-            <th>
-              <div
-                class="copy-icon"
-                appNotificationLabel
-                [notificationLabelPosition]="'centeredTopRight'"
-                appPopoverLabel
-                [popoverLabelText]="'Copy all as JSON'"
-                [popoverLabelPosition]="'centeredTopRight'"
-                [popoverLabelAlwaysShow]="true"
-                (click)="copy(filteredData())"
-              >
-                <app-svg-icon [iconName]="'copy'"></app-svg-icon>
-              </div>
-            </th>
-            <th class="hide">
-              <div class="delete-icon">
-                <app-svg-icon [iconName]="'trash'"></app-svg-icon>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        @for (item of ( (paginatedData() | convertObjectIntoArray)); track
-        item.key; let idx = $index) {
-        <tbody class="tbody" [class.tbody--selected]="isSelected(item.key)">
-          <tr>
+    <div class="translations__nav__right">
+      <div class="translations__nav__right__select-file">
+        <label class="translations__nav__right__select-file__label">
+          <span appText [variant]="'info'">File: </span>
+
+          <select
+            appTextInput
+            [variant]="'xs'"
+            (change)="updateSelectedFile($event)"
+          >
+            @for (file of files(); track $index) {
+            <option [value]="file" [selected]="selectedFile() === file">
+              {{ file }}
+            </option>
+            }
+          </select>
+        </label>
+      </div>
+      <div class="translations__nav__right__paginator">
+        <label class="translations__nav__right__paginator__label">
+          <span appText [variant]="'info'">Rows per page:</span>
+          <input
+            class="translations__nav__right__paginator__label__input"
+            appTextInput
+            [variant]="'xs'"
+            type="number"
+            [min]="minRowsPerPage()"
+            [max]="maxRowsPerPage()"
+            (change)="updateRowsPerPage($event)"
+            [value]="numberOfRowsPerPage()"
+          />
+        </label>
+      </div>
+
+      <div class="translations__nav__right__sort-icon">
+        @if (sort() === 'ASC') {
+        <app-svg-icon
+          (click)="sort.set('DESC')"
+          [iconName]="'sort_a-z'"
+        ></app-svg-icon>
+        } @else if (sort() === 'DESC') {
+        <app-svg-icon
+          (click)="sort.set('ASC')"
+          [iconName]="'sort_z-a'"
+        ></app-svg-icon>
+
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="translations__body">
+    <table border="1" cellpadding="8" cellspacing="0">
+      <thead class="thead">
+        <tr class="tr">
+          <th>
             <label appCheckbox class="translations__checkbox">
               <input
                 type="checkbox"
-                (change)="handleRowCheckboxChange($event, item.key)"
-                [checked]="isSelected(item.key)"
+                (change)="handleAllRowsCheckboxChange($event)"
+                [checked]="allRowsSelected()"
               />
             </label>
-          </tr>
-
-          <tr class="tr">
-            <td class="td">
-              <div
-                class="td__content"
-                appPopoverLabel
-                [popoverLabelText]="item.key"
-                [popoverLabelTextEl]="valueTextElement"
-              >
-                <div
-                  class="copy-icon"
-                  appNotificationLabel
-                  (click)="copy(item.key)"
-                >
-                  <app-svg-icon [iconName]="'copy'"></app-svg-icon>
-                </div>
-                <div class="td__content__text" #valueTextElement>
-                  <a
-                    [routerLink]="[
-                      '/' + PATHS.TRANSLATIONS,
-                      ENCODE_URI_COMPONENT(item.key)
-                    ]"
-                  >
-                    <span appText>{{ item.key }}</span>
-                  </a>
-                </div>
-              </div>
-            </td>
-            <td class="td">
-              <div
-                class="td__content"
-                appPopoverLabel
-                [popoverLabelText]="item.value"
-                [popoverLabelTextEl]="keyTextElement"
-              >
-                <div
-                  class="copy-icon"
-                  appNotificationLabel
-                  (click)="copy(item.value)"
-                >
-                  <app-svg-icon [iconName]="'copy'"></app-svg-icon>
-                </div>
-
-                <div class="td__content__text">
-                  <a
-                    [routerLink]="[
-                      '/' + PATHS.TRANSLATIONS,
-                      ENCODE_URI_COMPONENT(item.key)
-                    ]"
-                  >
-                    <span class="td__content__text" appText #keyTextElement>
-                      {{ item.value }}</span
-                    >
-                  </a>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
+          </th>
+          <th class="tr__title">
+            <span appText [variant]="'title-sm'">KEY</span>
+          </th>
+          <th class="tr__title">
+            <span appText [variant]="'title-sm'">VALUE</span>
+          </th>
+          <th class="hide">
             <div class="status">
               <app-label></app-label>
             </div>
-          </tr>
-          <tr>
+          </th>
+          <th>
             <div
               class="copy-icon"
               appNotificationLabel
               [notificationLabelPosition]="'centeredTopRight'"
-              (click)="copy(item.key + ': ' + item.value)"
               appPopoverLabel
+              [popoverLabelText]="'Copy all as JSON'"
               [popoverLabelPosition]="'centeredTopRight'"
-              [popoverLabelText]="item.key + ': ' + item.value"
               [popoverLabelAlwaysShow]="true"
+              (click)="copy(filteredData())"
             >
               <app-svg-icon [iconName]="'copy'"></app-svg-icon>
             </div>
-          </tr>
-          <tr>
-            <div class="trash-icon">
-              <app-svg-icon
-                [iconName]="'trash'"
-                (click)="updateSelectedForDeletion(item.key)"
-              ></app-svg-icon>
+          </th>
+          <th class="hide">
+            <div class="delete-icon">
+              <app-svg-icon [iconName]="'trash'"></app-svg-icon>
             </div>
-          </tr>
-        </tbody>
-        }
-      </table>
-    </div>
+          </th>
+        </tr>
+      </thead>
+      @for (item of ( (paginatedData() | convertObjectIntoArray)); track
+      item.key; let idx = $index) {
+      <tbody class="tbody" [class.tbody--selected]="isSelected(item.key)">
+        <tr>
+          <label appCheckbox class="translations__checkbox">
+            <input
+              type="checkbox"
+              (change)="handleRowCheckboxChange($event, item.key)"
+              [checked]="isSelected(item.key)"
+            />
+          </label>
+        </tr>
 
-    <div class="translations__footer">
-      <div class="translations__footer__paginator">
-        <button (click)="goToPreviousPage()" [class.hide]="pageNumber() === 1">
-          <app-svg-icon [iconName]="'arrow-solid-left'"></app-svg-icon>
-        </button>
+        <tr class="tr">
+          <td class="td">
+            <div
+              class="td__content"
+              appPopoverLabel
+              [popoverLabelText]="item.key"
+              [popoverLabelTextEl]="valueTextElement"
+            >
+              <div
+                class="copy-icon"
+                appNotificationLabel
+                (click)="copy(item.key)"
+              >
+                <app-svg-icon [iconName]="'copy'"></app-svg-icon>
+              </div>
+              <div class="td__content__text" #valueTextElement>
+                <a
+                  [routerLink]="[
+                    '/' + PATHS.TRANSLATIONS,
+                    ENCODE_URI_COMPONENT(item.key)
+                  ]"
+                >
+                  <span appText>{{ item.key }}</span>
+                </a>
+              </div>
+            </div>
+          </td>
+          <td class="td">
+            <div
+              class="td__content"
+              appPopoverLabel
+              [popoverLabelText]="item.value"
+              [popoverLabelTextEl]="keyTextElement"
+            >
+              <div
+                class="copy-icon"
+                appNotificationLabel
+                (click)="copy(item.value)"
+              >
+                <app-svg-icon [iconName]="'copy'"></app-svg-icon>
+              </div>
 
-        <div class="translations__footer__paginator__page-info">
-          <input
-            class="translations__footer__paginator__page-info__input"
-            appTextInput
-            [variant]="'xs'"
-            type="number"
-            [min]="1"
-            [max]="totalPages()"
-            (change)="updatePageNumber($event)"
-            [value]="pageNumber()"
-          />
-          <span appText variant="info"> of {{ totalPages() }}</span>
-        </div>
+              <div class="td__content__text">
+                <a
+                  [routerLink]="[
+                    '/' + PATHS.TRANSLATIONS,
+                    ENCODE_URI_COMPONENT(item.key)
+                  ]"
+                >
+                  <span class="td__content__text" appText #keyTextElement>
+                    {{ item.value }}</span
+                  >
+                </a>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <div class="status">
+            <app-label></app-label>
+          </div>
+        </tr>
+        <tr>
+          <div
+            class="copy-icon"
+            appNotificationLabel
+            [notificationLabelPosition]="'centeredTopRight'"
+            (click)="copy(item.key + ': ' + item.value)"
+            appPopoverLabel
+            [popoverLabelPosition]="'centeredTopRight'"
+            [popoverLabelText]="item.key + ': ' + item.value"
+            [popoverLabelAlwaysShow]="true"
+          >
+            <app-svg-icon [iconName]="'copy'"></app-svg-icon>
+          </div>
+        </tr>
+        <tr>
+          <div class="trash-icon">
+            <app-svg-icon
+              [iconName]="'trash'"
+              (click)="updateSelectedForDeletion(item.key)"
+            ></app-svg-icon>
+          </div>
+        </tr>
+      </tbody>
+      }
+    </table>
+  </div>
 
-        <button (click)="goToNextPage()" [class.hide]="!hasMorePages()">
-          <app-svg-icon [iconName]="'arrow-solid-right'"></app-svg-icon>
-        </button>
+  <div class="translations__footer">
+    <div class="translations__footer__paginator">
+      <button (click)="goToPreviousPage()" [class.hide]="pageNumber() === 1">
+        <app-svg-icon [iconName]="'arrow-solid-left'"></app-svg-icon>
+      </button>
+
+      <div class="translations__footer__paginator__page-info">
+        <input
+          class="translations__footer__paginator__page-info__input"
+          appTextInput
+          [variant]="'xs'"
+          type="number"
+          [min]="1"
+          [max]="totalPages()"
+          (change)="updatePageNumber($event)"
+          [value]="pageNumber()"
+        />
+        <span appText variant="info"> of {{ totalPages() }}</span>
       </div>
+
+      <button (click)="goToNextPage()" [class.hide]="!hasMorePages()">
+        <app-svg-icon [iconName]="'arrow-solid-right'"></app-svg-icon>
+      </button>
     </div>
   </div>
 </div>
@@ -260,7 +258,48 @@
 @if (showDeleteModal()) {
 <app-modal (closeModal)="showDeleteModal.set(false)">
   <div class="translations__delete-modal">
-    <p>{{ selectedForDeletion() | json }}</p>
+    <div class="translations__delete-modal__body">
+      <h1 appText [variant]="'title'">Delete keys</h1>
+
+      <div class="translations__delete-modal__body__text-contianer"></div>
+      <p
+        appText
+        [variant]="'paragraph'"
+        class="translations__delete-modal__body__text-container__text"
+      >
+        The {{ selectedForDeletion().length > 1 ? "keys" : "key" }} @for (key of
+        selectedForDeletion(); track $index; let idx = $index) { @if (idx === 0)
+        {
+        <b>{{ key }}</b>
+        }@else if (idx === selectedForDeletion().length - 1) { &
+        <b>{{ key }}</b>
+        }@else if (idx > 0) {,
+        <b>{{ key }}</b>
+        } } will be deleted from all files.
+      </p>
+
+      <p><b>ARE YOU SURE?</b></p>
+    </div>
+    <div class="translations__delete-modal__cta">
+      <button
+        appButton
+        [variant]="'default'"
+        (click)="selectedForDeletion.set([]); showDeleteModal.set(false)"
+      >
+        <b>No</b>
+      </button>
+      <button
+        appButton
+        [variant]="'default'"
+        (click)="
+          deleteSelectedKeys();
+          selectedForDeletion.set([]);
+          showDeleteModal.set(false)
+        "
+      >
+        <b>Yes</b>
+      </button>
+    </div>
   </div>
 </app-modal>
 }

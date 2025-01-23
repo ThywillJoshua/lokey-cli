@@ -21,6 +21,10 @@ export class FilesAPIService {
     return this.http.post('/translate/', body);
   }
 
+  deleteKeyValuePairFromAllFiles(keys: string[]) {
+    return this.http.put('/deleteKeys/', { keys });
+  }
+
   private addParsedContent(files: IFiles): IFiles {
     const flattenObject = (
       obj: Record<string, any>,

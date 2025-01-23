@@ -24,6 +24,7 @@ import { SortObjectPipe } from '../../shared/pipes/sortObject.pipe';
 import { ConvertObjectIntoArrayPipe } from '../../shared/pipes/convertObjectIntoArray.pipe';
 import { ModalComponent } from '../../shared/containers/modal/modal.component';
 import { JsonPipe } from '@angular/common';
+import { ButtonDirective } from '../../shared/directives/button/button.directive';
 
 @Component({
   selector: 'app-translations',
@@ -40,7 +41,7 @@ import { JsonPipe } from '@angular/common';
     RouterLink,
     SvgIconComponent,
     ModalComponent,
-    JsonPipe,
+    ButtonDirective,
   ],
   templateUrl: './translations.component.html',
   styleUrl: './translations.component.scss',
@@ -278,6 +279,12 @@ export class TranslationsComponent implements OnInit {
   updateSelectedFile(event: Event) {
     const selectedFile = (event.target as HTMLSelectElement).value;
     this.selectedFile.set(selectedFile);
+  }
+
+  deleteSelectedKeys() {
+    this.filesService
+      .deleteKeyValuePairFromAllFiles(this.selectedForDeletion())
+      .subscribe();
   }
 
   @HostListener('window:keydown', ['$event'])

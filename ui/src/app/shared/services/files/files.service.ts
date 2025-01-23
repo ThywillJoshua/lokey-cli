@@ -52,4 +52,10 @@ export class FilesService {
       )
       .subscribe();
   }
+
+  deleteKeyValuePairFromAllFiles(keys: string[]) {
+    return this.filesAPIService
+      .deleteKeyValuePairFromAllFiles(keys)
+      .pipe(tap(() => this.getTranslations()));
+  }
 }
