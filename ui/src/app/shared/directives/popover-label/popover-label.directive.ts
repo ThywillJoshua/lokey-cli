@@ -24,6 +24,8 @@ export class PopoverLabelDirective {
     | 'centeredBottomRight'
   >('centeredTopLeft');
   popoverLabelAlwaysShow = input(false);
+  popoverLabelTopPosition = input('-130%');
+  popoverLabelBottomPosition = input('130%');
 
   popoverLabelTextEl = input<HTMLElement>(this.el.nativeElement);
   private popoverElement: HTMLElement | null = null;
@@ -58,22 +60,38 @@ export class PopoverLabelDirective {
       this.renderer.setStyle(this.popoverElement, 'position', 'absolute');
 
       if (this.popoverLabelPosition() === 'centeredTopLeft') {
-        this.renderer.setStyle(this.popoverElement, 'top', '-130%');
+        this.renderer.setStyle(
+          this.popoverElement,
+          'top',
+          this.popoverLabelTopPosition()
+        );
         this.renderer.setStyle(this.popoverElement, 'left', '0px');
       }
 
       if (this.popoverLabelPosition() === 'centeredTopRight') {
-        this.renderer.setStyle(this.popoverElement, 'top', '-130%');
+        this.renderer.setStyle(
+          this.popoverElement,
+          'top',
+          this.popoverLabelTopPosition()
+        );
         this.renderer.setStyle(this.popoverElement, 'right', '0px');
       }
 
       if (this.popoverLabelPosition() === 'centeredBottomRight') {
-        this.renderer.setStyle(this.popoverElement, 'bottom', '-130%');
+        this.renderer.setStyle(
+          this.popoverElement,
+          'bottom',
+          this.popoverLabelBottomPosition()
+        );
         this.renderer.setStyle(this.popoverElement, 'right', '0px');
       }
 
       if (this.popoverLabelPosition() === 'centeredBottomLeft') {
-        this.renderer.setStyle(this.popoverElement, 'top', '-130%');
+        this.renderer.setStyle(
+          this.popoverElement,
+          'top',
+          this.popoverLabelBottomPosition()
+        );
         this.renderer.setStyle(this.popoverElement, 'left', '0px');
       }
 

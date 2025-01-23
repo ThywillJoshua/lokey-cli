@@ -82,17 +82,24 @@
   </div>
 
   <div class="translations__body">
-    <table border="1" cellpadding="8" cellspacing="0">
+    <table>
       <thead class="thead">
         <tr class="tr">
           <th>
-            <label appCheckbox class="translations__checkbox">
-              <input
-                type="checkbox"
-                (change)="handleAllRowsCheckboxChange($event)"
-                [checked]="allRowsSelected()"
-              />
-            </label>
+            <div
+              appPopoverLabel
+              [popoverLabelText]="'Select all rows'"
+              [popoverLabelAlwaysShow]="true"
+              [popoverLabelTopPosition]="'-200%'"
+            >
+              <label appCheckbox class="translations__checkbox">
+                <input
+                  type="checkbox"
+                  (change)="handleAllRowsCheckboxChange($event)"
+                  [checked]="allRowsSelected()"
+                />
+              </label>
+            </div>
           </th>
           <th class="tr__title">
             <span appText [variant]="'title-sm'">KEY</span>

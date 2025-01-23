@@ -6,7 +6,7 @@
   & .translations {
     display: flex;
     flex-direction: column;
-    gap: var(--echo-theme-spacing-md);
+    gap: var(--echo-theme-spacing-xl);
 
     & .hide {
       visibility: hidden;
@@ -15,6 +15,7 @@
 
     &__checkbox {
       color: var(--echo-theme-colors-textSecondary);
+      cursor: pointer;
     }
 
     &__page-title {
