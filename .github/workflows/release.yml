@@ -17,15 +17,12 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "23.4.0"
-
+      - name: Set up Bun & Build ui
+        uses: oven-sh/setup-bun@v2
       - name: Install and Build UI
         run: |
-          npm install --legacy-peer-deps
-          npm run build
+          bun install
+          bun run build
         working-directory: ./ui
 
       - name: Set up Go
