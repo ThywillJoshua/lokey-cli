@@ -22,7 +22,7 @@ brews:
     description: "A powerful CLI tool for managing Lokey operations"
     repository:
       owner: "thywilljoshua"
-      name: "lokey-cli"
+      name: "homebrew-lokey-cli"
     commit_author:
       name: "Thywill Joshua"
       email: "thywilljoshua@gmail.com"
