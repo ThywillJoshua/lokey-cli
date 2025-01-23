@@ -2,6 +2,7 @@ builds:
   - binary: lokey
     goos:
       - linux
+      - darwin
     goarch:
       - amd64
       - arm64
