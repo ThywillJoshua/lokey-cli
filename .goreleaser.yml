@@ -1,7 +1,6 @@
 builds:
   - binary: lokey-cli
     goos:
-      - darwin
       - linux
     goarch:
       - amd64
