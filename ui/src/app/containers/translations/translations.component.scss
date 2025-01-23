@@ -50,11 +50,22 @@
           align-items: center;
           gap: var(--echo-theme-spacing-md);
 
+          &__select-file {
+            &__label {
+              display: flex;
+              align-items: center;
+              gap: var(--echo-theme-spacing-sm);
+            }
+          }
+
           &__paginator {
             &__label {
               display: flex;
               align-items: center;
               gap: var(--echo-theme-spacing-sm);
+              &__input {
+                width: 60px;
+              }
             }
           }
           &__sort-icon {
@@ -159,6 +170,10 @@
             display: flex;
             align-items: center;
             gap: var(--echo-theme-spacing-sm);
+
+            &__input {
+              width: 60px;
+            }
           }
 
           button {

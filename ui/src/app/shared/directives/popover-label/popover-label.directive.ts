@@ -23,19 +23,16 @@ export class PopoverLabelDirective {
     | 'centeredBottomLeft'
     | 'centeredBottomRight'
   >('centeredTopLeft');
+  popoverLabelAlwaysShow = input(false);
 
   popoverLabelTextEl = input<HTMLElement>(this.el.nativeElement);
   private popoverElement: HTMLElement | null = null;
 
   @HostListener('mouseenter') onMouseEnter() {
-    console.log(
-      this.popoverLabelTextEl().scrollWidth >
-        this.popoverLabelTextEl().clientWidth
-    );
-
     if (
       this.popoverLabelTextEl().scrollWidth >
-      this.popoverLabelTextEl().clientWidth
+        this.popoverLabelTextEl().clientWidth ||
+      this.popoverLabelAlwaysShow()
     ) {
       this.createPopover();
     }

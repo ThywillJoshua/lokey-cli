@@ -100,9 +100,9 @@
   &__xs {
     cursor: pointer;
     position: relative;
-    width: 60px;
-    height: 20px;
-    padding: var(--echo-theme-spacing-sm);
+    min-width: 60px;
+    height: 24px;
+    padding: 0 var(--echo-theme-spacing-sm);
     background-color: var(--echo-theme-colors-background);
     border: 1px solid var(--echo-theme-colors-lightGrey2);
     border-radius: var(--echo-theme-borderRadius-small);

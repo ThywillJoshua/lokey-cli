@@ -97,16 +97,29 @@ export class TranslationsComponent implements OnInit {
   showDeleteModal = signal(false);
   selectedForDeletion = signal<string[]>([]);
 
+  files = computed(() => {
+    const translations = this.filesService.translations() || {};
+    return Object.keys(translations);
+  });
+  selectedFile = signal('');
+
   ENCODE_URI_COMPONENT = encodeURIComponent;
 
   constructor() {
     effect(() => {
-      console.log(this.showDeleteModal());
+      //Set selected file default
+      if (!this.selectedFile()) {
+        this.selectedFile.set(
+          this.filesService.config()?.['default-file'] || ''
+        );
+      }
     });
+
     effect(() => {
       const translations = this.filesService.translations() || {};
-      const defaultFile = this.filesService.config()?.['default-file'] || '';
-      const data = Object.entries(translations[defaultFile] || {});
+      const data = Object.entries(
+        translations[this.selectedFile() || ''] || {}
+      );
       const searchInput = this.searchInput()?.toLowerCase() || '';
       const searchByKey =
         this.searchByKey() || this.form.get('searchByKey')?.getRawValue();
@@ -260,6 +273,11 @@ export class TranslationsComponent implements OnInit {
     } else {
       this.pageNumber.set(newPageNumber);
     }
+  }
+
+  updateSelectedFile(event: Event) {
+    const selectedFile = (event.target as HTMLSelectElement).value;
+    this.selectedFile.set(selectedFile);
   }
 
   @HostListener('window:keydown', ['$event'])

@@ -32,10 +32,28 @@
       </div>
 
       <div class="translations__nav__right">
+        <div class="translations__nav__right__select-file">
+          <label class="translations__nav__right__select-file__label">
+            <span appText [variant]="'info'">File: </span>
+
+            <select
+              appTextInput
+              [variant]="'xs'"
+              (change)="updateSelectedFile($event)"
+            >
+              @for (file of files(); track $index) {
+              <option [value]="file" [selected]="selectedFile() === file">
+                {{ file }}
+              </option>
+              }
+            </select>
+          </label>
+        </div>
         <div class="translations__nav__right__paginator">
           <label class="translations__nav__right__paginator__label">
             <span appText [variant]="'info'">Rows per page:</span>
             <input
+              class="translations__nav__right__paginator__label__input"
               appTextInput
               [variant]="'xs'"
               type="number"
@@ -96,8 +114,11 @@
                 appPopoverLabel
                 [popoverLabelText]="'Copy all as JSON'"
                 [popoverLabelPosition]="'centeredTopRight'"
+                [popoverLabelAlwaysShow]="true"
                 (click)="copy(filteredData())"
-              ></div>
+              >
+                <app-svg-icon [iconName]="'copy'"></app-svg-icon>
+              </div>
             </th>
             <th class="hide">
               <div class="delete-icon">
@@ -190,6 +211,7 @@
               appPopoverLabel
               [popoverLabelPosition]="'centeredTopRight'"
               [popoverLabelText]="item.key + ': ' + item.value"
+              [popoverLabelAlwaysShow]="true"
             >
               <app-svg-icon [iconName]="'copy'"></app-svg-icon>
             </div>
@@ -215,6 +237,7 @@
 
         <div class="translations__footer__paginator__page-info">
           <input
+            class="translations__footer__paginator__page-info__input"
             appTextInput
             [variant]="'xs'"
             type="number"

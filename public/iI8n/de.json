@@ -1,0 +1,82 @@
+{
+  "banner": {
+    "cta": {
+      "link": "/signup",
+      "text": "Konto jetzt eröffnen"
+    },
+    "image": "https://example.com/banner-image.jpg",
+    "subtitle": "Ihr vertrauenswürdiger Partner für Finanzdienstleistungen",
+    "title": "Willkommen bei SafeBank"
+  },
+  "cta_section": {
+    "cta_buttons": [
+      {
+        "link": "/signup",
+        "text": "Loslegen"
+      },
+      {
+        "link": "/about",
+        "text": "Mehr erfahren"
+      }
+    ],
+    "description": "Schließen Sie sich Millionen zufriedener Kunden an und übernehmen Sie die Kontrolle über Ihre Finanzen.",
+    "title": "Starten Sie Ihre Reise noch heute"
+  },
+  "faq": [
+    {
+      "answer": "Klicken Sie einfach auf 'Konto eröffnen' und füllen Sie den Online-Antrag aus.",
+      "question": "Wie eröffne ich ein Konto?"
+    },
+    {
+      "answer": "Sie benötigen einen gültigen Ausweis, einen Adressnachweis und Ihre Sozialversicherungsnummer.",
+      "question": "Welche Dokumente brauche ich?"
+    },
+    {
+      "answer": "Ja, wir verwenden branchenübliche Verschlüsselung, um Ihre Daten zu schützen.",
+      "question": "Ist Online-Banking sicher?"
+    }
+  ],
+  "features": [
+    {
+      "description": "Profitieren Sie von wettbewerbsfähigen Zinssätzen und ohne versteckte Gebühren.",
+      "icon": "https://example.com/icons/savings-icon.png",
+      "link": "/savings",
+      "title": "Sparkonten"
+    },
+    {
+      "description": "Flexible Rückzahlungspläne, die auf Ihre Bedürfnisse zugeschnitten sind.",
+      "icon": "https://example.com/icons/loans-icon.png",
+      "link": "/loans",
+      "title": "Privatkredite"
+    },
+    {
+      "description": "Sammeln Sie bei jedem Einkauf Belohnungen.",
+      "icon": "https://example.com/icons/credit-cards-icon.png",
+      "link": "/credit-cards",
+      "title": "Kreditkarten"
+    },
+    {
+      "description": "Vermehren Sie Ihr Vermögen mit Expertenberatung und Tools.",
+      "icon": "https://example.com/icons/investments-icon.png",
+      "link": "/investments",
+      "title": "Investitionen"
+    }
+  ],
+  "statistics": {
+    "branches_worldwide": 500,
+    "total_customers": "5M+",
+    "transactions_per_day": "10M+"
+  },
+  "testimonials": [
+    {
+      "name": "John Doe",
+      "profile_picture": "https://example.com/profiles/john.jpg",
+      "review": "SafeBank macht die Verwaltung meiner Finanzen zum Kinderspiel. Sehr empfehlenswert!"
+    },
+    {
+      "name": "Jane Smith",
+      "profile_picture": "https://example.com/profiles/jane.jpg",
+      "review": "Der Kundenservice bei SafeBank ist hervorragend. Immer da, um zu helfen."
+    }
+  ]
+}
