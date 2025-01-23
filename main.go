@@ -8,7 +8,6 @@ import (
 	"translate-cli/fileutils"
 	"translate-cli/globals"
 	"translate-cli/server"
-	"translate-cli/webview"
 )
 
 var ConfigData config.Configuration
@@ -57,7 +56,7 @@ func main() {
     
 	case "ui":
 		go server.StartHTTPServer()
-	    webview.CreateWebview()
+	    // webview.CreateWebview()
 		return
 
 	default:
