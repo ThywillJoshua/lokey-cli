@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"sync"
 
 	"github.com/tmc/langchaingo/llms"
 	"github.com/tmc/langchaingo/llms/ollama"
@@ -21,6 +22,7 @@ type TranslationRequest struct {
 
 type TranslationResponse struct {
 	TranslatedKeyValues map[string]string `json:"translatedKeyValues"`
+	Errors              map[string]string `json:"errors,omitempty"`
 }
 
 func Translate(w http.ResponseWriter, r *http.Request) {
@@ -37,6 +39,12 @@ func Translate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Validate input
+	if req.From == "" || req.To == "" || len(req.KeyValues) == 0 {
+		http.Error(w, "Invalid request: 'from', 'to', and 'keyValues' fields are required", http.StatusBadRequest)
+		return
+	}
+
 	// Initialize the LLM
 	llm, err := ollama.New(ollama.WithModel("mistral"))
 	if err != nil {
@@ -48,35 +56,64 @@ func Translate(w http.ResponseWriter, r *http.Request) {
 	// Context for LLM requests
 	ctx := context.Background()
 
-	// Translate each value while keeping keys unchanged
+	// Translation results and error tracking
 	translated := make(map[string]string)
+	errors := make(map[string]string)
+
+	// Use a WaitGroup and mutex for concurrency
+	var wg sync.WaitGroup
+	var mutex sync.Mutex
+
 	for key, value := range req.KeyValues {
-		prompt := fmt.Sprintf(`
-		Translate the following text from %s to %s. Return only the translated text:
-		"%s"
-		`, req.From, req.To, value)
+		wg.Add(1)
 
-		// Generate translation using the LLM
-		completion, err := llms.GenerateFromSinglePrompt(ctx, llm, prompt)
-		if err != nil {
-			http.Error(w, fmt.Sprintf("Translation failed for key '%s'", key), http.StatusInternalServerError)
-			log.Printf("Translation error for key '%s': %v", key, err)
-			return
-		}
+		go func(key, value string) {
+			defer wg.Done()
 
-		// Clean up the completion output
-		cleaned := strings.TrimSpace(completion)
-		if idx := strings.Index(cleaned, "\n"); idx != -1 {
-			cleaned = cleaned[:idx] // Take only the first line if there's extra text
-		}
+			prompt := fmt.Sprintf(
+				"Translate the following text from %s to %s. Only return the translated text:\n\"%s\"",
+				req.From, req.To, value,
+			)
 
-		translated[key] = cleaned
+			// Generate translation using the LLM
+			completion, err := llms.GenerateFromSinglePrompt(ctx, llm, prompt)
+			if err != nil {
+				mutex.Lock()
+				errors[key] = fmt.Sprintf("Translation failed: %v", err)
+				mutex.Unlock()
+				log.Printf("Translation error for key '%s': %v", key, err)
+				return
+			}
+
+			// Clean up the output
+			cleaned := strings.TrimSpace(completion)
+			if idx := strings.Index(cleaned, "\n"); idx != -1 {
+				cleaned = cleaned[:idx] // Take only the first line if there's extra text
+			}
+
+			// Store the result
+			mutex.Lock()
+			translated[key] = cleaned
+			mutex.Unlock()
+		}(key, value)
 	}
 
-	// Construct and send the response
+	// Wait for all goroutines to finish
+	wg.Wait()
+
+	// Prepare the response
 	resp := TranslationResponse{
 		TranslatedKeyValues: translated,
 	}
+
+	if len(errors) > 0 {
+		resp.Errors = errors
+		w.WriteHeader(http.StatusPartialContent)
+	} else {
+		w.WriteHeader(http.StatusOK)
+	}
+
+	// Send the response
 	w.Header().Set("Content-Type", "application/json")
 	if err := json.NewEncoder(w).Encode(resp); err != nil {
 		http.Error(w, "Failed to encode response", http.StatusInternalServerError)
