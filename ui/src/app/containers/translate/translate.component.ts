@@ -170,7 +170,7 @@ export class TranslateComponent {
 
   updateKey(filename: string, newKey: string) {
     this.filesService
-      .updateKey({ filename, newKey: this.key(), prevKey: this.key() })
+      .updateKey({ filename, newKey, prevKey: this.key() })
       .subscribe();
   }
 }
