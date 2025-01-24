@@ -18,3 +18,15 @@ export interface IGetTranslation {
   to: string;
   keyValues: Record<string, string>;
 }
+
+export interface IUpdateValue {
+  filename: string;
+  key: string;
+  newValue: string;
+}
+
+export interface IUpdateKey {
+  filename: string;
+  newKey: string;
+  prevKey: string;
+}

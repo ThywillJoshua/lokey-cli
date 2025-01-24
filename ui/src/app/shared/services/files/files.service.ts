@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { FilesAPIService } from './files-api.service';
 import { first, tap } from 'rxjs';
-import { IGetTranslation } from './files.model';
+import { IGetTranslation, IUpdateKey, IUpdateValue } from './files.model';
 
 @Injectable({ providedIn: 'root' })
 export class FilesService {
@@ -57,5 +57,13 @@ export class FilesService {
     return this.filesAPIService
       .deleteKeyValuePairFromAllFiles(keys)
       .pipe(tap(() => this.getTranslations()));
+  }
+
+  updateValue(body: IUpdateValue) {
+    return this.filesAPIService.updateValue(body);
+  }
+
+  updateKey(body: IUpdateKey) {
+    return this.filesAPIService.updateKey(body);
   }
 }

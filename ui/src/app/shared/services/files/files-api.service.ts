@@ -1,6 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IFiles, IGetTranslation } from './files.model';
+import {
+  IFiles,
+  IGetTranslation,
+  IUpdateKey,
+  IUpdateValue,
+} from './files.model';
 import { map } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
@@ -23,6 +28,14 @@ export class FilesAPIService {
 
   deleteKeyValuePairFromAllFiles(keys: string[]) {
     return this.http.put('/deleteKeys/', { keys });
+  }
+
+  updateValue(body: IUpdateValue) {
+    return this.http.put('/updateValue/', { body });
+  }
+
+  updateKey(body: IUpdateKey) {
+    return this.http.put('/updateKey/', { body });
   }
 
   private addParsedContent(files: IFiles): IFiles {

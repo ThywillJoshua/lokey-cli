@@ -13,6 +13,38 @@
         id="textarea"
         [formControlName]="defaultFile()"
       ></textarea>
+      @if (defaultFileState === 'current') {
+      <app-label
+        class="translate__body__default-file__status"
+        [status]="'current'"
+      ></app-label>
+      } @else if (defaultFileState === 'changed') {
+      <app-label
+        class="translate__body__default-file__status"
+        [status]="'changed'"
+      ></app-label>
+      } @else if (defaultFileState === 'updated') {
+      <app-label
+        class="translate__body__default-file__status"
+        [status]="'updated'"
+      ></app-label>
+      }
+      <div class="translate__body__default-file__cta">
+        <button
+          appButton
+          [variant]="'default'"
+          (click)="undoChange(defaultFile())"
+        >
+          <b>Undo</b>
+        </button>
+        <button
+          appButton
+          [variant]="'default'"
+          (click)="confirmChange(defaultFile())"
+        >
+          <b>Confirm</b>
+        </button>
+      </div>
     </div>
     <div class="translate__body__trash-icon">
       <app-svg-icon [iconName]="'trash'"></app-svg-icon>
@@ -62,10 +94,18 @@
       }
 
       <div class="translate__body__selected-file__cta">
-        <button appButton [variant]="'default'" (click)="undoChange()">
+        <button
+          appButton
+          [variant]="'default'"
+          (click)="undoChange(selectedFileName)"
+        >
           <b>Undo</b>
         </button>
-        <button appButton [variant]="'default'" (click)="confirmChange()">
+        <button
+          appButton
+          [variant]="'default'"
+          (click)="confirmChange(selectedFileName)"
+        >
           <b>Confirm</b>
         </button>
       </div>

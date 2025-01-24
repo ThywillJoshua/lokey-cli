@@ -42,7 +42,7 @@ import { FilesService } from '../../shared/services/files/files.service';
   templateUrl: './translate.component.html',
   styleUrl: './translate.component.scss',
 })
-export class TranslateComponent implements OnInit {
+export class TranslateComponent {
   filesService = inject(FilesService);
   fb = inject(FormBuilder);
   route = inject(ActivatedRoute);
@@ -72,25 +72,56 @@ export class TranslateComponent implements OnInit {
     file: '',
   });
 
+  get selectedFileName() {
+    return this.fileSelectorForm.get('file')?.getRawValue();
+  }
+
+  get defaultFileState() {
+    if (this.loading()) {
+      return '';
+    }
+
+    const defaultFileControl = (this.form.controls as any)[
+      this.defaultFile() || ''
+    ];
+    const originalValue =
+      this.filesService.translations()?.[this.defaultFile()]?.[this.key()];
+
+    if (
+      defaultFileControl?.dirty &&
+      (this.form.getRawValue() as any)?.[this.defaultFile()] === originalValue
+    ) {
+      return 'updated';
+    } else if (
+      defaultFileControl?.dirty &&
+      (this.form.getRawValue() as any)?.[this.defaultFile()] !== originalValue
+    ) {
+      return 'changed';
+    }
+
+    return 'current';
+  }
+
   get selectedFileState() {
     if (this.loading()) {
       return '';
     }
 
-    const selectedFileName = this.fileSelectorForm.get('file')?.getRawValue();
     const selectedFileControl = (this.form.controls as any)[
-      selectedFileName || ''
+      this.selectedFileName || ''
     ];
     const originalValue =
-      this.filesService.translations()?.[selectedFileName]?.[this.key()];
+      this.filesService.translations()?.[this.selectedFileName]?.[this.key()];
     if (
       selectedFileControl?.dirty &&
-      (this.form.getRawValue() as any)?.[selectedFileName] === originalValue
+      (this.form.getRawValue() as any)?.[this.selectedFileName] ===
+        originalValue
     ) {
       return 'updated';
     } else if (
       selectedFileControl?.dirty &&
-      (this.form.getRawValue() as any)?.[selectedFileName] !== originalValue
+      (this.form.getRawValue() as any)?.[this.selectedFileName] !==
+        originalValue
     ) {
       return 'changed';
     }
@@ -121,21 +152,25 @@ export class TranslateComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log(this.key());
-  }
-
-  undoChange() {
-    const selectedFileName = this.fileSelectorForm.get('file')?.getRawValue();
-    const selectedFileControl = (this.form.controls as any)[
-      selectedFileName || ''
-    ];
+  undoChange(filename: string) {
+    const control = (this.form.controls as any)[filename];
     const originalValue =
-      this.filesService.translations()?.[selectedFileName]?.[this.key()];
+      this.filesService.translations()?.[filename]?.[this.key()];
 
-    selectedFileControl.patchValue(originalValue);
-    selectedFileControl.markAsPristine();
+    control.patchValue(originalValue);
+    control.markAsPristine();
   }
 
-  confirmChange() {}
+  confirmChange(filename: string) {
+    const newValue = (this.form.controls as any)[filename]?.getRawValue();
+    this.filesService
+      .updateValue({ filename, key: this.key(), newValue })
+      .subscribe();
+  }
+
+  updateKey(filename: string, newKey: string) {
+    this.filesService
+      .updateKey({ filename, newKey: this.key(), prevKey: this.key() })
+      .subscribe();
+  }
 }
