@@ -31,11 +31,11 @@ export class FilesAPIService {
   }
 
   updateValue(body: IUpdateValue) {
-    return this.http.put('/updateValue/', { body });
+    return this.http.put('/updateValue/', body);
   }
 
   updateKey(body: IUpdateKey) {
-    return this.http.put('/updateKey/', { body });
+    return this.http.put('/updateKey/', body);
   }
 
   private addParsedContent(files: IFiles): IFiles {
