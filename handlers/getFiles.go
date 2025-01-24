@@ -6,36 +6,60 @@ import (
 	"net/http"
 	"os"
 	"path/filepath"
+	"sync"
 	"translate-cli/globals"
 )
 
-func GetFiles (w http.ResponseWriter, r *http.Request) {
+func GetFiles(w http.ResponseWriter, r *http.Request) {
 	files, err := getAllFiles(globals.ConfigData.Config.FilesPath)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Failed to list files: %v", err), http.StatusInternalServerError)
 		return
 	}
 
-	var result []map[string]interface{}
+	var wg sync.WaitGroup
+	resultChan := make(chan map[string]interface{}, len(files))
+	errChan := make(chan error, len(files))
 
 	for _, file := range files {
-		filePath := filepath.Join(globals.ConfigData.Config.FilesPath, file)
-		content, err := os.ReadFile(filePath)
-		if err != nil {
-			http.Error(w, fmt.Sprintf("Failed to read file %s: %v", file, err), http.StatusInternalServerError)
-			return
-		}
+		wg.Add(1)
 
-		var jsonContent interface{}
-		if err := json.Unmarshal(content, &jsonContent); err != nil {
-			http.Error(w, fmt.Sprintf("Failed to parse JSON content in file %s: %v", file, err), http.StatusInternalServerError)
-			return
-		}
+		go func(file string) {
+			defer wg.Done()
 
-		result = append(result, map[string]interface{}{
-			"fileName": file,
-			"content": jsonContent,
-		})
+			filePath := filepath.Join(globals.ConfigData.Config.FilesPath, file)
+			content, err := os.ReadFile(filePath)
+			if err != nil {
+				errChan <- fmt.Errorf("failed to read file %s: %v", file, err)
+				return
+			}
+
+			var jsonContent interface{}
+			if err := json.Unmarshal(content, &jsonContent); err != nil {
+				errChan <- fmt.Errorf("failed to parse JSON content in file %s: %v", file, err)
+				return
+			}
+
+			resultChan <- map[string]interface{}{
+				"fileName": file,
+				"content":  jsonContent,
+			}
+		}(file)
+	}
+
+	go func() {
+		wg.Wait()
+		close(resultChan)
+		close(errChan)
+	}()
+
+	var result []map[string]interface{}
+	for r := range resultChan {
+		result = append(result, r)
+	}
+	for e := range errChan {
+		http.Error(w, e.Error(), http.StatusInternalServerError)
+		return
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -45,15 +69,15 @@ func GetFiles (w http.ResponseWriter, r *http.Request) {
 }
 
 func getAllFiles(dirPath string) ([]string, error) {
-    var files []string
-    err := filepath.Walk(dirPath, func(path string, info os.FileInfo, err error) error {
-        if err != nil {
-            return err
-        }
-        if !info.IsDir() && filepath.Ext(path) == ".json" {
-            files = append(files, filepath.Base(path))
-        }
-        return nil
-    })
-    return files, err
+	var files []string
+	err := filepath.Walk(dirPath, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() && filepath.Ext(path) == ".json" {
+			files = append(files, filepath.Base(path))
+		}
+		return nil
+	})
+	return files, err
 }
