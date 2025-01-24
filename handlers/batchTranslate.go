@@ -3,14 +3,11 @@ package handlers
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io"
 	"log"
 	"net/http"
-	"strings"
 	"sync"
 
-	"github.com/tmc/langchaingo/llms"
 	"github.com/tmc/langchaingo/llms/ollama"
 )
 
@@ -63,32 +60,7 @@ func BatchTranslate(w http.ResponseWriter, r *http.Request) {
 		go func(i int, req TranslationRequest) {
 			defer wg.Done()
 
-			translated := make(map[string]string)
-			errors := make(map[string]string)
-
-			// Process each key-value pair
-			for key, value := range req.KeyValues {
-				prompt := fmt.Sprintf(
-					"Translate the following text from %s to %s. Only return the translated text:\n\"%s\"",
-					req.From, req.To, value,
-				)
-
-				completion, err := llms.GenerateFromSinglePrompt(ctx, llm, prompt)
-				if err != nil {
-					errors[key] = fmt.Sprintf("Translation failed: %v", err)
-					log.Printf("Translation error for key '%s': %v", key, err)
-					continue
-				}
-
-				cleaned := strings.TrimSpace(completion)
-                    if idx := strings.Index(cleaned, "\n"); idx != -1 {
-                     	cleaned = cleaned[:idx] // Take only the first line if there's extra text
-                    }
-
-				translated[key] = cleaned
-			}
-
-			// Add the result to the response array
+			translated, errors := processTranslation(ctx, llm, req.From, req.To, req.KeyValues)
 			responses[i] = TranslationResponse{
 				TranslatedKeyValues: translated,
 				Errors:              errors,
