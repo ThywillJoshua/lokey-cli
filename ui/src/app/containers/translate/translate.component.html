@@ -1,1 +1,75 @@
-<p>translate works!: {{ key() }}</p>
+@if (!loading() && fileSelectorForm.get('file')) {
+<div class="translate">
+  <div class="translate__page-title">
+    <h1 appText [variant]="'title'">{{ key() }}</h1>
+  </div>
+
+  <div class="translate__body" [formGroup]="form">
+    <div class="translate__body__default-file">
+      <textarea
+        appTextInput
+        appText
+        [placeholder]="defaultFile()"
+        id="textarea"
+        [formControlName]="defaultFile()"
+      ></textarea>
+    </div>
+    <div class="translate__body__trash-icon">
+      <app-svg-icon [iconName]="'trash'"></app-svg-icon>
+    </div>
+    <div class="translate__body__selected-file">
+      @for (file of filesExcludingDefault(); track $index) { @if (file ===
+      fileSelectorForm.get('file')?.getRawValue()) {
+      <textarea
+        appTextInput
+        appText
+        name=""
+        id="textarea"
+        [formControlName]="file"
+      ></textarea>
+      } }
+
+      <label
+        class="translate__body__selected-file__selector"
+        [formGroup]="fileSelectorForm"
+      >
+        <span appText [variant]="'info'">File: </span>
+
+        <select appTextInput [variant]="'xs'" formControlName="file">
+          @for (file of filesExcludingDefault(); track $index) {
+          <option [value]="file">
+            {{ file }}
+          </option>
+          }
+        </select>
+      </label>
+
+      @if (selectedFileState === 'current') {
+      <app-label
+        class="translate__body__selected-file__status"
+        [status]="'current'"
+      ></app-label>
+      } @else if (selectedFileState === 'changed') {
+      <app-label
+        class="translate__body__selected-file__status"
+        [status]="'changed'"
+      ></app-label>
+      } @else if (selectedFileState === 'updated') {
+      <app-label
+        class="translate__body__selected-file__status"
+        [status]="'updated'"
+      ></app-label>
+      }
+
+      <div class="translate__body__selected-file__cta">
+        <button appButton [variant]="'default'" (click)="undoChange()">
+          <b>Undo change</b>
+        </button>
+        <button appButton [variant]="'default'" (click)="confirmChange()">
+          <b>Confirm change</b>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}

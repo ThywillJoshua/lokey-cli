@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject, model, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { map } from 'rxjs';
 import { NavComponent } from './shared/components/nav/nav.component';
 import { DEFAULT_THEME } from './shared/services/theme/constants';
@@ -21,10 +21,13 @@ export class AppComponent implements OnInit {
   theme = model<typeof DEFAULT_THEME>(DEFAULT_THEME);
   themeService = inject(ThemeService);
   filesService = inject(FilesService);
+  router = inject(Router);
 
   ngOnInit(): void {
     this.themeService.applyTheme(this.theme);
     this.filesService.getTranslations();
     this.filesService.getConfig();
+
+    this.router.navigateByUrl('translations/banner.subtitle');
   }
 }

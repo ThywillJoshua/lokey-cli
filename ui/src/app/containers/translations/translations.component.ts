@@ -23,7 +23,6 @@ import { SvgIconComponent } from '../../shared/components/svg-icon/svg-icon.comp
 import { SortObjectPipe } from '../../shared/pipes/sortObject.pipe';
 import { ConvertObjectIntoArrayPipe } from '../../shared/pipes/convertObjectIntoArray.pipe';
 import { ModalComponent } from '../../shared/containers/modal/modal.component';
-import { JsonPipe } from '@angular/common';
 import { ButtonDirective } from '../../shared/directives/button/button.directive';
 
 @Component({

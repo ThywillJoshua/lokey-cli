@@ -1,5 +1,7 @@
 @if (status() === 'changed') {
-<span class="label label--changed" appText variant="info"> UPDATED </span>
+<span class="label label--changed" appText variant="info"> CHANGED </span>
+}@else if (status() === 'updated') {
+<span class="label label--updated" appText variant="info"> UPDATED </span>
 } @else if (status() === 'error') {
 <span class="label label--error" appText variant="info"> ERROR </span>
 } @else {

@@ -4,7 +4,6 @@ import {
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import {
@@ -12,9 +11,7 @@ import {
   withFetch,
   withInterceptors,
 } from '@angular/common/http';
-import { CustomLocationStrategy } from './shared/services/custom-routing/custom-location-strategy/custom-location-strategy.service';
-import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { env } from '../environments/environment';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { activeHttpCountInterceptor } from './shared/interceptors/active-http-count.interceptor';
 import { provideServiceWorker } from '@angular/service-worker';
 
@@ -28,7 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: LocationStrategy,
-      useClass: env.isEmbedded ? CustomLocationStrategy : PathLocationStrategy,
+      useClass: HashLocationStrategy,
     },
     provideClientHydration(),
     provideServiceWorker('ngsw-worker.js', {

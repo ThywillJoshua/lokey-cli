@@ -55,7 +55,7 @@ func main() {
 		return
     
 	case "ui":
-		go server.StartHTTPServer()
+		server.StartHTTPServer()
 	    // webview.CreateWebview()
 		return
 

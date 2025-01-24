@@ -8,5 +8,5 @@ import { TextDirective } from '../../directives/text/text.directive';
   styleUrl: './label.component.scss',
 })
 export class LabelComponent {
-  status = input<'unchanged' | 'changed' | 'error'>('unchanged');
+  status = input<'current' | 'changed' | 'updated' | 'error'>('current');
 }
