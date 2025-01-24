@@ -28,6 +28,8 @@ func StartHTTPServer() {
 
 	http.HandleFunc("POST /translate/", handlers.Translate)
 
+	http.HandleFunc("POST /batchTranslate/", handlers.BatchTranslate)
+
 	http.HandleFunc("GET /close/", handlers.CloseApp)
 
 	http.HandleFunc("PUT /deleteKeys/", handlers.DeleteKeys)
