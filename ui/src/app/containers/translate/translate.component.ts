@@ -6,7 +6,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { TextDirective } from '../../shared/directives/text/text.directive';
 import { CheckboxDirective } from '../../shared/directives/checkbox/checkbox.directive';
 import { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';
@@ -20,6 +20,8 @@ import { ModalComponent } from '../../shared/containers/modal/modal.component';
 import { ButtonDirective } from '../../shared/directives/button/button.directive';
 import { UpperCasePipe } from '@angular/common';
 import { FilesService } from '../../shared/services/files/files.service';
+import { tap } from 'rxjs';
+import { PATHS } from '../../app.routes';
 
 @Component({
   selector: 'app-translate',
@@ -46,6 +48,7 @@ export class TranslateComponent {
   filesService = inject(FilesService);
   fb = inject(FormBuilder);
   route = inject(ActivatedRoute);
+  router = inject(Router);
 
   key = signal(
     decodeURIComponent(this.route.snapshot.paramMap.get('id') || '')
@@ -71,6 +74,8 @@ export class TranslateComponent {
   fileSelectorForm = this.fb.group({
     file: '',
   });
+
+  showDeleteModal = signal(false);
 
   get selectedFileName() {
     return this.fileSelectorForm.get('file')?.getRawValue();
@@ -171,6 +176,17 @@ export class TranslateComponent {
   updateKey(filename: string, newKey: string) {
     this.filesService
       .updateKey({ filename, newKey, prevKey: this.key() })
+      .subscribe();
+  }
+
+  deleteSelectedKey() {
+    this.filesService
+      .deleteKeyValuePairFromAllFiles([this.key()])
+      .pipe(
+        tap(() => {
+          this.router.navigate([PATHS.TRANSLATIONS]);
+        })
+      )
       .subscribe();
   }
 }

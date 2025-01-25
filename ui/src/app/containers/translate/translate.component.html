@@ -1,7 +1,9 @@
 @if (!loading() && fileSelectorForm.get('file')) {
 <div class="translate">
   <div class="translate__page-title">
-    <h1 appText [variant]="'title'">{{ key() }}</h1>
+    <h1 appText [variant]="'title'" class="translate__page-title__text">
+      {{ key() }}
+    </h1>
   </div>
 
   <div class="translate__body" [formGroup]="form">
@@ -31,6 +33,7 @@
       }
       <div class="translate__body__default-file__cta">
         <button
+          [disabled]="defaultFileState !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="undoChange(defaultFile())"
@@ -38,6 +41,7 @@
           <b>Undo</b>
         </button>
         <button
+          [disabled]="defaultFileState !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="confirmChange(defaultFile())"
@@ -47,7 +51,10 @@
       </div>
     </div>
     <div class="translate__body__trash-icon">
-      <app-svg-icon [iconName]="'trash'"></app-svg-icon>
+      <app-svg-icon
+        [iconName]="'trash'"
+        (click)="showDeleteModal.set(true)"
+      ></app-svg-icon>
     </div>
     <div class="translate__body__selected-file">
       @for (file of filesExcludingDefault(); track $index) { @if (file ===
@@ -95,6 +102,7 @@
 
       <div class="translate__body__selected-file__cta">
         <button
+          [disabled]="selectedFileState !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="undoChange(selectedFileName)"
@@ -102,6 +110,7 @@
           <b>Undo</b>
         </button>
         <button
+          [disabled]="selectedFileState !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="confirmChange(selectedFileName)"
@@ -111,5 +120,42 @@
       </div>
     </div>
   </div>
+
+  @if (showDeleteModal()) {
+  <app-modal (closeModal)="showDeleteModal.set(false)">
+    <div class="translate__delete-modal">
+      <div class="translate__delete-modal__body">
+        <h1 appText [variant]="'title'">Delete key</h1>
+
+        <div class="translate__delete-modal__body__text-contianer"></div>
+        <p
+          appText
+          [variant]="'paragraph'"
+          class="translate__delete-modal__body__text-container__text"
+        >
+          The key <b>{{ key() }}</b> will be deleted from all files.
+        </p>
+
+        <p><b>ARE YOU SURE?</b></p>
+      </div>
+      <div class="translate__delete-modal__cta">
+        <button
+          appButton
+          [variant]="'default'"
+          (click)="showDeleteModal.set(false)"
+        >
+          <b>No</b>
+        </button>
+        <button
+          appButton
+          [variant]="'default'"
+          (click)="deleteSelectedKey(); showDeleteModal.set(false)"
+        >
+          <b>Yes</b>
+        </button>
+      </div>
+    </div>
+  </app-modal>
+  }
 </div>
 }
