@@ -54,12 +54,12 @@
         </button>
       </div>
     </div>
-    <div class="translate__main__trash-icon">
+    <button class="translate__main__delete-button">
       <app-svg-icon
         [iconName]="'trash'"
         (click)="showDeleteModal.set(true)"
       ></app-svg-icon>
-    </div>
+    </button>
     <div class="translate__main__selected-file">
       @for (file of filesExcludingDefault(); track $index) { @if (file ===
       fileSelectorForm.get('file')?.getRawValue()) {
