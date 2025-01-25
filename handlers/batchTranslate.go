@@ -7,11 +7,6 @@ import (
 	"log"
 	"net/http"
 	"sync"
-	"translate-cli/globals"
-
-	"github.com/tmc/langchaingo/llms"
-	"github.com/tmc/langchaingo/llms/ollama"
-	"github.com/tmc/langchaingo/llms/openai"
 )
 
 type BatchTranslationRequest struct {
@@ -41,29 +36,6 @@ func BatchTranslate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Initialize the LLM
-	var llm llms.Model
-	switch globals.ConfigData.Config.LLM {
-	case "openai":
-		llm, err = openai.New()
-		if err != nil {
-			http.Error(w, "Failed to initialize OpenAI LLM", http.StatusInternalServerError)
-			log.Printf("OpenAI LLM initialization error: %v", err)
-			return
-		}
-	case "ollama":
-		llm, err = ollama.New(ollama.WithModel("mistral"))
-		if err != nil {
-			http.Error(w, "Failed to initialize Ollama LLM", http.StatusInternalServerError)
-			log.Printf("Ollama LLM initialization error: %v", err)
-			return
-		}
-	default:
-		http.Error(w, "Unsupported LLM configuration", http.StatusBadRequest)
-		log.Printf("Invalid LLM configuration: %s", globals.ConfigData.Config.LLM)
-		return
-	}
-
 	ctx := context.Background()
 
 	// Prepare the response array
@@ -78,7 +50,7 @@ func BatchTranslate(w http.ResponseWriter, r *http.Request) {
 		go func(i int, req TranslationRequest) {
 			defer wg.Done()
 
-			translated, errors := processTranslation(ctx, llm, req.From, req.To, req.KeyValues)
+			translated, errors := processTranslation(ctx, req.From, req.To, req.KeyValues)
 			responses[i] = TranslationResponse{
 				TranslatedKeyValues: translated,
 				Errors:              errors,

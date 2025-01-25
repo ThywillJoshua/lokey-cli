@@ -16,51 +16,67 @@ import (
 	"github.com/tmc/langchaingo/llms/openai"
 )
 
-func processTranslation(ctx context.Context, llm llms.Model, from string, to string, keyValues map[string]string) (map[string]string, map[string]string) {
-	translated := make(map[string]string)
-	errors := make(map[string]string)
+func processTranslation(ctx context.Context, from string, to string, keyValues map[string]string) (map[string]string, map[string]string) {
+    // Determine which LLM to use
+    var llm llms.Model
+    var err error
+    switch globals.ConfigData.Config.LLM {
+    case "openai":
+        llm, err = openai.New()
+    case "ollama":
+        llm, err = ollama.New(ollama.WithModel("mistral"))
+    default:
+        return nil, map[string]string{"config": "Unsupported LLM configuration"}
+    }
 
-	var mutex sync.Mutex
-	var wg sync.WaitGroup
+    if err != nil {
+        return nil, map[string]string{"initialization": fmt.Sprintf("LLM initialization error: %v", err)}
+    }
+    
+    translated := make(map[string]string)
+    errors := make(map[string]string)
 
-	for key, value := range keyValues {
-		wg.Add(1)
+    var mutex sync.Mutex
+    var wg sync.WaitGroup
 
-		go func(key, value string) {
-			defer wg.Done()
+    for key, value := range keyValues {
+        wg.Add(1)
 
-			prompt := fmt.Sprintf(
-				"Translate the following text from %s to %s. Only return the translated text:\n\"%s\"",
-				from, to, value,
-			)
+        go func(key, value string) {
+            defer wg.Done()
 
-			// Generate translation using the LLM
-			completion, err := llms.GenerateFromSinglePrompt(ctx, llm, prompt)
-			if err != nil {
-				mutex.Lock()
-				errors[key] = fmt.Sprintf("Translation failed: %v", err)
-				mutex.Unlock()
-				log.Printf("Translation error for key '%s': %v", key, err)
-				return
-			}
+            prompt := fmt.Sprintf(
+                "Translate the following text from %s to %s. Only return the translated text:\n\"%s\"",
+                from, to, value,
+            )
 
-			// Clean up the output
-			cleaned := strings.TrimSpace(completion)
-			if idx := strings.Index(cleaned, "\n"); idx != -1 {
-				cleaned = cleaned[:idx] // Take only the first line if there's extra text
-			}
+            // Generate translation using the LLM
+            completion, err := llms.GenerateFromSinglePrompt(ctx, llm, prompt)
+            if err != nil {
+                mutex.Lock()
+                errors[key] = fmt.Sprintf("Translation failed: %v", err)
+                mutex.Unlock()
+                log.Printf("Translation error for key '%s': %v", key, err)
+                return
+            }
 
-			// Store the result
-			mutex.Lock()
-			translated[key] = cleaned
-			mutex.Unlock()
-		}(key, value)
-	}
+            // Clean up the output
+            cleaned := strings.TrimSpace(completion)
+            if idx := strings.Index(cleaned, "\n"); idx != -1 {
+                cleaned = cleaned[:idx] // Take only the first line if there's extra text
+            }
 
-	// Wait for all goroutines to finish
-	wg.Wait()
+            // Store the result
+            mutex.Lock()
+            translated[key] = cleaned
+            mutex.Unlock()
+        }(key, value)
+    }
 
-	return translated, errors
+    // Wait for all goroutines to finish
+    wg.Wait()
+
+    return translated, errors
 }
 
 type TranslationRequest struct {
@@ -94,32 +110,9 @@ func Translate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Determine which LLM to use
-	var llm llms.Model
-	switch globals.ConfigData.Config.LLM {
-	case "openai":
-		llm, err = openai.New()
-		if err != nil {
-			http.Error(w, "Failed to initialize OpenAI LLM", http.StatusInternalServerError)
-			log.Printf("OpenAI LLM initialization error: %v", err)
-			return
-		}
-	case "ollama":
-		llm, err = ollama.New(ollama.WithModel("mistral"))
-		if err != nil {
-			http.Error(w, "Failed to initialize Ollama LLM", http.StatusInternalServerError)
-			log.Printf("Ollama LLM initialization error: %v", err)
-			return
-		}
-	default:
-		http.Error(w, "Unsupported LLM configuration", http.StatusBadRequest)
-		log.Printf("Invalid LLM configuration: %s", globals.ConfigData.Config.LLM)
-		return
-	}
-
 	// Process the translation
 	ctx := context.Background()
-	translated, errors := processTranslation(ctx, llm, req.From, req.To, req.KeyValues)
+	translated, errors := processTranslation(ctx, req.From, req.To, req.KeyValues)
 
 	// Prepare the response
 	resp := TranslationResponse{
