@@ -170,7 +170,31 @@ export class TranslateComponent {
     const newValue = (this.form.controls as any)[filename]?.getRawValue();
     this.filesService
       .updateValue({ filename, key: this.key(), newValue })
-      .subscribe();
+      .pipe(
+        tap(() => {
+          this.filesService.translations.update((translations) => {
+            if (!translations || !translations[filename]) {
+              console.warn(`Filename "${filename}" not found in translations.`);
+              return translations;
+            }
+            if (!translations[filename][this.key()]) {
+              console.warn(
+                `Key "${this.key()}" not found in filename "${filename}".`
+              );
+            }
+            return {
+              ...translations,
+              [filename]: {
+                ...translations[filename],
+                [this.key()]: newValue,
+              },
+            };
+          });
+        })
+      )
+      .subscribe(() => {
+        console.log(this.filesService.translations());
+      });
   }
 
   updateKey(filename: string, newKey: string) {

@@ -6,8 +6,8 @@
     </h1>
   </div>
 
-  <div class="translate__body" [formGroup]="form">
-    <div class="translate__body__default-file">
+  <div class="translate__main" [formGroup]="form">
+    <div class="translate__main__default-file">
       <textarea
         appTextInput
         appText
@@ -17,22 +17,24 @@
       ></textarea>
       @if (defaultFileState === 'current') {
       <app-label
-        class="translate__body__default-file__status"
+        class="translate__main__default-file__status"
         [status]="'current'"
       ></app-label>
       } @else if (defaultFileState === 'changed') {
       <app-label
-        class="translate__body__default-file__status"
+        class="translate__main__default-file__status"
         [status]="'changed'"
       ></app-label>
       } @else if (defaultFileState === 'updated') {
       <app-label
-        class="translate__body__default-file__status"
+        class="translate__main__default-file__status"
         [status]="'updated'"
       ></app-label>
       }
-      <div class="translate__body__default-file__cta">
+      <div class="translate__main__default-file__cta">
         <button
+          appNotificationLabel
+          [notifyLabelText]="'Success!'"
           [disabled]="defaultFileState !== 'changed'"
           appButton
           [variant]="'default'"
@@ -41,6 +43,8 @@
           <b>Undo</b>
         </button>
         <button
+          appNotificationLabel
+          [notifyLabelText]="'Success!'"
           [disabled]="defaultFileState !== 'changed'"
           appButton
           [variant]="'default'"
@@ -50,13 +54,13 @@
         </button>
       </div>
     </div>
-    <div class="translate__body__trash-icon">
+    <div class="translate__main__trash-icon">
       <app-svg-icon
         [iconName]="'trash'"
         (click)="showDeleteModal.set(true)"
       ></app-svg-icon>
     </div>
-    <div class="translate__body__selected-file">
+    <div class="translate__main__selected-file">
       @for (file of filesExcludingDefault(); track $index) { @if (file ===
       fileSelectorForm.get('file')?.getRawValue()) {
       <textarea
@@ -69,7 +73,7 @@
       } }
 
       <label
-        class="translate__body__selected-file__selector"
+        class="translate__main__selected-file__selector"
         [formGroup]="fileSelectorForm"
       >
         <span appText [variant]="'info'">File: </span>
@@ -85,22 +89,22 @@
 
       @if (selectedFileState === 'current') {
       <app-label
-        class="translate__body__selected-file__status"
+        class="translate__main__selected-file__status"
         [status]="'current'"
       ></app-label>
       } @else if (selectedFileState === 'changed') {
       <app-label
-        class="translate__body__selected-file__status"
+        class="translate__main__selected-file__status"
         [status]="'changed'"
       ></app-label>
       } @else if (selectedFileState === 'updated') {
       <app-label
-        class="translate__body__selected-file__status"
+        class="translate__main__selected-file__status"
         [status]="'updated'"
       ></app-label>
       }
 
-      <div class="translate__body__selected-file__cta">
+      <div class="translate__main__selected-file__cta">
         <button
           [disabled]="selectedFileState !== 'changed'"
           appButton
