@@ -9,12 +9,14 @@ import (
 	"net/http"
 	"strings"
 	"sync"
+	"translate-cli/globals"
 
 	"github.com/tmc/langchaingo/llms"
 	"github.com/tmc/langchaingo/llms/ollama"
+	"github.com/tmc/langchaingo/llms/openai"
 )
 
-func processTranslation(ctx context.Context, llm *ollama.LLM, from string, to string, keyValues map[string]string) (map[string]string, map[string]string) {
+func processTranslation(ctx context.Context, llm llms.Model, from string, to string, keyValues map[string]string) (map[string]string, map[string]string) {
 	translated := make(map[string]string)
 	errors := make(map[string]string)
 
@@ -61,7 +63,6 @@ func processTranslation(ctx context.Context, llm *ollama.LLM, from string, to st
 	return translated, errors
 }
 
-
 type TranslationRequest struct {
 	From      string            `json:"from"`
 	To        string            `json:"to"`
@@ -93,11 +94,26 @@ func Translate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Initialize the LLM
-	llm, err := ollama.New(ollama.WithModel("mistral"))
-	if err != nil {
-		http.Error(w, "Failed to initialize LLM", http.StatusInternalServerError)
-		log.Printf("LLM initialization error: %v", err)
+	// Determine which LLM to use
+	var llm llms.Model
+	switch globals.ConfigData.Config.LLM {
+	case "openai":
+		llm, err = openai.New()
+		if err != nil {
+			http.Error(w, "Failed to initialize OpenAI LLM", http.StatusInternalServerError)
+			log.Printf("OpenAI LLM initialization error: %v", err)
+			return
+		}
+	case "ollama":
+		llm, err = ollama.New(ollama.WithModel("mistral"))
+		if err != nil {
+			http.Error(w, "Failed to initialize Ollama LLM", http.StatusInternalServerError)
+			log.Printf("Ollama LLM initialization error: %v", err)
+			return
+		}
+	default:
+		http.Error(w, "Unsupported LLM configuration", http.StatusBadRequest)
+		log.Printf("Invalid LLM configuration: %s", globals.ConfigData.Config.LLM)
 		return
 	}
 

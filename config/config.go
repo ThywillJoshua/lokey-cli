@@ -16,6 +16,7 @@ type Configuration struct {
 type Config struct {
 	FilesPath   string `json:"files-path"`
 	DefaultFile string `json:"default-file"`
+	LLM         string `json:"llm"`
 }
 
 // LoadConfig loads the configuration from a file

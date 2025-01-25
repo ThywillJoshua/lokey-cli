@@ -1,7 +1,8 @@
 {
   "config": {
     "default-file": "en.json",
-    "files-path": "public/iI8n"
+    "files-path": "public/iI8n",
+    "llm": "ollama"
   },
   "project-name": "my-project"
 }
