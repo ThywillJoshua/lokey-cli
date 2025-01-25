@@ -15,17 +15,17 @@
         id="textarea"
         [formControlName]="defaultFile()"
       ></textarea>
-      @if (defaultFileState === 'current') {
+      @if (defaultFileState() === 'current') {
       <app-label
         class="translate__main__default-file__status"
         [status]="'current'"
       ></app-label>
-      } @else if (defaultFileState === 'changed') {
+      } @else if (defaultFileState() === 'changed') {
       <app-label
         class="translate__main__default-file__status"
         [status]="'changed'"
       ></app-label>
-      } @else if (defaultFileState === 'updated') {
+      } @else if (defaultFileState() === 'updated') {
       <app-label
         class="translate__main__default-file__status"
         [status]="'updated'"
@@ -35,7 +35,7 @@
         <button
           appNotificationLabel
           [notifyLabelText]="'Success!'"
-          [disabled]="defaultFileState !== 'changed'"
+          [disabled]="defaultFileState() !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="undoChange(defaultFile())"
@@ -45,7 +45,7 @@
         <button
           appNotificationLabel
           [notifyLabelText]="'Success!'"
-          [disabled]="defaultFileState !== 'changed'"
+          [disabled]="defaultFileState() !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="confirmChange(defaultFile())"
@@ -87,17 +87,17 @@
         </select>
       </label>
 
-      @if (selectedFileState === 'current') {
+      @if (selectedFileState() === 'current') {
       <app-label
         class="translate__main__selected-file__status"
         [status]="'current'"
       ></app-label>
-      } @else if (selectedFileState === 'changed') {
+      } @else if (selectedFileState() === 'changed') {
       <app-label
         class="translate__main__selected-file__status"
         [status]="'changed'"
       ></app-label>
-      } @else if (selectedFileState === 'updated') {
+      } @else if (selectedFileState() === 'updated') {
       <app-label
         class="translate__main__selected-file__status"
         [status]="'updated'"
@@ -106,7 +106,7 @@
 
       <div class="translate__main__selected-file__cta">
         <button
-          [disabled]="selectedFileState !== 'changed'"
+          [disabled]="selectedFileState() !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="undoChange(selectedFileName)"
@@ -114,7 +114,7 @@
           <b>Undo</b>
         </button>
         <button
-          [disabled]="selectedFileState !== 'changed'"
+          [disabled]="selectedFileState() !== 'changed'"
           appButton
           [variant]="'default'"
           (click)="confirmChange(selectedFileName)"

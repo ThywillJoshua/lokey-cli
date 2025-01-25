@@ -22,6 +22,7 @@ import { UpperCasePipe } from '@angular/common';
 import { FilesService } from '../../shared/services/files/files.service';
 import { tap } from 'rxjs';
 import { PATHS } from '../../app.routes';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-translate',
@@ -81,14 +82,18 @@ export class TranslateComponent {
     return this.fileSelectorForm.get('file')?.getRawValue();
   }
 
-  get defaultFileState() {
+  formSignal = toSignal(this.form.valueChanges);
+
+  defaultFileState = computed(() => {
     if (this.loading()) {
       return '';
     }
+    this.form.valueChanges;
 
     const defaultFileControl = (this.form.controls as any)[
       this.defaultFile() || ''
     ];
+    this.formSignal();
     const originalValue =
       this.filesService.translations()?.[this.defaultFile()]?.[this.key()];
 
@@ -105,9 +110,9 @@ export class TranslateComponent {
     }
 
     return 'current';
-  }
+  });
 
-  get selectedFileState() {
+  selectedFileState = computed(() => {
     if (this.loading()) {
       return '';
     }
@@ -115,6 +120,7 @@ export class TranslateComponent {
     const selectedFileControl = (this.form.controls as any)[
       this.selectedFileName || ''
     ];
+    this.formSignal();
     const originalValue =
       this.filesService.translations()?.[this.selectedFileName]?.[this.key()];
     if (
@@ -132,7 +138,7 @@ export class TranslateComponent {
     }
 
     return 'current';
-  }
+  });
 
   constructor() {
     effect(() => {

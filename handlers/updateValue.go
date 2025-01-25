@@ -74,9 +74,9 @@ func UpdateValue(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.WriteHeader(http.StatusOK)
-	if _, err := w.Write([]byte("Value updated successfully")); err != nil {
-		http.Error(w, "Failed to write response", http.StatusInternalServerError)
+	w.Header().Set("Content-Type", "application/json")
+	if err := json.NewEncoder(w).Encode("Value updated successfully"); err != nil {
+		http.Error(w, "Failed to encode JSON response", http.StatusInternalServerError)
 	}
 }
 
