@@ -78,11 +78,13 @@ export class TranslateComponent {
 
   showDeleteModal = signal(false);
 
+  formSignal = toSignal(this.form.valueChanges);
+
+  showAITranslationInput = signal(false);
+
   get selectedFileName() {
     return this.fileSelectorForm.get('file')?.getRawValue();
   }
-
-  formSignal = toSignal(this.form.valueChanges);
 
   defaultFileState = computed(() => {
     if (this.loading()) {
@@ -147,6 +149,7 @@ export class TranslateComponent {
       if (files && this.defaultFile()) {
         Object.entries(files).forEach((file) => {
           this.form.addControl(file[0], new FormControl(file[1][this.key()]));
+          this.form.addControl(file[0] + 'ai', new FormControl(''));
         });
 
         //set default file for selector

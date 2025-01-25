@@ -122,6 +122,62 @@
           <b>Confirm</b>
         </button>
       </div>
+
+      <div class="translate__main__selected-file__ai__container">
+        @for (file of filesExcludingDefault(); track $index) { @if (file ===
+        fileSelectorForm.get('file')?.getRawValue()) {
+        <textarea
+          appTextInput
+          appText
+          [class.translate__main__selected-file__closed-textarea]="
+            !showAITranslationInput()
+          "
+          [class.translate__main__selected-file__opened-textarea]="
+            showAITranslationInput()
+          "
+          id="textarea"
+          [formControlName]="file + 'ai'"
+        ></textarea>
+        } }
+        <button
+          id="show-ai-textarea"
+          appButton
+          [variant]="'default'"
+          (click)="showAITranslationInput.set(!showAITranslationInput())"
+          [class.translate__main__selected-file__ai__container__btn]="
+            showAITranslationInput()
+          "
+        >
+          <span> AI translate <b>English</b> to <b>Portuguese</b></span>
+        </button>
+      </div>
+
+      <div class="translate__main__selected-file__cta">
+        <button
+          [disabled]="selectedFileState() !== 'changed'"
+          appButton
+          [variant]="'default'"
+          (click)="undoChange(selectedFileName)"
+        >
+          <b>Undo</b>
+        </button>
+        <button
+          [disabled]="selectedFileState() !== 'changed'"
+          appButton
+          [variant]="'default'"
+          (click)="confirmChange(selectedFileName)"
+        >
+          <b>Generate</b>
+        </button>
+        <button
+          [disabled]="selectedFileState() !== 'changed'"
+          appButton
+          [variant]="'default'"
+          (click)="confirmChange(selectedFileName)"
+        >
+          <b>Confirm</b>
+        </button>
+      </div>
     </div>
   </div>
 

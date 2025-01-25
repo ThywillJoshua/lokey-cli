@@ -28,7 +28,7 @@
 
     &__main {
       display: grid;
-      align-items: center;
+      align-items: flex-start;
       grid-template-columns: 1fr max-content 1fr;
       gap: var(--echo-theme-spacing-xxl);
 
@@ -42,6 +42,17 @@
           min-height: 220px;
           max-height: 500px;
           padding-top: var(--echo-theme-spacing-lgSpacing);
+          transition: all 300ms ease;
+        }
+
+        #textarea.translate__main__selected-file__closed-textarea {
+          min-height: unset;
+          padding-top: unset;
+          height: 44px;
+        }
+
+        #textarea.translate__main__selected-file__opened-textarea {
+          padding-top: 52px;
         }
       }
 
@@ -103,6 +114,27 @@
           & button {
             max-width: 180px;
             height: 36px;
+          }
+        }
+
+        &__ai__container {
+          position: relative;
+
+          #show-ai-textarea {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 44px;
+
+            justify-content: unset;
+            padding: 0 16px;
+            box-shadow: none;
+            border: 1px solid var(--echo-theme-colors-lightGrey2);
+          }
+
+          #show-ai-textarea.translate__main__selected-file__ai__container__btn {
+            border-bottom: none;
           }
         }
       }
