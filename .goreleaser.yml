@@ -30,7 +30,7 @@ brews:
     dependencies:
       - go
     install: |
-      bin.install "lokey"
+      bin.install Dir["*"].find { |f| File.basename(f) == "lokey" }
 
 checksum:
   name_template: "checksums.txt"
