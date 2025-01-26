@@ -31,7 +31,6 @@ brews:
       - go
     install: |
       bin.install "lokey"
-    download_strategy: GitHubPrivateRepositoryReleaseDownloadStrategy
 
 checksum:
   name_template: "checksums.txt"
