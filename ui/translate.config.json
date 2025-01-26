@@ -1,7 +1,9 @@
 {
   "config": {
     "default-file": "en.json",
-    "files-path": "./public/assets/i18n"
+    "files-path": "./public/assets/i18n",
+    "llm": "ollama",
+    "llm-context": "Translate the given text accurately and naturally from the source language to the target language, preserving the original meaning, tone, and intent. Prioritize cultural and linguistic appropriateness, and maintain the same level of formality as the source."
   },
-  "project-name": "lokey"
+  "project-name": "lokey-cli"
 }

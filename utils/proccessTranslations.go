@@ -44,7 +44,8 @@ func ProcessTranslation(ctx context.Context, from string, to string, keyValues m
             defer wg.Done()
 
             prompt := fmt.Sprintf(
-                "Translate the following text from %s to %s. Only return the translated text:\n\"%s\"",
+                "Translate the following text from %s to %s." + globals.ConfigData.Config.LLM_Context + 
+                ".Only return the translated text without quotes around it:\n\"%s\"",
                 from, to, value,
             )
 

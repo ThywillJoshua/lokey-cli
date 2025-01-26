@@ -17,6 +17,7 @@ type Config struct {
 	FilesPath   string `json:"files-path"`
 	DefaultFile string `json:"default-file"`
 	LLM         string `json:"llm"`
+	LLM_Context string `json:"llm-context"`
 }
 
 // LoadConfig loads the configuration from a file
@@ -39,6 +40,8 @@ func CreateConfigFile() {
 		"config": map[string]string{
 			"files-path":   "<path of translation files>",
 			"default-file": "<path of default file>",
+			"llm": "<openapi, ollama, claude>",
+			"llm-context": "<description of your app>",
 		},
 	}
 

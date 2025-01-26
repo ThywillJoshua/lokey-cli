@@ -1,26 +1,15 @@
-import {
-  Component,
-  computed,
-  effect,
-  inject,
-  OnInit,
-  signal,
-} from '@angular/core';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { Component, computed, effect, inject, signal } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TextDirective } from '../../shared/directives/text/text.directive';
-import { CheckboxDirective } from '../../shared/directives/checkbox/checkbox.directive';
 import { TextInputDirective } from '../../shared/directives/text-input/text-input.directive';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
-import { ConvertObjectIntoArrayPipe } from '../../shared/pipes/convertObjectIntoArray.pipe';
 import { LabelComponent } from '../../shared/components/label/label.component';
 import { NotificationLabelDirective } from '../../shared/directives/notification-label/notification-label.directive';
-import { PopoverLabelDirective } from '../../shared/directives/popover-label/popover-label.directive';
 import { SvgIconComponent } from '../../shared/components/svg-icon/svg-icon.component';
 import { ModalComponent } from '../../shared/containers/modal/modal.component';
 import { ButtonDirective } from '../../shared/directives/button/button.directive';
-import { UpperCasePipe } from '@angular/common';
 import { FilesService } from '../../shared/services/files/files.service';
-import { tap } from 'rxjs';
+import { finalize, tap } from 'rxjs';
 import { PATHS } from '../../app.routes';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -227,6 +216,7 @@ export class TranslateComponent {
       .subscribe();
   }
 
+  isGenerationAITranslation = signal(false);
   generateAITranslation(filename: string) {
     const from =
       this.filesService.translations()?.[this.defaultFile()][
@@ -244,6 +234,7 @@ export class TranslateComponent {
       return;
     }
 
+    this.isGenerationAITranslation.set(true);
     this.filesService
       .generateAITranslation({
         requests: [
@@ -258,14 +249,11 @@ export class TranslateComponent {
       })
       .pipe(
         tap((res) => {
-          this.confirmChange(
-            filename,
-            res.responses?.[0]?.translatedKeyValues?.[this.key()]
-          );
           (this.form.controls as any)[filename + 'ai']?.patchValue(
             res.responses?.[0]?.translatedKeyValues?.[this.key()]
           );
-        })
+        }),
+        finalize(() => this.isGenerationAITranslation.set(false))
       )
       .subscribe();
   }
@@ -273,6 +261,7 @@ export class TranslateComponent {
   applyAITranslation(filename: string) {
     const aiValue = this.formSignal()?.[filename + 'ai'];
     (this.form.controls as any)[filename].patchValue(aiValue);
+    this.confirmChange(filename, aiValue);
   }
 
   generateAITranslationForAll() {

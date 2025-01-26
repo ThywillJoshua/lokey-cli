@@ -161,22 +161,22 @@
           [class.textarea--ai-opened]="showAITranslationInput()"
           class="textarea"
           [formControlName]="file + 'ai'"
-          [disabled]="!showAITranslationInput()"
+          [disabled]="
+            !showAITranslationInput() || this.isGenerationAITranslation()
+          "
         ></textarea>
 
         <div class="translate__main__selected-file__cta">
-          <button appButton [variant]="'default'" (click)="undoChange(file)">
-            <b>Undo</b>
-          </button>
           <button
             appButton
             [variant]="'default'"
             (click)="generateAITranslation(file)"
+            [isLoading]="this.isGenerationAITranslation()"
           >
             <b>Generate</b>
           </button>
           <button
-            [disabled]="!formSignal()?.[file] || formSignal()?.[file] === formSignal()?.[file + 'ai']"
+            [disabled]="!formSignal()?.[file + 'ai'] || formSignal()?.[file] === formSignal()?.[file + 'ai']"
             appButton
             [variant]="'default'"
             (click)="applyAITranslation(file)"
