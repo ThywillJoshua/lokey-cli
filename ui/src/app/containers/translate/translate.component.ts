@@ -161,6 +161,7 @@ export class TranslateComponent {
         //set default file for selector
         const filename = Object.keys(files)
           .filter((filename) => filename !== this.defaultFile())
+          .sort()
           .find((filename) => typeof filename === 'string');
 
         if (filename) {

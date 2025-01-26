@@ -133,6 +133,10 @@ export class TranslationsComponent implements OnInit {
       this.filteredData.set(
         new SortObjectPipe().transform(filteredObject, this.sort())
       );
+      this.filteredData.update((data) => {
+        delete data?.['_lokey_metadata.language'];
+        return data;
+      });
     });
   }
 

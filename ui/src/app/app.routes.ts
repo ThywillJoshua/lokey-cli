@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomepageComponent } from './containers/homepage/homepage.component';
-import { ROUTER_NAME } from './shared/services/custom-routing/constants';
-import { isEmbedded } from '../environments/environment.development';
 import { TranslationsComponent } from './containers/translations/translations.component';
 import { TranslateComponent } from './containers/translate/translate.component';
 

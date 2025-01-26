@@ -28,6 +28,6 @@ export class AppComponent implements OnInit {
     this.filesService.getTranslations();
     this.filesService.getConfig();
 
-    this.router.navigateByUrl('translations/banner.subtitle');
+    // this.router.navigateByUrl('translations/banner.subtitle');
   }
 }
