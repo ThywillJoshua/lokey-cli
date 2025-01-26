@@ -46,5 +46,5 @@ export interface IGenerateTranslationsRequest {
 }
 
 export interface IGenerateTranslationsResponse {
-  requests: ITranslationResponse[];
+  responses: ITranslationResponse[];
 }

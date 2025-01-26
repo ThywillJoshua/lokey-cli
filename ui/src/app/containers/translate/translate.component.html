@@ -142,7 +142,16 @@
             showAITranslationInput()
           "
         >
-          <span> AI translate <b>English</b> to <b>Portuguese</b></span>
+          <span>
+            AI translate
+            <b>{{filesService.translations()?.[defaultFile()]?.[
+            '_lokey_metadata.language'
+          ]}}</b>
+            to
+            <b>{{filesService.translations()?.[this.selectedFileName]?.[
+              '_lokey_metadata.language'
+            ]}}</b></span
+          >
         </button>
         @for (file of filesExcludingDefault(); track $index) { @if (file ===
         fileSelectorForm.get('file')?.getRawValue()) {
@@ -171,12 +180,12 @@
             <b>Generate</b>
           </button>
           <button
-            [disabled]="selectedFileState() !== 'changed'"
+            [disabled]="!formSignal()?.[selectedFileName] || formSignal()?.[selectedFileName] === formSignal()?.[selectedFileName + 'ai']"
             appButton
             [variant]="'default'"
-            (click)="confirmChange(selectedFileName)"
+            (click)="applyAITranslation()"
           >
-            <b>Confirm</b>
+            <b>Apply</b>
           </button>
         </div>
         } }

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {
   IFiles,
   IGenerateTranslationsRequest,
+  IGenerateTranslationsResponse,
   IGetTranslation,
   IUpdateKey,
   IUpdateValue,
@@ -40,7 +41,10 @@ export class FilesAPIService {
   }
 
   generateAITranslation(body: IGenerateTranslationsRequest) {
-    return this.http.post('/generateAITranslation/', body);
+    return this.http.post<IGenerateTranslationsResponse>(
+      '/generateAITranslation/',
+      body
+    );
   }
 
   private addParsedContent(files: IFiles): IFiles {

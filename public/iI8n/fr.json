@@ -1,12 +1,14 @@
 {
-  "_lokey_metadata": { "language": "french" },
+  "_lokey_metadata": {
+    "language": "french"
+  },
   "banner": {
     "cta info": {
       "link": "/signup",
       "text": "Ouvrez un compte dès aujourd'hui"
     },
     "image": "https://example.com/banner-image.jpg",
-    "subtitle": "Votre partenaire de confiance en services financiers",
+    "subtitle": "Mon Partenaire Fiable en Services Financiers",
     "title": "Bienvenue chez SafeBank"
   },
   "cta_section": {

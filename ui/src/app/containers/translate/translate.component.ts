@@ -86,7 +86,7 @@ export class TranslateComponent {
     this.form.valueChanges
   );
 
-  showAITranslationInput = signal(false);
+  showAITranslationInput = signal(true);
 
   get selectedFileName() {
     return this.fileSelectorForm.get('file')?.getRawValue();
@@ -161,7 +161,9 @@ export class TranslateComponent {
         //set default file for selector
         const filename = Object.keys(files)
           .filter((filename) => filename !== this.defaultFile())
-          .find((filename) => typeof filename === 'string');
+          .find(
+            (filename) => this.selectedFileName || typeof filename === 'string'
+          );
 
         if (filename) {
           this.fileSelectorForm.get('file')?.patchValue(filename);
@@ -181,8 +183,12 @@ export class TranslateComponent {
     control.markAsPristine();
   }
 
-  confirmChange(filename: string) {
-    const newValue = (this.form.controls as any)[filename]?.getRawValue();
+  confirmChange(filename: string, newValue?: string) {
+    if (!newValue)
+      newValue = (this.form.controls as any)[filename]?.getRawValue();
+
+    if (!newValue) return;
+
     this.filesService
       .updateValue({ filename, key: this.key(), newValue })
       .pipe(
@@ -228,7 +234,21 @@ export class TranslateComponent {
   }
 
   generateAITranslation() {
-    if (!this.formSignal()?.[this.defaultFile()] || !this.key()) {
+    const from =
+      this.filesService.translations()?.[this.defaultFile()][
+        '_lokey_metadata.language'
+      ];
+    const to =
+      this.filesService.translations()?.[this.selectedFileName][
+        '_lokey_metadata.language'
+      ];
+
+    if (
+      !this.formSignal()?.[this.defaultFile()] ||
+      !this.key() ||
+      !to ||
+      !from
+    ) {
       return;
     }
 
@@ -236,15 +256,31 @@ export class TranslateComponent {
       .generateAITranslation({
         requests: [
           {
-            from: this.defaultFile(),
-            to: this.selectedFileName(),
+            from,
+            to,
             keyValues: {
               [this.key()]: this.formSignal()?.[this.defaultFile()],
             },
           },
         ],
       })
-      .subscribe(console.log);
+      .pipe(
+        tap((res) => {
+          this.confirmChange(
+            this.selectedFileName,
+            res.responses?.[0]?.translatedKeyValues?.[this.key()]
+          );
+          (this.form.controls as any)[this.selectedFileName + 'ai']?.patchValue(
+            res.responses?.[0]?.translatedKeyValues?.[this.key()]
+          );
+        })
+      )
+      .subscribe();
+  }
+
+  applyAITranslation() {
+    const aiValue = this.formSignal()?.[this.selectedFileName + 'ai'];
+    (this.form.controls as any)[this.selectedFileName].patchValue(aiValue);
   }
 
   generateAITranslationForAll() {

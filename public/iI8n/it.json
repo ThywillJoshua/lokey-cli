@@ -1,12 +1,14 @@
 {
-  "_lokey_metadata": { "language": "italian" },
+  "_lokey_metadata": {
+    "language": "italian"
+  },
   "banner": {
     "cta info": {
       "link": "/signup",
       "text": "Apri un conto oggi"
     },
     "image": "https://example.com/banner-image.jpg",
-    "subtitle": "Il tuo partner affidabile per i servizi finanziari",
+    "subtitle": "Il mio Affidabile Partner nei Servizi Finanziari",
     "title": "Benvenuto su SafeBank"
   },
   "cta_section": {
