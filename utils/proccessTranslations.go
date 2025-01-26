@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"lokey-cli/globals"
 	"strings"
 	"sync"
-	"translate-cli/globals"
 
 	"github.com/tmc/langchaingo/llms"
 	"github.com/tmc/langchaingo/llms/ollama"

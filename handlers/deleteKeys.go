@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"lokey-cli/globals"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
-	"translate-cli/globals"
 )
 
 type DeleteKeysRequest struct {

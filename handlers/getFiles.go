@@ -3,11 +3,11 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"lokey-cli/globals"
 	"net/http"
 	"os"
 	"path/filepath"
 	"sync"
-	"translate-cli/globals"
 )
 
 func GetFiles(w http.ResponseWriter, r *http.Request) {

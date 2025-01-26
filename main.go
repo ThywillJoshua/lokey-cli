@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"os"
 
-	"translate-cli/config"
-	"translate-cli/globals"
-	"translate-cli/server"
-	"translate-cli/utils"
+	"lokey-cli/config"
+	"lokey-cli/globals"
+	"lokey-cli/server"
+	"lokey-cli/utils"
 )
 
 var ConfigData config.Configuration

@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"encoding/json"
+	"lokey-cli/globals"
 	"net/http"
-	"translate-cli/globals"
 )
 
 func GetConfig (w http.ResponseWriter, r *http.Request) {

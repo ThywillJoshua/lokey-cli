@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/fs"
+	"lokey-cli/globals"
 	"os"
 	"path/filepath"
-	"translate-cli/globals"
 )
 
 // CreateFiles creates files with empty JSON objects in the specified directory

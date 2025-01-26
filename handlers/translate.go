@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"io"
 	"log"
+	"lokey-cli/utils"
 	"net/http"
-	"translate-cli/utils"
 )
 
 type TranslationRequest struct {

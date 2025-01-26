@@ -1,5 +1,5 @@
 package globals
 
-import "translate-cli/config"
+import "lokey-cli/config"
 
 var ConfigData config.Configuration

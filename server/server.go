@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/fs"
 	"log"
+	"lokey-cli/handlers"
 	"net/http"
-	"translate-cli/handlers"
 )
 
 // Embed static files

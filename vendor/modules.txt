@@ -17,10 +17,3 @@ github.com/tmc/langchaingo/llms/ollama/internal/ollamaclient
 github.com/tmc/langchaingo/llms/openai
 github.com/tmc/langchaingo/llms/openai/internal/openaiclient
 github.com/tmc/langchaingo/schema
-# github.com/webview/webview_go v0.0.0-20240831120633-6173450d4dd6
-## explicit; go 1.13
-github.com/webview/webview_go
-github.com/webview/webview_go/libs/mswebview2
-github.com/webview/webview_go/libs/mswebview2/include
-github.com/webview/webview_go/libs/webview
-github.com/webview/webview_go/libs/webview/include

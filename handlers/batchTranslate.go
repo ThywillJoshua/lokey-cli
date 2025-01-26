@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"io"
 	"log"
+	"lokey-cli/utils"
 	"net/http"
 	"sync"
-	"translate-cli/utils"
 )
 
 type BatchTranslationRequest struct {

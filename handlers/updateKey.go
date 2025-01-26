@@ -3,12 +3,12 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"lokey-cli/globals"
 	"net/http"
 	"os"
 	"path/filepath"
 	"strings"
 	"sync"
-	"translate-cli/globals"
 )
 
 type UpdateKeyRequest struct {
