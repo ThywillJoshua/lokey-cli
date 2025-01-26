@@ -5,9 +5,9 @@ import (
 	"os"
 
 	"translate-cli/config"
-	"translate-cli/fileutils"
 	"translate-cli/globals"
 	"translate-cli/server"
+	"translate-cli/utils"
 )
 
 var ConfigData config.Configuration
@@ -44,14 +44,14 @@ func main() {
 			return
 		}
 		args := os.Args[2:]
-		err = fileutils.CreateFiles(args...)
+		err = utils.CreateFiles(args...)
 		if err != nil {
 			fmt.Printf("Error: %v\n", err)
 		}
 		return
 
 	case "sync":
-		fileutils.SyncFiles()
+		utils.SyncFiles()
 		return
     
 	case "ui":

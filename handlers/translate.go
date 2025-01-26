@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"translate-cli/utils"
 )
 
 type TranslationRequest struct {
@@ -41,7 +42,7 @@ func Translate(w http.ResponseWriter, r *http.Request) {
 
 	// Process the translation
 	ctx := context.Background()
-	translated, errors := processTranslation(ctx, req.From, req.To, req.KeyValues)
+	translated, errors := utils.ProcessTranslation(ctx, req.From, req.To, req.KeyValues)
 
 	// Prepare the response
 	resp := TranslationResponse{

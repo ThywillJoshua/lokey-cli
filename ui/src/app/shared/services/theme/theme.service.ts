@@ -39,7 +39,7 @@ export class ThemeService {
     Object.entries(theme).forEach(([groupKey, groupValue]) => {
       if (typeof groupValue === 'object' && groupValue !== null) {
         Object.entries(groupValue).forEach(([key, value]) => {
-          const cssVariable = `--echo-theme-${groupKey}-${key}`;
+          const cssVariable = `--lokey-theme-${groupKey}-${key}`;
           document.documentElement.style.setProperty(cssVariable, value);
         });
       }

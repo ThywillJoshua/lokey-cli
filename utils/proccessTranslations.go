@@ -1,4 +1,4 @@
-package handlers
+package utils
 
 import (
 	"context"
@@ -14,7 +14,7 @@ import (
 )
 
 
-func processTranslation(ctx context.Context, from string, to string, keyValues map[string]string) (map[string]string, map[string]string) {
+func ProcessTranslation(ctx context.Context, from string, to string, keyValues map[string]string) (map[string]string, map[string]string) {
     // Determine which LLM to use
     var llm llms.Model
     var err error

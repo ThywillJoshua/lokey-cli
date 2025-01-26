@@ -3,11 +3,11 @@ nav {
   justify-content: space-between;
   height: 50px;
   width: 100vw;
-  border-bottom: var(--echo-theme-colors-textSecondary) solid 1px;
+  border-bottom: var(--lokey-theme-colors-textSecondary) solid 1px;
   align-items: center;
 
-  padding: var(--echo-theme-spacing-paddingMd)
-    var(--echo-theme-spacing-paddingMd);
+  padding: var(--lokey-theme-spacing-paddingMd)
+    var(--lokey-theme-spacing-paddingMd);
 
   & .left {
     & a {
@@ -19,7 +19,7 @@ nav {
     & ul {
       all: unset;
       list-style-type: none;
-      gap: var(--echo-theme-spacing-md);
+      gap: var(--lokey-theme-spacing-md);
       display: flex;
       flex-direction: row;
     }

@@ -1,27 +1,27 @@
 .text-directive {
   &__paragraph {
-    font-size: var(--echo-theme-typography-bodySize);
+    font-size: var(--lokey-theme-typography-bodySize);
     line-height: 19px;
-    color: var(--echo-theme-colors-textPrimary);
+    color: var(--lokey-theme-colors-textPrimary);
   }
 
   &__paragraph-bold {
     font-weight: 700;
-    font-size: var(--echo-theme-typography-bodySize);
+    font-size: var(--lokey-theme-typography-bodySize);
     line-height: 20px;
-    color: var(--echo-theme-colors-textPrimary);
+    color: var(--lokey-theme-colors-textPrimary);
   }
 
   &__info {
-    font-size: var(--echo-theme-typography-captionSize);
+    font-size: var(--lokey-theme-typography-captionSize);
     line-height: 19px;
-    color: var(--echo-theme-colors-textSecondary);
+    color: var(--lokey-theme-colors-textSecondary);
   }
 
   &__info-sm {
-    font-size: var(--echo-theme-typography-captionSize);
+    font-size: var(--lokey-theme-typography-captionSize);
     line-height: 19px;
-    color: var(--echo-theme-colors-textSecondary);
+    color: var(--lokey-theme-colors-textSecondary);
   }
 
   &__title {
@@ -29,14 +29,14 @@
     font-size: 20px;
     line-height: 24px;
     letter-spacing: 0.2em;
-    color: var(--echo-theme-colors-textPrimary);
+    color: var(--lokey-theme-colors-textPrimary);
     text-transform: uppercase;
   }
 
   &__title-sm {
-    font-size: var(--echo-theme-typography-captionSize);
+    font-size: var(--lokey-theme-typography-captionSize);
     line-height: 14px;
     letter-spacing: 0.1em;
-    color: var(--echo-theme-colors-textSecondary);
+    color: var(--lokey-theme-colors-textSecondary);
   }
 }

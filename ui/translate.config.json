@@ -3,5 +3,5 @@
     "default-file": "en.json",
     "files-path": "./public/assets/i18n"
   },
-  "project-name": "echo"
+  "project-name": "lokey"
 }

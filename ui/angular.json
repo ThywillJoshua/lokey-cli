@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "echo-ui": {
+    "lokey-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -77,10 +77,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "echo-ui:build:production"
+              "buildTarget": "lokey-ui:build:production"
             },
             "development": {
-              "buildTarget": "echo-ui:build:development"
+              "buildTarget": "lokey-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -109,7 +109,7 @@
           "builder": "@storybook/angular:start-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "echo-ui:build",
+            "browserTarget": "lokey-ui:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
             "port": 6006
@@ -119,7 +119,7 @@
           "builder": "@storybook/angular:build-storybook",
           "options": {
             "configDir": ".storybook",
-            "browserTarget": "echo-ui:build",
+            "browserTarget": "lokey-ui:build",
             "compodoc": true,
             "compodocArgs": ["-e", "json", "-d", "."],
             "outputDir": "storybook-static"

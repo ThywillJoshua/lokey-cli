@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"sync"
+	"translate-cli/utils"
 )
 
 type BatchTranslationRequest struct {
@@ -50,7 +51,7 @@ func BatchTranslate(w http.ResponseWriter, r *http.Request) {
 		go func(i int, req TranslationRequest) {
 			defer wg.Done()
 
-			translated, errors := processTranslation(ctx, req.From, req.To, req.KeyValues)
+			translated, errors := utils.ProcessTranslation(ctx, req.From, req.To, req.KeyValues)
 			responses[i] = TranslationResponse{
 				TranslatedKeyValues: translated,
 				Errors:              errors,

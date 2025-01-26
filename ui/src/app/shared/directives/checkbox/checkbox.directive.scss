@@ -4,7 +4,7 @@
   gap: 0.5em;
 
   &--disabled {
-    color: var(--echo-theme-colors-textSecondary);
+    color: var(--lokey-theme-colors-textSecondary);
     cursor: not-allowed;
   }
 
@@ -12,7 +12,7 @@
     cursor: pointer;
     -webkit-appearance: none;
     appearance: none;
-    background-color: var(--echo-theme-colors-background);
+    background-color: var(--lokey-theme-colors-background);
     margin: 0;
 
     font: inherit;
@@ -35,7 +35,7 @@
     transform: scale(0);
     transform-origin: bottom left;
     transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--echo-theme-colors-textPrimary);
+    box-shadow: inset 1em 1em var(--lokey-theme-colors-textPrimary);
     background-color: CanvasText;
   }
 
@@ -44,7 +44,7 @@
   }
 
   & input[type="checkbox"]:disabled {
-    color: var(--echo-theme-colors-textSecondary);
+    color: var(--lokey-theme-colors-textSecondary);
     cursor: not-allowed;
   }
 }

@@ -6,10 +6,10 @@ export interface IUserProfile {
 }
 
 export interface IStorage {
-  'echo.tokens': {
+  'lokey.tokens': {
     access_token: string;
     refresh_token: string;
   };
-  'echo.user': IUserProfile;
-  'echo.create-organization-form': ICreateOrganizationForm;
+  'lokey.user': IUserProfile;
+  'lokey.create-organization-form': ICreateOrganizationForm;
 }

@@ -5,7 +5,7 @@
   margin: 0;
   box-sizing: border-box;
   scrollbar-gutter: stable;
-  font-family: var(--echo-theme-typography-fontFamily);
+  font-family: var(--lokey-theme-typography-fontFamily);
 }
 
 html {
@@ -20,9 +20,9 @@ body {
 
   line-height: 1;
   font-weight: 400;
-  font-size: var(--echo-theme-typography-bodySize);
-  color: var(--echo-theme-colors-textPrimary);
-  background-color: var(--echo-theme-colors-background);
+  font-size: var(--lokey-theme-typography-bodySize);
+  color: var(--lokey-theme-colors-textPrimary);
+  background-color: var(--lokey-theme-colors-background);
   min-height: 100vh;
 }
 
@@ -32,7 +32,7 @@ h2,
 h4,
 h5,
 h6 {
-  color: var(--echo-theme-colors-textHeader);
+  color: var(--lokey-theme-colors-textHeader);
 }
 
 .link:visited,

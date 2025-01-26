@@ -1,4 +1,4 @@
-package sortedmap
+package utils
 
 import (
 	"encoding/json"

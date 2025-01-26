@@ -4,14 +4,14 @@
     align-items: center;
     justify-content: center;
 
-    background-color: var(--echo-theme-colors-white);
+    background-color: var(--lokey-theme-colors-white);
     border-radius: 5px;
 
-    border: solid var(--echo-theme-borderWidth-thin)
-      var(--echo-theme-colors-border);
-    box-shadow: var(--echo-theme-shadows-subtle);
+    border: solid var(--lokey-theme-borderWidth-thin)
+      var(--lokey-theme-colors-border);
+    box-shadow: var(--lokey-theme-shadows-subtle);
 
-    color: var(--echo-theme-colors-primary);
+    color: var(--lokey-theme-colors-primary);
     text-transform: uppercase;
 
     height: 24px;
@@ -27,19 +27,21 @@
     }
 
     &:hover {
-      box-shadow: var(--echo-theme-shadows-shadowHover);
+      box-shadow: var(--lokey-theme-shadows-shadowHover);
     }
 
     &:active {
-      box-shadow: var(--echo-theme-shadows-shadowActive);
+      box-shadow: var(--lokey-theme-shadows-shadowActive);
     }
 
     transition: all 300ms ease-out;
 
     &:disabled {
-      background-color: var(--echo-theme-colors-lightGrey2);
+      background-color: var(--lokey-theme-colors-lightGrey2);
       box-shadow: none; /* Remove shadow for a flat look */
-      color: var(--echo-theme-colors-textSecondaryLight); /* Muted text color */
+      color: var(
+        --lokey-theme-colors-textSecondaryLight
+      ); /* Muted text color */
       cursor: not-allowed; /* Indicate it’s non-interactive */
       transition: none; /* No animations */
       opacity: 0.6; /* Slightly faded appearance */
@@ -51,10 +53,10 @@
     align-items: center;
     justify-content: center;
 
-    background-color: var(--echo-theme-colors-secondary);
+    background-color: var(--lokey-theme-colors-secondary);
     border-radius: 5px;
 
-    color: var(--echo-theme-colors-white);
+    color: var(--lokey-theme-colors-white);
     text-transform: uppercase;
 
     height: 44px;
@@ -68,11 +70,11 @@
     }
 
     &:hover {
-      box-shadow: var(--echo-theme-shadows-shadowHover);
+      box-shadow: var(--lokey-theme-shadows-shadowHover);
     }
 
     &:active {
-      box-shadow: var(--echo-theme-shadows-shadowActive);
+      box-shadow: var(--lokey-theme-shadows-shadowActive);
     }
 
     transition: all 300ms ease-out;

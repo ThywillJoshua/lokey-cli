@@ -1,14 +1,14 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: var(--echo-theme-spacing-md);
+  gap: var(--lokey-theme-spacing-md);
 
   .main {
     &__container {
       max-width: 1250px;
       margin: 0 auto;
 
-      padding: var(--echo-theme-spacing-paddingMd);
+      padding: var(--lokey-theme-spacing-paddingMd);
     }
   }
 }

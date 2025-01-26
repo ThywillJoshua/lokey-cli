@@ -1,4 +1,4 @@
-package fileutils
+package utils
 
 import (
 	"encoding/json"
@@ -7,7 +7,6 @@ import (
 	"os"
 	"path/filepath"
 	"translate-cli/globals"
-	sortedmap "translate-cli/sortedmaps"
 )
 
 // CreateFiles creates files with empty JSON objects in the specified directory
@@ -45,13 +44,13 @@ func SyncFiles() {
 	}
 
 	// Parse the JSON default file content into SortedMap and sort it
-	var defaultFileContent sortedmap.SortedMap
+	var defaultFileContent SortedMap
 	err = json.Unmarshal(defaultFileData, &defaultFileContent)
 	if err != nil {
 		fmt.Println("Error parsing default file:", err)
 		return
 	}
-	defaultFileContent = sortedmap.SortSortedMap(defaultFileContent)
+	defaultFileContent = SortSortedMap(defaultFileContent)
 
 	// Convert the sorted default file content back to JSON
 	defaultFileContentIndented, err := json.MarshalIndent(defaultFileContent, "", "  ")
@@ -84,7 +83,7 @@ func SyncFiles() {
 			}
 
 			// Parse the target file content into SortedMap
-			var targetFileContent sortedmap.SortedMap
+			var targetFileContent SortedMap
 			err = json.Unmarshal(targetFileData, &targetFileContent)
 			if err != nil {
 				fmt.Printf("Error parsing file %s: %v\n", path, err)
@@ -92,7 +91,7 @@ func SyncFiles() {
 			}
 
 			// Update the target file content with the default content
-			removalCount, removedKeys, additionCount, addedKeys := sortedmap.UpdateSortedMap(&targetFileContent, defaultFileContent, "")
+			removalCount, removedKeys, additionCount, addedKeys := UpdateSortedMap(&targetFileContent, defaultFileContent, "")
 			if removalCount > 0 {
 				fmt.Printf("Removed %d keys from file: %s\n", removalCount, path)
 				for _, key := range removedKeys {

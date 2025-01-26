@@ -1,12 +1,12 @@
 :host {
   display: flex;
   flex-direction: column;
-  gap: var(--echo-theme-spacing-lg);
+  gap: var(--lokey-theme-spacing-lg);
 
   & .translate {
     display: flex;
     flex-direction: column;
-    gap: var(--echo-theme-spacing-xl);
+    gap: var(--lokey-theme-spacing-xl);
 
     & .hide {
       visibility: hidden;
@@ -14,12 +14,12 @@
     }
 
     &__checkbox {
-      color: var(--echo-theme-colors-textSecondary);
+      color: var(--lokey-theme-colors-textSecondary);
       cursor: pointer;
     }
 
     &__page-title {
-      padding: 0 var(--echo-theme-borderRadius-medium);
+      padding: 0 var(--lokey-theme-borderRadius-medium);
 
       &__text {
         text-transform: unset;
@@ -30,7 +30,7 @@
       display: grid;
       align-items: flex-start;
       grid-template-columns: 1fr max-content 1fr;
-      gap: var(--echo-theme-spacing-xxl);
+      gap: var(--lokey-theme-spacing-xxl);
 
       & .textarea {
         width: 100%;
@@ -43,11 +43,11 @@
         position: relative;
 
         height: 60px;
-        padding: var(--echo-theme-spacing-sm);
+        padding: var(--lokey-theme-spacing-sm);
         padding-top: 34px;
-        background-color: var(--echo-theme-colors-background);
-        border: 1px solid var(--echo-theme-colors-lightGrey2);
-        border-radius: var(--echo-theme-borderRadius-small);
+        background-color: var(--lokey-theme-colors-background);
+        border: 1px solid var(--lokey-theme-colors-lightGrey2);
+        border-radius: var(--lokey-theme-borderRadius-small);
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
@@ -59,7 +59,7 @@
         }
 
         &--ai-opened {
-          padding-top: var(--echo-theme-spacing-xxl);
+          padding-top: var(--lokey-theme-spacing-xxl);
         }
       }
 
@@ -67,26 +67,26 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        gap: var(--echo-theme-spacing-lg);
+        gap: var(--lokey-theme-spacing-lg);
 
         &__placeholder {
           position: absolute;
-          top: var(--echo-theme-spacing-sm);
-          left: var(--echo-theme-spacing-sm);
+          top: var(--lokey-theme-spacing-sm);
+          left: var(--lokey-theme-spacing-sm);
           z-index: 1;
         }
 
         &__status {
           position: absolute;
-          top: var(--echo-theme-spacing-sm);
-          right: var(--echo-theme-spacing-sm);
+          top: var(--lokey-theme-spacing-sm);
+          right: var(--lokey-theme-spacing-sm);
           z-index: 1;
         }
 
         &__cta {
           display: flex;
           justify-content: flex-end;
-          gap: var(--echo-theme-spacing-lg);
+          gap: var(--lokey-theme-spacing-lg);
 
           & button {
             max-width: 180px;
@@ -103,29 +103,29 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        gap: var(--echo-theme-spacing-lg);
+        gap: var(--lokey-theme-spacing-lg);
 
         &__selector {
           position: absolute;
-          top: var(--echo-theme-spacing-sm);
-          left: var(--echo-theme-spacing-sm);
+          top: var(--lokey-theme-spacing-sm);
+          left: var(--lokey-theme-spacing-sm);
 
           display: flex;
           align-items: center;
-          gap: var(--echo-theme-spacing-marginSm);
+          gap: var(--lokey-theme-spacing-marginSm);
           z-index: 1;
         }
 
         &__status {
           position: absolute;
-          top: var(--echo-theme-spacing-sm);
-          right: var(--echo-theme-spacing-sm);
+          top: var(--lokey-theme-spacing-sm);
+          right: var(--lokey-theme-spacing-sm);
         }
 
         &__cta {
           display: flex;
           justify-content: flex-end;
-          gap: var(--echo-theme-spacing-lg);
+          gap: var(--lokey-theme-spacing-lg);
 
           & button {
             max-width: 180px;
@@ -137,7 +137,7 @@
           position: relative;
           display: flex;
           flex-direction: column;
-          gap: var(--echo-theme-spacing-md);
+          gap: var(--lokey-theme-spacing-md);
 
           #show-ai-textarea {
             position: absolute;
@@ -149,7 +149,7 @@
             justify-content: unset;
             padding: 0 16px;
             box-shadow: none;
-            border: 1px solid var(--echo-theme-colors-lightGrey2);
+            border: 1px solid var(--lokey-theme-colors-lightGrey2);
             z-index: 1;
             background-color: white;
           }
@@ -164,18 +164,18 @@
     &__delete-modal {
       display: flex;
       flex-direction: column;
-      gap: var(--echo-theme-spacing-lg);
+      gap: var(--lokey-theme-spacing-lg);
       align-items: center;
       max-width: 500px;
-      padding: var(--echo-theme-spacing-paddingXl);
-      background-color: var(--echo-theme-colors-background);
-      box-shadow: var(--echo-theme-shadows-shadowActive);
-      border-radius: var(--echo-theme-borderRadius-medium);
+      padding: var(--lokey-theme-spacing-paddingXl);
+      background-color: var(--lokey-theme-colors-background);
+      box-shadow: var(--lokey-theme-shadows-shadowActive);
+      border-radius: var(--lokey-theme-borderRadius-medium);
 
       &__body {
         display: flex;
         flex-direction: column;
-        gap: var(--echo-theme-spacing-md);
+        gap: var(--lokey-theme-spacing-md);
         align-items: center;
 
         &__text-container {
@@ -188,7 +188,7 @@
       &__cta {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        column-gap: var(--echo-theme-spacing-md);
+        column-gap: var(--lokey-theme-spacing-md);
 
         width: 80%;
       }

@@ -1,6 +1,6 @@
 import { env } from '../../../../environments/environment';
 
-export const ROUTER_NAME = 'echo';
+export const ROUTER_NAME = 'lokey';
 
 export function getRouterLink(url: string) {
   return env.isEmbedded

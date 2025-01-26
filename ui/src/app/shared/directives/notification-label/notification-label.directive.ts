@@ -60,47 +60,47 @@ export class NotificationLabelDirective {
       this.renderer.setStyle(
         this.labelElement,
         'background',
-        'var(--echo-theme-colors-success)'
+        'var(--lokey-theme-colors-success)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'color',
-        'var(--echo-theme-colors-white)'
+        'var(--lokey-theme-colors-white)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'padding',
-        'var(--echo-theme-spacing-xs)'
+        'var(--lokey-theme-spacing-xs)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'border-radius',
-        'var(--echo-theme-borderRadius-small)'
+        'var(--lokey-theme-borderRadius-small)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'font-size',
-        'var(--echo-theme-typography-captionSize)'
+        'var(--lokey-theme-typography-captionSize)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'line-height',
-        'var(--echo-theme-typography-captionLineHeight)'
+        'var(--lokey-theme-typography-captionLineHeight)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'box-shadow',
-        'var(--echo-theme-shadows-shadowActive)'
+        'var(--lokey-theme-shadows-shadowActive)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'z-index',
-        'var(--echo-theme-zIndex-zIndexTooltip)'
+        'var(--lokey-theme-zIndex-zIndexTooltip)'
       );
       this.renderer.setStyle(
         this.labelElement,
         'transition',
-        'opacity var(--echo-theme-animation-medium) var(--echo-theme-animation-easeOut)'
+        'opacity var(--lokey-theme-animation-medium) var(--lokey-theme-animation-easeOut)'
       );
       this.renderer.setStyle(this.labelElement, 'opacity', '1');
 

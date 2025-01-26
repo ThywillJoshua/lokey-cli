@@ -98,49 +98,49 @@ export class PopoverLabelDirective {
       this.renderer.setStyle(
         this.popoverElement,
         'background',
-        'var(--echo-theme-colors-primaryActive)'
+        'var(--lokey-theme-colors-primaryActive)'
       );
       this.renderer.setStyle(
         this.popoverElement,
         'color',
-        'var(--echo-theme-colors-white)'
+        'var(--lokey-theme-colors-white)'
       );
       this.renderer.setStyle(
         this.popoverElement,
         'padding',
-        'var(--echo-theme-spacing-sm)'
+        'var(--lokey-theme-spacing-sm)'
       );
       this.renderer.setStyle(
         this.popoverElement,
         'border-radius',
-        'var(--echo-theme-borderRadius-small)'
+        'var(--lokey-theme-borderRadius-small)'
       );
       this.renderer.setStyle(
         this.popoverElement,
         'font-size',
-        'var(--echo-theme-typography-captionSize)'
+        'var(--lokey-theme-typography-captionSize)'
       );
       this.renderer.setStyle(
         this.popoverElement,
         'line-height',
-        'var(--echo-theme-typography-captionLineHeight)'
+        'var(--lokey-theme-typography-captionLineHeight)'
       );
       this.renderer.setStyle(
         this.popoverElement,
         'box-shadow',
-        'var(--echo-theme-shadows-medium)'
+        'var(--lokey-theme-shadows-medium)'
       );
       this.renderer.setStyle(this.popoverElement, 'white-space', 'nowrap');
       this.renderer.setStyle(
         this.popoverElement,
         'z-index',
-        'var(--echo-theme-zIndex-zIndexTooltip)'
+        'var(--lokey-theme-zIndex-zIndexTooltip)'
       );
       this.renderer.setStyle(this.popoverElement, 'opacity', '0');
       this.renderer.setStyle(
         this.popoverElement,
         'transition',
-        'opacity var(--echo-theme-animation-medium) var(--echo-theme-animation-easeOut)'
+        'opacity var(--lokey-theme-animation-medium) var(--lokey-theme-animation-easeOut)'
       );
       this.renderer.setStyle(this.popoverElement, 'pointer-events', 'none');
 
