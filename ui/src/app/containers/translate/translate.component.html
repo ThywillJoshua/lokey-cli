@@ -15,7 +15,7 @@
       <textarea
         appText
         [placeholder]="defaultFile()"
-        id="textarea"
+        class="textarea"
         [formControlName]="defaultFile()"
       ></textarea>
       @if (defaultFileState() === 'current') {
@@ -56,6 +56,15 @@
           <b>Confirm</b>
         </button>
       </div>
+
+      <div class="translate__main__default-file__context">
+        <textarea
+          appText
+          name=""
+          class="textarea"
+          formControlName="translation-context"
+        ></textarea>
+      </div>
     </div>
     <button class="translate__main__delete-button">
       <app-svg-icon
@@ -84,7 +93,7 @@
       <textarea
         appText
         name=""
-        id="textarea"
+        class="textarea"
         [formControlName]="file"
       ></textarea>
       } } @if (selectedFileState() === 'current') {
@@ -139,13 +148,9 @@
         fileSelectorForm.get('file')?.getRawValue()) {
         <textarea
           appText
-          [class.translate__main__selected-file__closed-textarea]="
-            !showAITranslationInput()
-          "
-          [class.translate__main__selected-file__opened-textarea]="
-            showAITranslationInput()
-          "
-          id="textarea"
+          [class.textarea--closed]="!showAITranslationInput()"
+          [class.textarea--ai-opened]="showAITranslationInput()"
+          class="textarea"
           [formControlName]="file + 'ai'"
           [disabled]="!showAITranslationInput()"
         ></textarea>

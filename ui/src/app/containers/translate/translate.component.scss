@@ -32,11 +32,11 @@
       grid-template-columns: 1fr max-content 1fr;
       gap: var(--echo-theme-spacing-xxl);
 
-      & #textarea {
+      & .textarea {
         width: 100%;
         max-width: 100%;
         min-width: 400px;
-        min-height: 220px;
+        min-height: 150px;
         max-height: 500px;
 
         cursor: pointer;
@@ -44,23 +44,23 @@
 
         height: 60px;
         padding: var(--echo-theme-spacing-sm);
-        padding-top: var(--echo-theme-spacing-xl);
+        padding-top: 34px;
         background-color: var(--echo-theme-colors-background);
         border: 1px solid var(--echo-theme-colors-lightGrey2);
         border-radius: var(--echo-theme-borderRadius-small);
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
-      }
 
-      #textarea.translate__main__selected-file__closed-textarea {
-        min-height: unset;
-        padding-top: unset;
-        height: 44px;
-      }
+        &--closed {
+          min-height: unset;
+          padding-top: unset;
+          height: 44px;
+        }
 
-      #textarea.translate__main__selected-file__opened-textarea {
-        padding-top: 52px;
+        &--ai-opened {
+          padding-top: var(--echo-theme-spacing-xxl);
+        }
       }
 
       &__default-file {
