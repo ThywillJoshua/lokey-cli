@@ -24,6 +24,10 @@ import { tap } from 'rxjs';
 import { PATHS } from '../../app.routes';
 import { toSignal } from '@angular/core/rxjs-interop';
 
+interface FormSignalType {
+  [key: string]: any; // Replace `any` with a specific type if possible
+}
+
 @Component({
   selector: 'app-translate',
   standalone: true,
@@ -78,7 +82,9 @@ export class TranslateComponent {
 
   showDeleteModal = signal(false);
 
-  formSignal = toSignal(this.form.valueChanges);
+  formSignal = toSignal<Partial<FormSignalType> | undefined>(
+    this.form.valueChanges
+  );
 
   showAITranslationInput = signal(false);
 
@@ -143,6 +149,7 @@ export class TranslateComponent {
   });
 
   constructor() {
+    this.form.valueChanges.subscribe(console.log);
     effect(() => {
       const files = this.filesService.translations();
 

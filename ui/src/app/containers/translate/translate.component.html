@@ -8,6 +8,10 @@
 
   <div class="translate__main" [formGroup]="form">
     <div class="translate__main__default-file">
+      <div class="translate__main__default-file__placeholder">
+        <span appText [variant]="'info'">{{ defaultFile() }} </span>
+      </div>
+
       <textarea
         appText
         [placeholder]="defaultFile()"
@@ -60,16 +64,6 @@
       ></app-svg-icon>
     </button>
     <div class="translate__main__selected-file">
-      @for (file of filesExcludingDefault(); track $index) { @if (file ===
-      fileSelectorForm.get('file')?.getRawValue()) {
-      <textarea
-        appText
-        name=""
-        id="textarea"
-        [formControlName]="file"
-      ></textarea>
-      } }
-
       <label
         class="translate__main__selected-file__selector"
         [formGroup]="fileSelectorForm"
@@ -85,7 +79,15 @@
         </select>
       </label>
 
-      @if (selectedFileState() === 'current') {
+      @for (file of filesExcludingDefault(); track $index) { @if (file ===
+      fileSelectorForm.get('file')?.getRawValue()) {
+      <textarea
+        appText
+        name=""
+        id="textarea"
+        [formControlName]="file"
+      ></textarea>
+      } } @if (selectedFileState() === 'current') {
       <app-label
         class="translate__main__selected-file__status"
         [status]="'current'"
@@ -122,6 +124,17 @@
       </div>
 
       <div class="translate__main__selected-file__ai__container">
+        <button
+          id="show-ai-textarea"
+          appButton
+          [variant]="'default'"
+          (click)="showAITranslationInput.set(!showAITranslationInput())"
+          [class.translate__main__selected-file__ai__container__btn]="
+            showAITranslationInput()
+          "
+        >
+          <span> AI translate <b>English</b> to <b>Portuguese</b></span>
+        </button>
         @for (file of filesExcludingDefault(); track $index) { @if (file ===
         fileSelectorForm.get('file')?.getRawValue()) {
         <textarea
@@ -134,46 +147,36 @@
           "
           id="textarea"
           [formControlName]="file + 'ai'"
+          [disabled]="!showAITranslationInput()"
         ></textarea>
-        } }
-        <button
-          id="show-ai-textarea"
-          appButton
-          [variant]="'default'"
-          (click)="showAITranslationInput.set(!showAITranslationInput())"
-          [class.translate__main__selected-file__ai__container__btn]="
-            showAITranslationInput()
-          "
-        >
-          <span> AI translate <b>English</b> to <b>Portuguese</b></span>
-        </button>
-      </div>
 
-      <div class="translate__main__selected-file__cta">
-        <button
-          [disabled]="selectedFileState() !== 'changed'"
-          appButton
-          [variant]="'default'"
-          (click)="undoChange(selectedFileName)"
-        >
-          <b>Undo</b>
-        </button>
-        <button
-          [disabled]="selectedFileState() !== 'changed'"
-          appButton
-          [variant]="'default'"
-          (click)="confirmChange(selectedFileName)"
-        >
-          <b>Generate</b>
-        </button>
-        <button
-          [disabled]="selectedFileState() !== 'changed'"
-          appButton
-          [variant]="'default'"
-          (click)="confirmChange(selectedFileName)"
-        >
-          <b>Confirm</b>
-        </button>
+        <div class="translate__main__selected-file__cta">
+          <button
+            [disabled]="selectedFileState() !== 'changed'"
+            appButton
+            [variant]="'default'"
+            (click)="undoChange(selectedFileName)"
+          >
+            <b>Undo</b>
+          </button>
+          <button
+            [disabled]="!formSignal()?.[file + 'ai']"
+            appButton
+            [variant]="'default'"
+            (click)="confirmChange(selectedFileName)"
+          >
+            <b>Generate</b>
+          </button>
+          <button
+            [disabled]="selectedFileState() !== 'changed'"
+            appButton
+            [variant]="'default'"
+            (click)="confirmChange(selectedFileName)"
+          >
+            <b>Confirm</b>
+          </button>
+        </div>
+        } }
       </div>
     </div>
   </div>
