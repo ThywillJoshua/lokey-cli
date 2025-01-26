@@ -1,5 +1,5 @@
 builds:
-  - binary: lokey
+  - binary: lokey-cli
     goos:
       - linux
       - darwin
@@ -30,7 +30,7 @@ brews:
     dependencies:
       - go
     install: |
-      bin.install Dir["*"].find { |f| File.basename(f) == "lokey" }
+      bin.install "lokey-cli"
 
 checksum:
   name_template: "checksums.txt"
