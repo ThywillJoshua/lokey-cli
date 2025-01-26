@@ -165,25 +165,21 @@
         ></textarea>
 
         <div class="translate__main__selected-file__cta">
-          <button
-            appButton
-            [variant]="'default'"
-            (click)="undoChange(selectedFileName)"
-          >
+          <button appButton [variant]="'default'" (click)="undoChange(file)">
             <b>Undo</b>
           </button>
           <button
             appButton
             [variant]="'default'"
-            (click)="generateAITranslation()"
+            (click)="generateAITranslation(file)"
           >
             <b>Generate</b>
           </button>
           <button
-            [disabled]="!formSignal()?.[selectedFileName] || formSignal()?.[selectedFileName] === formSignal()?.[selectedFileName + 'ai']"
+            [disabled]="!formSignal()?.[file] || formSignal()?.[file] === formSignal()?.[file + 'ai']"
             appButton
             [variant]="'default'"
-            (click)="applyAITranslation()"
+            (click)="applyAITranslation(file)"
           >
             <b>Apply</b>
           </button>
