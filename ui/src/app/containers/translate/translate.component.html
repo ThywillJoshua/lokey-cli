@@ -9,7 +9,6 @@
   <div class="translate__main" [formGroup]="form">
     <div class="translate__main__default-file">
       <textarea
-        appTextInput
         appText
         [placeholder]="defaultFile()"
         id="textarea"
@@ -64,7 +63,6 @@
       @for (file of filesExcludingDefault(); track $index) { @if (file ===
       fileSelectorForm.get('file')?.getRawValue()) {
       <textarea
-        appTextInput
         appText
         name=""
         id="textarea"
@@ -127,7 +125,6 @@
         @for (file of filesExcludingDefault(); track $index) { @if (file ===
         fileSelectorForm.get('file')?.getRawValue()) {
         <textarea
-          appTextInput
           appText
           [class.translate__main__selected-file__closed-textarea]="
             !showAITranslationInput()

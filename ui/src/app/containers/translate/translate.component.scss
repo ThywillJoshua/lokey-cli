@@ -32,28 +32,36 @@
       grid-template-columns: 1fr max-content 1fr;
       gap: var(--echo-theme-spacing-xxl);
 
-      & ::ng-deep .text-input-directive__default__wrapper {
-        max-width: unset;
+      & #textarea {
+        width: 100%;
+        max-width: 100%;
+        min-width: 400px;
+        min-height: 220px;
+        max-height: 500px;
+        transition: all 300ms ease;
 
-        & #textarea {
-          width: 100%;
-          max-width: 100%;
-          min-width: 400px;
-          min-height: 220px;
-          max-height: 500px;
-          padding-top: var(--echo-theme-spacing-lgSpacing);
-          transition: all 300ms ease;
-        }
+        cursor: pointer;
+        position: relative;
 
-        #textarea.translate__main__selected-file__closed-textarea {
-          min-height: unset;
-          padding-top: unset;
-          height: 44px;
-        }
+        height: 60px;
+        padding: var(--echo-theme-spacing-sm);
+        padding-top: var(--echo-theme-spacing-xl);
+        background-color: var(--echo-theme-colors-background);
+        border: 1px solid var(--echo-theme-colors-lightGrey2);
+        border-radius: var(--echo-theme-borderRadius-small);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
 
-        #textarea.translate__main__selected-file__opened-textarea {
-          padding-top: 52px;
-        }
+      #textarea.translate__main__selected-file__closed-textarea {
+        min-height: unset;
+        padding-top: unset;
+        height: 44px;
+      }
+
+      #textarea.translate__main__selected-file__opened-textarea {
+        padding-top: 52px;
       }
 
       &__default-file {
