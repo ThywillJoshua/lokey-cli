@@ -1,7 +1,12 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { FilesAPIService } from './files-api.service';
 import { first, tap } from 'rxjs';
-import { IGetTranslation, IUpdateKey, IUpdateValue } from './files.model';
+import {
+  IGenerateTranslationsRequest,
+  IGetTranslation,
+  IUpdateKey,
+  IUpdateValue,
+} from './files.model';
 
 @Injectable({ providedIn: 'root' })
 export class FilesService {
@@ -65,5 +70,9 @@ export class FilesService {
 
   updateKey(body: IUpdateKey) {
     return this.filesAPIService.updateKey(body);
+  }
+
+  generateAITranslation(body: IGenerateTranslationsRequest) {
+    return this.filesAPIService.generateAITranslation(body);
   }
 }

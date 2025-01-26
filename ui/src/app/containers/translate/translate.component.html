@@ -58,12 +58,12 @@
       </div>
 
       <div class="translate__main__default-file__context">
-        <textarea
+        <!-- <textarea
           appText
           name=""
           class="textarea"
           formControlName="translation-context"
-        ></textarea>
+        ></textarea> -->
       </div>
     </div>
     <button class="translate__main__delete-button">
@@ -157,7 +157,6 @@
 
         <div class="translate__main__selected-file__cta">
           <button
-            [disabled]="selectedFileState() !== 'changed'"
             appButton
             [variant]="'default'"
             (click)="undoChange(selectedFileName)"
@@ -165,10 +164,9 @@
             <b>Undo</b>
           </button>
           <button
-            [disabled]="!formSignal()?.[file + 'ai']"
             appButton
             [variant]="'default'"
-            (click)="confirmChange(selectedFileName)"
+            (click)="generateAITranslation()"
           >
             <b>Generate</b>
           </button>

@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   IFiles,
+  IGenerateTranslationsRequest,
   IGetTranslation,
   IUpdateKey,
   IUpdateValue,
@@ -36,6 +37,10 @@ export class FilesAPIService {
 
   updateKey(body: IUpdateKey) {
     return this.http.put('/updateKey/', body);
+  }
+
+  generateAITranslation(body: IGenerateTranslationsRequest) {
+    return this.http.post('/generateAITranslation/', body);
   }
 
   private addParsedContent(files: IFiles): IFiles {

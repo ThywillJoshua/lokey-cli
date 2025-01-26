@@ -149,7 +149,6 @@ export class TranslateComponent {
   });
 
   constructor() {
-    this.form.valueChanges.subscribe(console.log);
     effect(() => {
       const files = this.filesService.translations();
 
@@ -208,9 +207,7 @@ export class TranslateComponent {
           });
         })
       )
-      .subscribe(() => {
-        console.log(this.filesService.translations());
-      });
+      .subscribe();
   }
 
   updateKey(filename: string, newKey: string) {
@@ -228,5 +225,37 @@ export class TranslateComponent {
         })
       )
       .subscribe();
+  }
+
+  generateAITranslation() {
+    if (!this.formSignal()?.[this.defaultFile()] || !this.key()) {
+      return;
+    }
+
+    this.filesService
+      .generateAITranslation({
+        requests: [
+          {
+            from: this.defaultFile(),
+            to: this.selectedFileName(),
+            keyValues: {
+              [this.key()]: this.formSignal()?.[this.defaultFile()],
+            },
+          },
+        ],
+      })
+      .subscribe(console.log);
+  }
+
+  generateAITranslationForAll() {
+    this.filesService.generateAITranslation({
+      requests: this.filesExcludingDefault().map((filename) => ({
+        from: this.defaultFile(),
+        to: filename,
+        keyValues: {
+          [this.key()]: this.formSignal()?.[this.defaultFile()],
+        },
+      })),
+    });
   }
 }

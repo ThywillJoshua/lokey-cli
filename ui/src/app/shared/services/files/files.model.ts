@@ -30,3 +30,21 @@ export interface IUpdateKey {
   newKey: string;
   prevKey: string;
 }
+
+export interface ITranslationRequest {
+  from: string;
+  to: string;
+  keyValues: Record<string, string>;
+}
+export interface ITranslationResponse {
+  translatedKeyValues: Record<string, string>;
+  errors?: Record<string, string>;
+}
+
+export interface IGenerateTranslationsRequest {
+  requests: ITranslationRequest[];
+}
+
+export interface IGenerateTranslationsResponse {
+  requests: ITranslationResponse[];
+}

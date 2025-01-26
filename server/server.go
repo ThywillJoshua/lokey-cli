@@ -37,6 +37,8 @@ func StartHTTPServer() {
 	http.HandleFunc("PUT /updateKey/", handlers.UpdateKey)
 
 	http.HandleFunc("PUT /updateValue/", handlers.UpdateValue)
+
+	http.HandleFunc("POST /generateAITranslation/", handlers.BatchTranslate)
 	
 	fmt.Println("Starting server on http://localhost:8080/")
 	log.Fatal(http.ListenAndServe(":8080", nil))
