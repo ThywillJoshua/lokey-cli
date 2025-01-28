@@ -6,6 +6,35 @@
   </div>
 
   <div class="right">
-    <ul></ul>
+    <ul>
+      <li>
+        <button
+          (click)="this.showCreateKeyValueModal.set(true)"
+          appButton
+          [variant]="'default'"
+        >
+          New Key: Value
+        </button>
+      </li>
+      <li>
+        <button
+          (click)="this.showSettingsModal.set(true)"
+          appButton
+          [variant]="'default'"
+        >
+          Settings
+        </button>
+      </li>
+    </ul>
   </div>
 </nav>
+
+@if (showCreateKeyValueModal()) {
+<app-modal (closeModal)="this.showCreateKeyValueModal.set(false)">
+  <app-create-key-value></app-create-key-value>
+</app-modal>
+} @if (showSettingsModal()) {
+<app-modal (closeModal)="this.showSettingsModal.set(false)">
+  <app-settings></app-settings>
+</app-modal>
+}

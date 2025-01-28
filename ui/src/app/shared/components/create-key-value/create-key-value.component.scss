@@ -1,0 +1,30 @@
+.create-key-value {
+  display: flex;
+  flex-direction: column;
+  gap: var(--lokey-theme-spacing-lg);
+  align-items: center;
+  padding: var(--lokey-theme-spacing-paddingXl);
+  background-color: var(--lokey-theme-colors-background);
+  box-shadow: var(--lokey-theme-shadows-shadowActive);
+  border-radius: var(--lokey-theme-borderRadius-medium);
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lokey-theme-spacing-md);
+    align-items: center;
+  }
+
+  &__info {
+    width: 100%;
+    max-width: 350px;
+
+    &__text {
+      overflow-wrap: break-word;
+    }
+  }
+
+  &__cta {
+    width: 100%;
+  }
+}

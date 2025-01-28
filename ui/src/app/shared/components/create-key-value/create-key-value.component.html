@@ -1,0 +1,40 @@
+<div class="create-key-value" [formGroup]="form">
+  <div class="create-key-value__header">
+    <h3 appText [variant]="'title'">Create Key & Value</h3>
+  </div>
+
+  <div class="create-key-value__form">
+    <input
+      type="text"
+      appTextInput
+      placeholder="Key"
+      formControlName="key"
+      [disabled]="isCreatingKeyValue()"
+    />
+    <input
+      type="text"
+      appTextInput
+      placeholder="Default Value"
+      formControlName="value"
+      [disabled]="isCreatingKeyValue()"
+    />
+  </div>
+
+  <div class="create-key-value__info">
+    <span class="create-key-value__info__text" appText [variant]="'paragraph'">
+      "{{ form.get("key")?.getRawValue() }}" and its value will be added to all
+      files
+    </span>
+  </div>
+
+  <div class="create-key-value__cta">
+    <button
+      [disabled]="isCreatingKeyValue()"
+      (click)="createKeyValue()"
+      appButton
+      [variant]="'cta'"
+    >
+      Create
+    </button>
+  </div>
+</div>
